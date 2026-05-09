@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+dist/
+
+# Environment variables - NEVER commit these
+.env
+.env.local
+.env.production
+.env*.local
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+
+# Migration / helper scripts (not needed in production)
+migrate.js
+fix_imports.js
+fix_hooks.js
+fix_search_params.js
+fix_suspense.js
+fixImports.js
+inject_meta.js
+
+# Misc
+.DS_Store
+*.pem
+.vscode/
+seo_assets/
+DEPLOY.md
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vercel
+.vercel

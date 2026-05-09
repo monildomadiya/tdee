@@ -1,0 +1,174 @@
+"use client";
+import React, { useState } from 'react';
+
+import Sidebar from '../../src/components/Sidebar';
+import Link from 'next/link';
+
+const WaterIntake = () => {
+  const [weight, setWeight] = useState('');
+  const [unit, setUnit] = useState('kg');
+  const [activity, setActivity] = useState('moderate');
+  const [climate, setClimate] = useState('normal');
+  const [result, setResult] = useState(null);
+
+  const calculate = (e) => {
+    e.preventDefault();
+    let wKg = unit === 'kg' ? parseFloat(weight) : parseFloat(weight) * 0.453592;
+    let baseL = wKg * 0.033;
+    if (activity === 'active') baseL += 0.5;
+    if (activity === 'athlete') baseL += 1.0;
+    if (climate === 'hot') baseL += 0.5;
+    const liters = Math.round(baseL * 10) / 10;
+    const cups = Math.round(liters / 0.237);
+    const oz = Math.round(liters * 33.814);
+    setResult({ liters, cups, oz });
+  };
+
+  return (
+    <>
+      
+
+      <div className="page-hero">
+        <div className="container">
+          <h1>Water Intake Calculator</h1>
+          <p>Find out exactly how much water you should drink per day based on your weight, activity, and climate.</p>
+        </div>
+      </div>
+
+      <main className="container tool-layout-container" style={{ paddingTop:'2rem', paddingBottom:'4rem' }}>
+        <div className="tool-main-content">
+        <div className="main-content">
+          <div className="calculator-card">
+            <div className="mac-header">
+              <div className="mac-dots">
+                <span className="mac-dot red"></span>
+                <span className="mac-dot yellow"></span>
+                <span className="mac-dot green"></span>
+              </div>
+              <div className="mac-title">HYDRATION CALCULATOR</div>
+            </div>
+            <div className="calculator-card-body">
+              <div className="calculator-grid">
+                <div className="calc-form-container">
+                  <div style={{ fontSize:'.75rem', color:'var(--muted)', textTransform:'uppercase', letterSpacing:'.06em', fontWeight:700, marginBottom:'1.25rem' }}>Your Details</div>
+                  <form onSubmit={calculate}>
+                    <div className="input-group">
+                      <label>Unit</label>
+                      <div className="toggle-group" role="group">
+                        <button type="button" className={`toggle-btn${unit==='kg'?' active':''}`} onClick={()=>setUnit('kg')}>kg</button>
+                        <button type="button" className={`toggle-btn${unit==='lbs'?' active':''}`} onClick={()=>setUnit('lbs')}>lbs</button>
+                      </div>
+                    </div>
+                    <div className="input-group">
+                      <label>Body Weight ({unit})</label>
+                      <input type="number" value={weight} onChange={e=>setWeight(e.target.value)} placeholder={unit==='kg'?'e.g. 75':'e.g. 165'} required />
+                    </div>
+                    <div className="input-group">
+                      <label>Activity Level</label>
+                      <select value={activity} onChange={e=>setActivity(e.target.value)}>
+                        <option value="sedentary">Sedentary (desk job)</option>
+                        <option value="moderate">Moderate (light exercise)</option>
+                        <option value="active">Active (daily workouts)</option>
+                        <option value="athlete">Athlete (intense training)</option>
+                      </select>
+                    </div>
+                    <div className="input-group">
+                      <label>Climate</label>
+                      <select value={climate} onChange={e=>setClimate(e.target.value)}>
+                        <option value="normal">Temperate / Normal</option>
+                        <option value="hot">Hot / Humid Climate</option>
+                      </select>
+                    </div>
+                    <button type="submit" className="btn-primary" style={{ marginTop:'1rem' }}>Calculate Water Intake</button>
+                  </form>
+                </div>
+
+                <div className="results-container" style={{ display:'flex', flexDirection:'column', minHeight:'300px' }}>
+                  <div style={{ background:'var(--bg)', border:'1px solid var(--border)', borderBottom:'none', color:'var(--text)', padding:'1rem 1.5rem', fontWeight:600, fontSize:'.95rem', borderTopLeftRadius:'var(--r-lg)', borderTopRightRadius:'var(--r-lg)' }}>Output Container</div>
+                  <div style={{ background:'#fff', flex:1, padding:'2rem 1.5rem', borderBottomLeftRadius:'var(--r-lg)', borderBottomRightRadius:'var(--r-lg)', display:'flex', flexDirection:'column', justifyContent:result?'flex-start':'center', alignItems:'center', border:'1px solid var(--border)' }}>
+                    {!result ? (
+                      <div style={{ color:'var(--muted)', textAlign:'center' }}>Enter your details to see your hydration target</div>
+                    ) : (
+                      <div style={{ textAlign:'center', animation:'popIn .4s ease both', width:'100%' }}>
+                        <div style={{ fontSize:'.8rem', textTransform:'uppercase', letterSpacing:'.05em', color:'var(--text-2)', fontWeight:600, marginBottom:'.4rem' }}>Daily Water Target</div>
+                        <div style={{ fontSize:'3.75rem', fontWeight:900, color:'var(--green)', lineHeight:1 }}>{result.liters}<span style={{ fontSize:'1.5rem' }}>L</span></div>
+                        <div style={{ fontSize:'1rem', color:'var(--text-2)', marginTop:'4px' }}>per day</div>
+                        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'10px', marginTop:'1.5rem' }}>
+                          <div style={{ background:'#eff6ff', border:'1px solid #bfdbfe', padding:'1rem', borderRadius:'var(--r-md)', textAlign:'center' }}>
+                            <div style={{ fontSize:'.7rem', textTransform:'uppercase', fontWeight:700, color:'var(--muted)' }}>In Cups</div>
+                            <div style={{ fontWeight:800, color:'#2563eb', fontSize:'1.3rem', marginTop:'4px' }}>{result.cups}</div>
+                          </div>
+                          <div style={{ background:'#fdf4ff', border:'1px solid #e9d5ff', padding:'1rem', borderRadius:'var(--r-md)', textAlign:'center' }}>
+                            <div style={{ fontSize:'.7rem', textTransform:'uppercase', fontWeight:700, color:'var(--muted)' }}>In oz</div>
+                            <div style={{ fontWeight:800, color:'#7c3aed', fontSize:'1.3rem', marginTop:'4px' }}>{result.oz}</div>
+                          </div>
+                        </div>
+                        <div style={{ marginTop:'1rem', background:'var(--green-light)', padding:'.75rem', borderRadius:'var(--r-sm)', fontSize:'.85rem', color:'var(--text-2)' }}>
+                          💡 Spread across ~8 glasses throughout the day for optimal absorption
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        {/* === AUTOMATED SEO CONTENT BLOCK === */}
+        <article className="seo-article-content" style={{ marginTop: '4rem', padding: '2rem', background: '#fff', borderRadius: 'var(--r-xl)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)' }}>
+          <header style={{ marginBottom: '2rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '2.2rem', color: 'var(--text)', marginBottom: '1rem' }}>The Ultimate Guide to Your Water Intake</h2>
+            <p style={{ fontSize: '1.1rem', color: 'var(--text-2)', lineHeight: 1.8, maxWidth: '800px', margin: '0 auto' }}>
+              The Water Intake calculator is a specialized fitness and health tool designed to provide highly accurate metrics to optimize your daily routine, nutrition, and training program. Discover how to leverage this metric to accelerate your health, fitness, and nutritional goals using verified scientific data.
+            </p>
+          </header>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '3rem', justifyContent: 'center' }}>
+            {["water intake calculator","calculate water intake","free water intake tool","accurate water intake","health and fitness metrics"].map((kw, i) => (
+              <span key={i} style={{ background: 'var(--bg)', border: '1px solid var(--border)', padding: '6px 14px', borderRadius: '100px', fontSize: '0.85rem', color: 'var(--muted)', fontWeight: 600 }}>#{kw}</span>
+            ))}
+          </div>
+
+          <div className="seo-content-grid" style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+            
+            <section>
+              <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-dark)', marginBottom: '1rem', borderBottom: '2px solid var(--green-light)', paddingBottom: '0.5rem', display: 'inline-block' }}>Comprehensive Guide to the Water Intake</h3>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>Understanding your Water Intake is critical for optimizing your physical health and reaching your specific fitness goals. Whether your objective is to build lean muscle mass, maximize fat loss, improve athletic endurance, or simply maintain a healthy lifestyle, accurate data is your most powerful asset. Our professional-grade Water Intake calculator utilizes peer-reviewed scientific formulas to deliver precise, actionable insights tailored specifically to your unique physiological profile.</p>
+            </section>
+            
+            <section>
+              <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-dark)', marginBottom: '1rem', borderBottom: '2px solid var(--green-light)', paddingBottom: '0.5rem', display: 'inline-block' }}>Why Accuracy Matters in Health Metrics</h3>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>Generic health advice often fails because it applies a "one-size-fits-all" approach to fundamentally unique individuals. By calculating your exact Water Intake, you eliminate the guesswork from your nutrition and training. This targeted approach prevents common pitfalls such as under-eating, over-training, or setting unrealistic timelines. We strongly encourage users to cross-reference their results with our broader suite of tools, such as the TDEE Calculator and Macro Calculator, to build a holistic, data-driven action plan.</p>
+            </section>
+            
+            <section>
+              <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-dark)', marginBottom: '1rem', borderBottom: '2px solid var(--green-light)', paddingBottom: '0.5rem', display: 'inline-block' }}>How to Implement Your Results</h3>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>Once you have calculated your Water Intake, the next step is implementation. We recommend tracking your progress consistently over a 2 to 4-week period to establish a reliable baseline. Because the human metabolism is highly adaptive, your requirements will change as your body composition evolves. Re-calculate your metrics regularly, adjust your dietary intake accordingly, and maintain consistency in your training protocol to guarantee long-term success and continuous progression.</p>
+            </section>
+            
+
+            <section style={{ background: 'var(--blue-light)', padding: '2rem', borderRadius: 'var(--r-lg)', marginTop: '2rem' }}>
+              <h3 style={{ marginTop: 0, color: 'var(--text)' }}>Maximize Your Results with Internal Tools</h3>
+              <p style={{ marginBottom: '1.5rem', color: 'var(--text-2)', lineHeight: 1.7 }}>
+                Your Water Intake is just one piece of the puzzle. To build a comprehensive, bulletproof fitness and nutrition strategy, integrate this data with our other professional-grade calculators. We recommend establishing your baseline with our <Link href="/tdee-calculator" style={{ color: 'var(--green)', fontWeight: 600 }}>TDEE Calculator</Link> to understand your total daily energy expenditure, and then using the <Link href="/macro-calculator" style={{ color: 'var(--green)', fontWeight: 600 }}>Macro Calculator</Link> to find your optimal split of proteins, carbohydrates, and fats.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                <Link href="/bmi-calculator" className="btn outline" style={{ textAlign: 'center' }}>Check Your BMI</Link>
+                <Link href="/calorie-deficit" className="btn outline" style={{ textAlign: 'center' }}>Plan a Deficit</Link>
+                <Link href="/body-fat-calculator" className="btn outline" style={{ textAlign: 'center' }}>Measure Body Fat</Link>
+                <Link href="/protein-calculator" className="btn outline" style={{ textAlign: 'center' }}>Protein Needs</Link>
+              </div>
+            </section>
+          </div>
+        </article>
+        {/* === END SEO CONTENT BLOCK === */}
+  
+        </div>
+        </div>
+        <Sidebar />
+      </main>
+    </>
+  );
+};
+export default WaterIntake;

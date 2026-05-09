@@ -1,0 +1,21 @@
+import React, { Suspense } from 'react';
+import Component from './ClientComponent';
+
+export const metadata = {
+  title: "Lean Body Mass Calculator – Calculate Your LBM",
+  description: "Calculate your Lean Body Mass (LBM) — the weight of everything in your body except fat.",
+  alternates: { canonical: "https://tdee.tech/lean-body-mass-calculator" },
+  openGraph: {
+    title: "Lean Body Mass Calculator – Calculate Your LBM",
+    description: "Calculate your Lean Body Mass (LBM) — the weight of everything in your body except fat.",
+    url: "https://tdee.tech/lean-body-mass-calculator",
+  },
+};
+
+export default function Page() {
+  return (
+    <Suspense fallback={null}>
+      <Component />
+    </Suspense>
+  );
+}

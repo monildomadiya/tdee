@@ -1,0 +1,21 @@
+# TDEE.TECH Robots.txt
+# https://tdee.tech
+
+User-agent: *
+Allow: /
+Disallow: /x-admin-settings
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://tdee.tech/sitemap.xml
+
+# Google-specific
+User-agent: Googlebot
+Allow: /
+Disallow: /x-admin-settings
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /x-admin-settings
+Crawl-delay: 2

@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { tdeeCalculatorGermany as Component } from './ClientComponent';
+import { TDEEGermany as Component } from './ClientComponent';
 
 export const metadata = {
   title: "TDEE Rechner – TDEE Calculator Germany",

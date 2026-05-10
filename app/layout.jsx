@@ -1,6 +1,8 @@
 import './globals.css';
+import Script from 'next/script';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
+import ScrollToTop from '../src/components/ScrollToTop';
 
 export const metadata = {
   metadataBase: new URL('https://tdee.tech'),
@@ -52,6 +54,15 @@ export const metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
+  icons: {
+    icon: [
+      { url: '/icons/tdee-favicon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/icons/tdee-favicon.png', type: 'image/png' },
+    ],
+    shortcut: '/icons/tdee-favicon.png',
+  },
 };
 
 const websiteSchema = {
@@ -84,10 +95,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/icons/tdee-favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/icons/tdee-favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/icons/tdee-favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap"
           rel="stylesheet"
         />
         <script
@@ -96,9 +110,23 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        {/* Google Analytics GA4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-6B9VVJPKVF"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6B9VVJPKVF');
+          `}
+        </Script>
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <ScrollToTop />
           <Header />
-          <main id="main-content" tabIndex={-1} style={{ outline: 'none', flex: 1 }}>
+          <main id="main-content" style={{ outline: 'none', flex: 1 }}>
             {children}
           </main>
           <Footer />

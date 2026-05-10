@@ -3,8 +3,7 @@ import { useSearchParams } from 'next/navigation';
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-import useVisitorCounter from '../../src/hooks/useVisitorCounter';
-import AdSlot from '../../src/components/AdSlot';
+
 import Sidebar from '../../src/components/Sidebar';
 
 /* ── FAQ data (Expert SEO Optimized) ── */
@@ -42,7 +41,7 @@ const getMacros = (cals) => {
 };
 
 const TDEE = () => {
-  const count = useVisitorCounter();
+
   const resultsRef = useRef(null);
   const searchParams = useSearchParams();
   
@@ -154,7 +153,6 @@ const TDEE = () => {
 
       <div className="page-hero">
         <div className="container">
-          {count>0 && <div className="usage-counter">{count.toLocaleString()} calculations today</div>}
           <h1>TDEE Calculator</h1>
           <p>Calculate your Total Daily Energy Expenditure, BMR, BMI, and optimal macros — free, instant, no signup.</p>
         </div>
@@ -162,9 +160,6 @@ const TDEE = () => {
 
       <div className="container tool-layout-container" style={{ paddingTop:'2rem', paddingBottom:'4rem' }}>
         <div className="tool-main-content">
-
-        {/* Ad slot 1 */}
-        <AdSlot label="Above Calculator" slotType="header" />
 
         {/* ── Calculator Card ── */}
         <div className="calculator-card">
@@ -244,7 +239,7 @@ const TDEE = () => {
                 </div>
 
                 {error && (
-                  <p role="alert" style={{ color:'#dc2626', background:'#fee2e2', padding:'10px 14px', borderRadius:'var(--r-sm)', fontSize:'.9rem', marginBottom:'1rem' }}>
+                  <p role="alert" style={{ color:'var(--red-text)', background:'var(--red-light)', padding:'10px 14px', borderRadius:'var(--r-sm)', fontSize:'.9rem', marginBottom:'1rem' }}>
                     ⚠ {error}
                   </p>
                 )}
@@ -261,14 +256,14 @@ const TDEE = () => {
                 Your Results
                 {result && (
                   <div style={{ display:'flex', gap:'6px' }}>
-                    <button onClick={copyResult} style={{ background: copied?'var(--green)':'#fff', border:'1px solid var(--border)', color: copied?'#fff':'var(--text)', padding:'6px 12px', borderRadius:'100px', cursor:'pointer', fontSize:'.8rem', fontWeight:600, transition:'all .2s' }}>{copied?'✓ Copied':'📋 Copy'}</button>
-                    <button onClick={shareResult} style={{ background:'#fff', border:'1px solid var(--border)', color:'var(--text)', padding:'6px 12px', borderRadius:'100px', cursor:'pointer', fontSize:'.8rem', fontWeight:600 }}>🔗 Share</button>
-                    <button onClick={reset} style={{ background:'#fff', border:'1px solid var(--border)', color:'var(--text)', width:'32px', height:'32px', borderRadius:'100px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }} title="Reset">↺</button>
+                    <button onClick={copyResult} style={{ background: copied?'var(--green)':'var(--card)', border:'1px solid var(--border)', color: copied?'#fff':'var(--text)', padding:'6px 12px', borderRadius:'0', cursor:'pointer', fontSize:'.8rem', fontWeight:600, transition:'all .2s' }}>{copied?'✓ Copied':'📋 Copy'}</button>
+                    <button onClick={shareResult} style={{ background:'var(--card)', border:'1px solid var(--border)', color:'var(--text)', padding:'6px 12px', borderRadius:'0', cursor:'pointer', fontSize:'.8rem', fontWeight:600 }}>🔗 Share</button>
+                    <button onClick={reset} style={{ background:'var(--card)', border:'1px solid var(--border)', color:'var(--text)', width:'32px', height:'32px', borderRadius:'0', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }} title="Reset">↺</button>
                   </div>
                 )}
               </div>
 
-              <div style={{ background:'#fff', flex:1, padding:'1.75rem 1.5rem', borderBottomLeftRadius:'var(--r-lg)', borderBottomRightRadius:'var(--r-lg)', display:'flex', flexDirection:'column', justifyContent: result?'flex-start':'center', alignItems:'center', border:'1px solid var(--border)' }}>
+              <div style={{ background:'var(--card)', flex:1, padding:'1.75rem 1.5rem', borderBottomLeftRadius:'var(--r-lg)', borderBottomRightRadius:'var(--r-lg)', display:'flex', flexDirection:'column', justifyContent: result?'flex-start':'center', alignItems:'center', border:'1px solid var(--border)' }}>
                 {!result ? (
                   <div style={{ color:'var(--muted)', textAlign:'center' }}>Enter your details and hit Calculate</div>
                 ) : (
@@ -280,8 +275,8 @@ const TDEE = () => {
                       <div style={{ fontSize:'3.75rem', fontWeight:900, lineHeight:1, color:'var(--green)', letterSpacing:'-.04em' }}>{result.tdee.toLocaleString()}</div>
                       <div style={{ fontSize:'.95rem', color:'var(--text-2)', marginTop:'4px' }}>calories per day · {result.formula}</div>
                       <div style={{ display:'flex', gap:'8px', justifyContent:'center', marginTop:'.75rem', flexWrap:'wrap' }}>
-                        <span style={{ background:'var(--green-light)', color:'var(--green-dark)', padding:'3px 10px', borderRadius:'100px', fontSize:'.75rem', fontWeight:700 }}>BMR {result.bmr.toLocaleString()} kcal</span>
-                        <span style={{ background:'#eff6ff', color:'#1d4ed8', padding:'3px 10px', borderRadius:'100px', fontSize:'.75rem', fontWeight:700 }}>BMI {result.bmi} · {result.bmiCat}</span>
+                        <span style={{ background:'var(--green-light)', color:'var(--green-dark)', padding:'3px 10px', borderRadius:'0', fontSize:'.75rem', fontWeight:700 }}>BMR {result.bmr.toLocaleString()} kcal</span>
+                        <span style={{ background:'var(--blue-light-alt)', color:'var(--blue-text)', padding:'3px 10px', borderRadius:'0', fontSize:'.75rem', fontWeight:700 }}>BMI {result.bmi} · {result.bmiCat}</span>
                       </div>
                     </div>
 
@@ -290,11 +285,11 @@ const TDEE = () => {
                       <div style={{ fontSize:'.7rem', textTransform:'uppercase', letterSpacing:'.08em', color:'var(--muted)', fontWeight:700, marginBottom:'.6rem' }}>Goal Calorie Targets</div>
                       <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'7px' }}>
                         {[
-                          { label:'Fat Loss', cal:result.tdee-500, sub:'-500/day', color:'#dc2626', bg:'#fef2f2' },
-                          { label:'Maintain', cal:result.tdee,     sub:'your TDEE', color:'#0d9488', bg:'var(--green-light)' },
-                          { label:'Lean Bulk',cal:result.tdee+300, sub:'+300/day', color:'#2563eb', bg:'#eff6ff' },
+                          { label:'Fat Loss', cal:result.tdee-500, sub:'-500/day', color:'var(--red-text)', bg:'var(--red-light)' },
+                          { label:'Maintain', cal:result.tdee,     sub:'your TDEE', color:'var(--teal-text)', bg:'var(--green-light)' },
+                          { label:'Lean Bulk',cal:result.tdee+300, sub:'+300/day', color:'var(--blue-text)', bg:'var(--blue-light-alt)' },
                         ].map(({ label, cal, sub, color, bg }) => (
-                          <div key={label} style={{ background:bg, border:`1px solid ${color}33`, borderRadius:'var(--r-md)', padding:'.75rem .4rem', textAlign:'center' }}>
+                          <div key={label} style={{ background:bg, border:`1px solid var(--border)`, borderRadius:'0', padding:'.75rem .4rem', textAlign:'center' }}>
                             <div style={{ fontSize:'.62rem', textTransform:'uppercase', fontWeight:700, color, marginBottom:'2px' }}>{label}</div>
                             <div style={{ fontSize:'1.2rem', fontWeight:800, color:'var(--text)' }}>{cal.toLocaleString()}</div>
                             <div style={{ fontSize:'.62rem', color:'var(--muted)' }}>{sub}</div>
@@ -310,9 +305,9 @@ const TDEE = () => {
                         <thead>
                           <tr style={{ borderBottom:'2px solid var(--border)' }}>
                             <th style={{ textAlign:'left', padding:'5px 6px', color:'var(--muted)', fontWeight:600, fontSize:'.68rem', textTransform:'uppercase' }}>Goal</th>
-                            <th style={{ textAlign:'center', padding:'5px 6px', color:'#0d9488', fontWeight:700 }}>Protein</th>
-                            <th style={{ textAlign:'center', padding:'5px 6px', color:'#d97706', fontWeight:700 }}>Carbs</th>
-                            <th style={{ textAlign:'center', padding:'5px 6px', color:'#7c3aed', fontWeight:700 }}>Fat</th>
+                            <th style={{ textAlign:'center', padding:'5px 6px', color:'var(--teal-text)', fontWeight:700 }}>Protein</th>
+                            <th style={{ textAlign:'center', padding:'5px 6px', color:'var(--yellow-text)', fontWeight:700 }}>Carbs</th>
+                            <th style={{ textAlign:'center', padding:'5px 6px', color:'var(--purple-text)', fontWeight:700 }}>Fat</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -341,9 +336,6 @@ const TDEE = () => {
           </div>
         </div>
       </div>
-
-        {/* Ad slot 2 */}
-        <AdSlot label="Below Calculator" slotType="footer" />
 
         {/* ── SEO Article ── */}
         <div className="article-section">
@@ -395,7 +387,7 @@ const TDEE = () => {
                   ['Active',      '× 1.725','Hard exercise 6–7 days/week, or a physically demanding job (e.g., construction, landscaping). Training is a daily, serious commitment.'],
                   ['Very Active', '× 1.9',  'Twice-a-day training, elite athletic preparation, or an extremely labour-intensive job. Very few people genuinely belong in this category.'],
                 ].map(([level, mult, desc], i) => (
-                  <tr key={i} style={{ borderBottom:'1px solid var(--border)', background: i % 2 === 0 ? 'var(--card)' : '#fff' }}>
+                  <tr key={i} className="stripe-row" style={{ borderBottom:'1px solid var(--border)' }}>
                     <td style={{ padding:'12px 16px', fontWeight:700 }}>{level}</td>
                     <td style={{ padding:'12px 16px', color:'var(--green)', fontWeight:700, whiteSpace:'nowrap' }}>{mult}</td>
                     <td style={{ padding:'12px 16px', color:'var(--text-2)' }}>{desc}</td>
@@ -410,12 +402,12 @@ const TDEE = () => {
           <p>Once you know your TDEE, the next step is choosing a goal. Here is exactly what to eat based on each objective:</p>
           <div style={{ display:'grid', gap:'1rem', margin:'1.5rem 0' }}>
             {[
-              { goal:'⚖️ Maintain Weight',  target:'Eat = TDEE',       detail:'Consume exactly your TDEE in calories each day. Your weight will remain stable over time. Ideal during a body recomposition phase.', color:'#0d9488' },
-              { goal:'🔥 Lose Fat',          target:'Eat TDEE − 300 to 500 cal', detail:'A 500 cal/day deficit = ~0.45 kg (1 lb) fat loss per week. A 300 cal deficit is gentler but more sustainable long-term. Never go below your BMR.', color:'#dc2626' },
-              { goal:'💪 Lean Bulk',         target:'Eat TDEE + 200 to 300 cal', detail:'A small surplus ("lean bulk") of 200–300 cal/day maximises muscle gain while minimising fat accumulation. Patience is required — muscle grows slowly.', color:'#2563eb' },
-              { goal:'🚀 Aggressive Bulk',   target:'Eat TDEE + 500 cal', detail:'A 500 cal surplus accelerates muscle gain but will also add some body fat. Best for beginners or those returning to training after a long break.', color:'#7c3aed' },
+              { goal:'⚖️ Maintain Weight',  target:'Eat = TDEE',       detail:'Consume exactly your TDEE in calories each day. Your weight will remain stable over time. Ideal during a body recomposition phase.', color:'var(--teal-text)' },
+              { goal:'🔥 Lose Fat',          target:'Eat TDEE − 300 to 500 cal', detail:'A 500 cal/day deficit = ~0.45 kg (1 lb) fat loss per week. A 300 cal deficit is gentler but more sustainable long-term. Never go below your BMR.', color:'var(--red-text)' },
+              { goal:'💪 Lean Bulk',         target:'Eat TDEE + 200 to 300 cal', detail:'A small surplus ("lean bulk") of 200–300 cal/day maximises muscle gain while minimising fat accumulation. Patience is required — muscle grows slowly.', color:'var(--blue-text)' },
+              { goal:'🚀 Aggressive Bulk',   target:'Eat TDEE + 500 cal', detail:'A 500 cal surplus accelerates muscle gain but will also add some body fat. Best for beginners or those returning to training after a long break.', color:'var(--purple-text)' },
             ].map(({ goal, target, detail, color }, i) => (
-              <div key={i} style={{ background:'var(--card)', border:`2px solid ${color}22`, borderLeft:`4px solid ${color}`, borderRadius:'var(--r-md)', padding:'1.25rem 1.5rem' }}>
+              <div key={i} style={{ background:'var(--card)', border:`1px solid var(--border)`, borderLeft:`4px solid ${color}`, borderRadius:'0', padding:'1.25rem 1.5rem' }}>
                 <div style={{ fontWeight:700, fontSize:'1.05rem', marginBottom:'.25rem' }}>{goal}</div>
                 <div style={{ color, fontWeight:700, fontSize:'.95rem', marginBottom:'.5rem' }}>{target}</div>
                 <div style={{ color:'var(--text-2)', fontSize:'.9rem', lineHeight:1.6 }}>{detail}</div>
@@ -423,9 +415,6 @@ const TDEE = () => {
             ))}
           </div>
           <p><strong>Pro tip:</strong> Rather than cutting calories dramatically, many nutrition coaches recommend starting by eating at maintenance for 2 weeks to establish a baseline, then reducing by 300–500 calories. This makes the deficit more sustainable and preserves muscle mass.</p>
-
-          {/* Ad slot 3 */}
-          <AdSlot label="Advertisement" slotType="footer" />
 
           {/* ── 6. MACROS ── */}
           <h2>How Your Macros Are Split</h2>
@@ -459,8 +448,8 @@ const TDEE = () => {
           </div>
 
           {/* Disclaimer */}
-          <div style={{ background:'#fefce8', border:'1px solid #fde68a', borderRadius:'var(--r)', padding:'1rem 1.25rem', marginTop:'2rem' }}>
-            <p style={{ margin:0, fontSize:'.875rem', color:'#92400e' }}>
+          <div className="disclaimer-box">
+            <p>
               <strong>⚠ Medical Disclaimer:</strong> The results from this TDEE calculator are estimates intended for educational and informational purposes only. They are not a substitute for professional medical or nutritional advice, diagnosis, or treatment. Individual calorie needs vary based on medical history, medications, and other factors not captured by any formula. Always consult a qualified healthcare provider or registered dietitian before making significant changes to your diet or exercise routine.
             </p>
           </div>

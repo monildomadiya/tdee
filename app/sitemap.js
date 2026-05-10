@@ -47,7 +47,12 @@ export default function sitemap() {
     { url: '/tdee-calculator-nigeria', priority: 0.7, changeFrequency: 'weekly' },
     { url: '/tdee-calculator-philippines', priority: 0.7, changeFrequency: 'weekly' },
     { url: '/tdee-calculator-russia', priority: 0.7, changeFrequency: 'weekly' },
-    { url: '/blog', priority: 0.8, changeFrequency: 'daily' },
+    { url: '/tdee-calculator-france', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-mexico', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-brazil', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-south-africa', priority: 0.7, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-new-zealand', priority: 0.7, changeFrequency: 'weekly' },
+
     { url: '/about', priority: 0.5, changeFrequency: 'monthly' },
     { url: '/privacy', priority: 0.4, changeFrequency: 'monthly' },
     { url: '/terms', priority: 0.4, changeFrequency: 'monthly' },

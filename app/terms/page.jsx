@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react';
-import { terms as Component } from './ClientComponent';
+import { Terms as Component } from './ClientComponent';
 
 export const metadata = {
   title: "Terms of Service – TDEE.TECH",
-  description: "Read the TDEE.TECH terms of service and usage conditions.",
+  description: "Our terms of service outline the rules, regulations, and medical disclaimers for using TDEE.TECH tools.",
   alternates: { canonical: "https://tdee.tech/terms" },
   openGraph: {
     title: "Terms of Service – TDEE.TECH",
-    description: "Read the TDEE.TECH terms of service and usage conditions.",
+    description: "Our terms of service outline the rules, regulations, and medical disclaimers for using TDEE.TECH tools.",
     url: "https://tdee.tech/terms",
   },
 };

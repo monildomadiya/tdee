@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react';
-import { privacy as Component } from './ClientComponent';
+import { Privacy as Component } from './ClientComponent';
 
 export const metadata = {
   title: "Privacy Policy – TDEE.TECH",
-  description: "Read the TDEE.TECH privacy policy. We never collect or store your personal health data.",
+  description: "Read our privacy policy to understand how TDEE.TECH handles data. We prioritize your anonymity and data security.",
   alternates: { canonical: "https://tdee.tech/privacy" },
   openGraph: {
     title: "Privacy Policy – TDEE.TECH",
-    description: "Read the TDEE.TECH privacy policy. We never collect or store your personal health data.",
+    description: "Read our privacy policy to understand how TDEE.TECH handles data. We prioritize your anonymity and data security.",
     url: "https://tdee.tech/privacy",
   },
 };

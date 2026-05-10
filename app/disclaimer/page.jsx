@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react';
-import { disclaimer as Component } from './ClientComponent';
+import { Disclaimer as Component } from './ClientComponent';
 
 export const metadata = {
   title: "Medical Disclaimer – TDEE.TECH",
-  description: "Read the TDEE.TECH medical disclaimer. Our calculators are for informational purposes only.",
+  description: "Important medical disclaimer regarding the use of TDEE.TECH calculations. Always consult a professional.",
   alternates: { canonical: "https://tdee.tech/disclaimer" },
   openGraph: {
     title: "Medical Disclaimer – TDEE.TECH",
-    description: "Read the TDEE.TECH medical disclaimer. Our calculators are for informational purposes only.",
+    description: "Important medical disclaimer regarding the use of TDEE.TECH calculations. Always consult a professional.",
     url: "https://tdee.tech/disclaimer",
   },
 };

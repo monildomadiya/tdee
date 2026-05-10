@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { about as Component } from './ClientComponent';
+import { About as Component } from './ClientComponent';
 
 export const metadata = {
   title: "About TDEE.TECH – Our Mission & Formulas",

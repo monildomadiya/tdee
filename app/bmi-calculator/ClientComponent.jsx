@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 
 import Link from 'next/link';
-import AdSlot from '../../src/components/AdSlot';
 import Sidebar from '../../src/components/Sidebar';
 
 const BMICalculator = () => {
@@ -50,7 +49,6 @@ const BMICalculator = () => {
       <main className="container tool-layout-container" style={{ paddingTop:'2rem', paddingBottom:'4rem' }}>
         <div className="tool-main-content">
         <div className="main-content">
-          <AdSlot label="Above Calculator" slotId="1111111111" />
 
           <section className="how-it-works">
           <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>How it Works</h2>
@@ -127,39 +125,37 @@ const BMICalculator = () => {
           </div>
         </div>
 
-        <AdSlot label="Below Results" slotId="2222222222" />
-
         
         {/* === AUTOMATED SEO CONTENT BLOCK === */}
         <article className="seo-article-content" style={{ marginTop: '4rem', padding: '2rem', background: '#fff', borderRadius: 'var(--r-xl)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)' }}>
           <header style={{ marginBottom: '2rem', textAlign: 'center' }}>
             <h2 style={{ fontSize: '2.2rem', color: 'var(--text)', marginBottom: '1rem' }}>The Ultimate Guide to Your Body Mass Index (BMI)</h2>
-            <p style={{ fontSize: '1.1rem', color: 'var(--text-2)', lineHeight: 1.8, maxWidth: '800px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.1rem', color: 'var(--text-2)', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto' }}>
               Body Mass Index (BMI) is a medical screening tool used globally to categorize weight status and assess potential health risks associated with being underweight, overweight, or obese. Discover how to leverage this metric to accelerate your health, fitness, and nutritional goals using verified scientific data.
             </p>
           </header>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '3rem', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '1.5rem', justifyContent: 'center' }}>
             {["BMI calculator","healthy weight range","body mass index formula","obesity screening","weight health status"].map((kw, i) => (
               <span key={i} style={{ background: 'var(--bg)', border: '1px solid var(--border)', padding: '6px 14px', borderRadius: '100px', fontSize: '0.85rem', color: 'var(--muted)', fontWeight: 600 }}>#{kw}</span>
             ))}
           </div>
 
-          <div className="seo-content-grid" style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+          <div className="seo-content-grid" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             
             <section>
               <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-dark)', marginBottom: '1rem', borderBottom: '2px solid var(--green-light)', paddingBottom: '0.5rem', display: 'inline-block' }}>What is BMI and Why Does it Matter?</h3>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>The Body Mass Index (BMI) is a mathematical formula that scales your weight against your height. While it does not directly measure body fat, it correlates strongly with more direct measures of body fat, such as dual-energy x-ray absorptiometry (DXA) and underwater weighing. Medical professionals use BMI to screen for weight categories that may lead to health problems, including type 2 diabetes, heart disease, and hypertension.</p>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.6 }}>The Body Mass Index (BMI) is a mathematical formula that scales your weight against your height. While it does not directly measure body fat, it correlates strongly with more direct measures of body fat, such as dual-energy x-ray absorptiometry (DXA) and underwater weighing. Medical professionals use BMI to screen for weight categories that may lead to health problems, including type 2 diabetes, heart disease, and hypertension.</p>
             </section>
             
             <section>
               <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-dark)', marginBottom: '1rem', borderBottom: '2px solid var(--green-light)', paddingBottom: '0.5rem', display: 'inline-block' }}>How to Calculate Your Body Mass Index</h3>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>The traditional BMI formula is your weight in kilograms divided by your height in meters squared (kg/m²). For imperial units, the formula is your weight in pounds divided by your height in inches squared, multiplied by a conversion factor of 703. Our advanced BMI calculator handles these conversions automatically, allowing you to use metric, imperial, or mixed measurement systems to find your precise health category instantly.</p>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.6 }}>The traditional BMI formula is your weight in kilograms divided by your height in meters squared (kg/m²). For imperial units, the formula is your weight in pounds divided by your height in inches squared, multiplied by a conversion factor of 703. Our advanced BMI calculator handles these conversions automatically, allowing you to use metric, imperial, or mixed measurement systems to find your precise health category instantly.</p>
             </section>
             
             <section>
               <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-dark)', marginBottom: '1rem', borderBottom: '2px solid var(--green-light)', paddingBottom: '0.5rem', display: 'inline-block' }}>Limitations of the BMI Formula</h3>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>While BMI is an excellent baseline metric for population health, it has limitations at the individual level. BMI cannot distinguish between fat mass and muscle mass. Therefore, highly muscular individuals, such as athletes and bodybuilders, may classify as "overweight" or "obese" despite having very low body fat percentages. For a more comprehensive understanding of your body composition, we recommend using this tool in conjunction with our Body Fat Calculator and Lean Body Mass Calculator.</p>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.6 }}>While BMI is an excellent baseline metric for population health, it has limitations at the individual level. BMI cannot distinguish between fat mass and muscle mass. Therefore, highly muscular individuals, such as athletes and bodybuilders, may classify as "overweight" or "obese" despite having very low body fat percentages. For a more comprehensive understanding of your body composition, we recommend using this tool in conjunction with our Body Fat Calculator and Lean Body Mass Calculator.</p>
             </section>
             
 

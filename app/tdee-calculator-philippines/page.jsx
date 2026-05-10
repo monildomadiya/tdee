@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { tdeeCalculatorPhilippines as Component } from './ClientComponent';
+import { TDEEPhilippines as Component } from './ClientComponent';
 
 export const metadata = {
   title: "TDEE Calculator Philippines – Free Calorie Calculator",

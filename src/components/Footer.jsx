@@ -1,68 +1,166 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
 import { TOOL_CATEGORIES } from '../data/toolLinks';
 
+const FooterLink = ({ href, children }) => (
+  <li style={{ marginBottom: '10px' }}>
+    <Link
+      href={href}
+      style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.15s' }}
+      onMouseOver={e => e.currentTarget.style.color = '#0f172a'}
+      onMouseOut={e => e.currentTarget.style.color = '#64748b'}
+    >
+      {children}
+    </Link>
+  </li>
+);
+
+const FooterSection = ({ title, children }) => (
+  <div>
+    <h3 style={{ fontSize: '0.8rem', color: '#0f172a', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '16px', marginTop: 0, borderBottom: '2px solid #e2e8f0', paddingBottom: '8px' }}>
+      {title}
+    </h3>
+    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+      {children}
+    </ul>
+  </div>
+);
+
 const Footer = () => (
-  <footer>
-    <div className="container">
-      <div className="footer-grid">
-        <div className="footer-brand">
-          <div className="logo" style={{ marginBottom: '1.25rem' }}>
-            <img src="/tdee-logo.svg" alt="TDEE.TECH" height="40" />
+  <footer style={{ background: '#f8fafc', borderTop: '2px solid #e2e8f0', marginTop: '3rem' }}>
+
+    {/* TOP BRAND STRIP */}
+    <div style={{ background: '#0f172a', padding: '40px 0' }}>
+      <div className="container">
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+          <div style={{ maxWidth: '500px' }}>
+            <img src="/tdee-logo.svg" alt="TDEE Calculator" height="32" style={{ marginBottom: '16px', filter: 'brightness(0) invert(1)' }} />
+            <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.7, margin: '0 0 20px 0' }}>
+              TDEE.TECH provides clinical-grade fitness and nutrition calculators completely free. Science-backed formulas (Mifflin-St Jeor, Katch-McArdle) with no registration required.
+            </p>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              {['🇺🇸 US', '🇬🇧 UK', '🇨🇦 CA', '🇦🇺 AU', '🇩🇪 DE', '🇮🇳 IN'].map(c => (
+                <span key={c} style={{ fontSize: '0.75rem', fontWeight: 700, padding: '4px 10px', border: '1px solid #334155', color: '#94a3b8', background: 'transparent' }}>
+                  {c}
+                </span>
+              ))}
+            </div>
           </div>
-          <p style={{ color:'var(--text-2)', fontSize:'.95rem', lineHeight:1.7, maxWidth: '320px' }}>
-            The world's most accurate fitness and nutrition calculator platform. Science-backed tools for high-performance health.
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <Link href="/tdee-calculator" style={{ background: '#16a34a', color: '#fff', padding: '12px 24px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none', display: 'inline-block' }}>
+              🔥 TDEE Calculator
+            </Link>
+            <Link href="/bmi-calculator" style={{ background: 'transparent', color: '#94a3b8', padding: '12px 24px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none', display: 'inline-block', border: '1px solid #334155' }}>
+              BMI Calculator
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* MAIN LINKS GRID */}
+    <div style={{ padding: '50px 0 40px' }}>
+      <div className="container">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '36px 40px', marginBottom: '50px' }}>
+
+          {/* Fitness & Body */}
+          <FooterSection title="Fitness & Body">
+            <FooterLink href="/tdee-calculator">TDEE Calculator</FooterLink>
+            <FooterLink href="/bmr-calculator">BMR Calculator</FooterLink>
+            <FooterLink href="/bmi-calculator">BMI Calculator</FooterLink>
+            <FooterLink href="/body-fat-calculator">Body Fat Calculator</FooterLink>
+            <FooterLink href="/lean-body-mass-calculator">Lean Body Mass</FooterLink>
+            <FooterLink href="/ideal-weight">Ideal Weight Calculator</FooterLink>
+            <FooterLink href="/healthy-weight-calculator">Healthy Weight</FooterLink>
+            <FooterLink href="/army-body-fat-calculator">Army Body Fat</FooterLink>
+            <FooterLink href="/body-type-calculator">Body Type Calculator</FooterLink>
+            <FooterLink href="/body-surface-area-calculator">Body Surface Area</FooterLink>
+          </FooterSection>
+
+          {/* Nutrition & Calories */}
+          <FooterSection title="Nutrition & Calories">
+            <FooterLink href="/calorie-calculator">Calorie Calculator</FooterLink>
+            <FooterLink href="/calorie-deficit">Calorie Deficit</FooterLink>
+            <FooterLink href="/macro-calculator">Macro Calculator</FooterLink>
+            <FooterLink href="/protein-calculator">Protein Calculator</FooterLink>
+            <FooterLink href="/carbohydrate-calculator">Carbohydrate Calculator</FooterLink>
+            <FooterLink href="/fat-intake-calculator">Fat Intake Calculator</FooterLink>
+            <FooterLink href="/keto-macro-calculator">Keto Macro Calculator</FooterLink>
+            <FooterLink href="/water-intake-calculator">Water Intake Calculator</FooterLink>
+          </FooterSection>
+
+          {/* Weight Management */}
+          <FooterSection title="Weight & Fitness">
+            <FooterLink href="/weight-loss-timeline">Weight Loss Timeline</FooterLink>
+            <FooterLink href="/calories-burned-calculator">Calories Burned</FooterLink>
+            <FooterLink href="/pace-calculator">Pace Calculator</FooterLink>
+            <FooterLink href="/one-rep-max-calculator">One Rep Max (1RM)</FooterLink>
+            <FooterLink href="/target-heart-rate-calculator">Target Heart Rate</FooterLink>
+            <FooterLink href="/gfr-calculator">GFR Calculator</FooterLink>
+            <FooterLink href="/bac-calculator">BAC Calculator</FooterLink>
+          </FooterSection>
+
+          {/* Women's Health */}
+          <FooterSection title="Women's Health">
+            <FooterLink href="/pregnancy-calculator">Pregnancy Calculator</FooterLink>
+            <FooterLink href="/due-date-calculator">Due Date Calculator</FooterLink>
+            <FooterLink href="/ovulation-calculator">Ovulation Calculator</FooterLink>
+            <FooterLink href="/conception-calculator">Conception Calculator</FooterLink>
+            <FooterLink href="/period-calculator">Period Calculator</FooterLink>
+            <FooterLink href="/pregnancy-weight-gain-calculator">Pregnancy Weight Gain</FooterLink>
+            <FooterLink href="/pregnancy-conception-calculator">Pregnancy Conception</FooterLink>
+          </FooterSection>
+
+          {/* Country Calculators */}
+          <FooterSection title="By Country">
+            <FooterLink href="/tdee-calculator-us">TDEE Calculator USA</FooterLink>
+            <FooterLink href="/tdee-calculator-uk">TDEE Calculator UK</FooterLink>
+            <FooterLink href="/tdee-calculator-canada">TDEE Calculator Canada</FooterLink>
+            <FooterLink href="/tdee-calculator-australia">TDEE Calculator Australia</FooterLink>
+            <FooterLink href="/tdee-calculator-india">TDEE Calculator India</FooterLink>
+            <FooterLink href="/tdee-calculator-germany">TDEE Calculator Germany</FooterLink>
+            <FooterLink href="/tdee-calculator-uae">TDEE Calculator UAE</FooterLink>
+            <FooterLink href="/tdee-calculator-france">TDEE Calculator France</FooterLink>
+            <FooterLink href="/tdee-calculator-brazil">TDEE Calculator Brazil</FooterLink>
+            <FooterLink href="/tdee-calculator-mexico">TDEE Calculator Mexico</FooterLink>
+            <FooterLink href="/tdee-calculator-south-africa">TDEE Calculator South Africa</FooterLink>
+            <FooterLink href="/tdee-calculator-new-zealand">TDEE Calculator NZ</FooterLink>
+          </FooterSection>
+
+          {/* Legal & Company */}
+          <FooterSection title="Legal & Company">
+            <FooterLink href="/about">About Us</FooterLink>
+            <FooterLink href="/contact">Contact Support</FooterLink>
+            <FooterLink href="/privacy">Privacy Policy</FooterLink>
+            <FooterLink href="/terms">Terms of Service</FooterLink>
+            <FooterLink href="/disclaimer">Medical Disclaimer</FooterLink>
+          </FooterSection>
+
+        </div>
+
+        {/* MEDICAL DISCLAIMER */}
+        <div style={{ background: '#fff3cd', border: '1px solid #fde68a', padding: '16px 20px', marginBottom: '30px' }}>
+          <p style={{ fontSize: '0.82rem', color: '#92400e', lineHeight: 1.7, margin: 0 }}>
+            <strong>⚠️ Medical Disclaimer:</strong> All tools on TDEE.TECH are for <strong>educational and informational purposes only</strong> and are not a substitute for professional medical advice, diagnosis, or treatment. Results are estimates based on validated formulas (Mifflin-St Jeor, Katch-McArdle). Always consult a qualified healthcare provider before making significant changes to your diet, exercise, or nutrition plan.
           </p>
-          <div style={{ display:'flex', gap:'12px', marginTop:'1.5rem' }}>
-            {['US','UK','CA','AU','EU'].map(c => (
-              <span key={c} style={{ fontSize:'.7rem', fontWeight:800, padding:'4px 8px', background:'var(--blue-light)', borderRadius:'4px', color:'var(--muted)' }}>{c} COMPLIANT</span>
-            ))}
+        </div>
+
+        {/* BOTTOM ROW */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', borderTop: '1px solid #e2e8f0', paddingTop: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ width: '10px', height: '10px', background: '#16a34a', display: 'inline-block' }}></span>
+            <span style={{ fontWeight: 700, color: '#475569', fontSize: '0.85rem' }}>All Systems Operational</span>
           </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'center' }}>
+            <Link href="/privacy" style={{ color: '#64748b', fontSize: '0.85rem', textDecoration: 'none' }}>Privacy</Link>
+            <Link href="/terms" style={{ color: '#64748b', fontSize: '0.85rem', textDecoration: 'none' }}>Terms</Link>
+            <Link href="/disclaimer" style={{ color: '#64748b', fontSize: '0.85rem', textDecoration: 'none' }}>Disclaimer</Link>
+            <Link href="/sitemap.xml" style={{ color: '#64748b', fontSize: '0.85rem', textDecoration: 'none' }}>Sitemap</Link>
+          </div>
+          <span style={{ color: '#94a3b8', fontSize: '0.85rem' }}>© {new Date().getFullYear()} TDEE.TECH — Free Fitness Calculator Platform</span>
         </div>
 
-        <div>
-          <h3>Fitness & Body</h3>
-          <ul>
-            {TOOL_CATEGORIES.fitness.tools.slice(0, 6).map(t => (
-              <li key={t.path}><Link href={t.path}>{t.name}</Link></li>
-            ))}
-          </ul>
-        </div>
-        
-        <div>
-          <h3>Nutrition</h3>
-          <ul>
-            {TOOL_CATEGORIES.nutrition.tools.slice(0, 6).map(t => (
-              <li key={t.path}><Link href={t.path}>{t.name}</Link></li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3>Company & Resources</h3>
-          <ul>
-            <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/blog">Fitness Blog</Link></li>
-            <li><Link href="/privacy">Privacy Policy</Link></li>
-            <li><Link href="/terms">Terms of Service</Link></li>
-            <li><Link href="/disclaimer">Medical Disclaimer</Link></li>
-            <li><Link href="/contact">Contact Support</Link></li>
-          </ul>
-        </div>
-      </div>
-
-      <div style={{ borderTop:'1px solid var(--border)', paddingTop:'2rem', marginBottom:'2rem' }}>
-        <p style={{ fontSize:'.85rem', color:'var(--muted)', lineHeight:1.8 }}>
-          <strong style={{ color:'var(--text-2)' }}>Medical Disclaimer:</strong> The information provided on TDEE.TECH is for educational purposes only and should not be interpreted as medical advice. Formulas like Mifflin-St Jeor are estimates and may vary based on individual metabolic health, genetics, and medical conditions. Always consult with a physician or registered dietitian before beginning any new diet or exercise program.
-        </p>
-      </div>
-
-      <div className="footer-bottom">
-        <div style={{ display:'flex', alignItems:'center', gap:'8px' }}>
-          <span style={{ width:'8px', height:'8px', background:'#22c55e', borderRadius:'50%' }}></span>
-          <span style={{ fontWeight:600, color:'var(--text-2)' }}>Systems Operational</span>
-        </div>
-        <span style={{ color:'var(--muted)' }}>© {new Date().getFullYear()} TDEE.TECH — Professional Health Calculators</span>
       </div>
     </div>
   </footer>

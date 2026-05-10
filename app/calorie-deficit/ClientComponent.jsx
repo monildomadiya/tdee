@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 
 import Link from 'next/link';
-import AdSlot from '../../src/components/AdSlot';
 import Sidebar from '../../src/components/Sidebar';
 
 const CalorieDeficit = () => {
@@ -31,7 +30,6 @@ const CalorieDeficit = () => {
       <main className="container tool-layout-container" style={{ paddingTop:'2rem', paddingBottom:'4rem' }}>
         <div className="tool-main-content">
         <div className="main-content">
-          <AdSlot label="Above Calculator" slotId="1111111111" />
 
           <section className="how-it-works">
           <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>How it Works</h2>
@@ -97,38 +95,37 @@ const CalorieDeficit = () => {
             </div>
           </div>
         </div>
-        <AdSlot label="Below Results" slotId="2222222222" />
         
         {/* === AUTOMATED SEO CONTENT BLOCK === */}
         <article className="seo-article-content" style={{ marginTop: '4rem', padding: '2rem', background: '#fff', borderRadius: 'var(--r-xl)', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)' }}>
           <header style={{ marginBottom: '2rem', textAlign: 'center' }}>
             <h2 style={{ fontSize: '2.2rem', color: 'var(--text)', marginBottom: '1rem' }}>The Ultimate Guide to Your Calorie Deficit</h2>
-            <p style={{ fontSize: '1.1rem', color: 'var(--text-2)', lineHeight: 1.8, maxWidth: '800px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.1rem', color: 'var(--text-2)', lineHeight: 1.6, maxWidth: '800px', margin: '0 auto' }}>
               A calorie deficit occurs when you consume fewer calories than your body expends. It is the fundamental biological requirement for all weight loss and fat burning. Discover how to leverage this metric to accelerate your health, fitness, and nutritional goals using verified scientific data.
             </p>
           </header>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '3rem', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '1.5rem', justifyContent: 'center' }}>
             {["calorie deficit calculator","weight loss calories","fat loss macros","safe weight loss rate","TDEE minus calories"].map((kw, i) => (
               <span key={i} style={{ background: 'var(--bg)', border: '1px solid var(--border)', padding: '6px 14px', borderRadius: '100px', fontSize: '0.85rem', color: 'var(--muted)', fontWeight: 600 }}>#{kw}</span>
             ))}
           </div>
 
-          <div className="seo-content-grid" style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+          <div className="seo-content-grid" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             
             <section>
               <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-dark)', marginBottom: '1rem', borderBottom: '2px solid var(--green-light)', paddingBottom: '0.5rem', display: 'inline-block' }}>Understanding the Science of a Calorie Deficit</h3>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>The First Law of Thermodynamics dictates that energy cannot be created or destroyed. When your body requires more energy than you consume through food, it must tap into stored energy reserves—primarily body fat—to make up the difference. This state of negative energy balance is known as a calorie deficit. Creating and sustaining a calorie deficit is the only scientifically proven method for losing weight.</p>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.6 }}>The First Law of Thermodynamics dictates that energy cannot be created or destroyed. When your body requires more energy than you consume through food, it must tap into stored energy reserves—primarily body fat—to make up the difference. This state of negative energy balance is known as a calorie deficit. Creating and sustaining a calorie deficit is the only scientifically proven method for losing weight.</p>
             </section>
             
             <section>
               <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-dark)', marginBottom: '1rem', borderBottom: '2px solid var(--green-light)', paddingBottom: '0.5rem', display: 'inline-block' }}>How Large Should Your Calorie Deficit Be?</h3>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>A standard, safe calorie deficit is typically 500 calories below your Total Daily Energy Expenditure (TDEE). Because one pound of body fat contains approximately 3,500 calories, a consistent 500-calorie daily deficit results in about one pound of fat loss per week. Aggressive deficits (750-1000 calories) may yield faster initial results but often lead to muscle loss, metabolic adaptation, and severe fatigue. Our calorie deficit calculator helps you find the "sweet spot" for sustainable fat loss without sacrificing energy or muscle mass.</p>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.6 }}>A standard, safe calorie deficit is typically 500 calories below your Total Daily Energy Expenditure (TDEE). Because one pound of body fat contains approximately 3,500 calories, a consistent 500-calorie daily deficit results in about one pound of fat loss per week. Aggressive deficits (750-1000 calories) may yield faster initial results but often lead to muscle loss, metabolic adaptation, and severe fatigue. Our calorie deficit calculator helps you find the "sweet spot" for sustainable fat loss without sacrificing energy or muscle mass.</p>
             </section>
             
             <section>
               <h3 style={{ fontSize: '1.5rem', color: 'var(--blue-dark)', marginBottom: '1rem', borderBottom: '2px solid var(--green-light)', paddingBottom: '0.5rem', display: 'inline-block' }}>Combining a Deficit with Macronutrient Optimization</h3>
-              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.8 }}>While a calorie deficit dictates weight loss, your macronutrient split dictates *what kind* of weight you lose. To ensure you lose body fat rather than lean muscle tissue, it is crucial to consume adequate dietary protein. We recommend using our Macro Calculator alongside your deficit targets to establish an optimal protein, carbohydrate, and fat ratio that supports your training and preserves your metabolism during your diet phase.</p>
+              <p style={{ fontSize: '1.05rem', color: 'var(--text-2)', lineHeight: 1.6 }}>While a calorie deficit dictates weight loss, your macronutrient split dictates *what kind* of weight you lose. To ensure you lose body fat rather than lean muscle tissue, it is crucial to consume adequate dietary protein. We recommend using our Macro Calculator alongside your deficit targets to establish an optimal protein, carbohydrate, and fat ratio that supports your training and preserves your metabolism during your diet phase.</p>
             </section>
             
 

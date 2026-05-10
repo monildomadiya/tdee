@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react';
-import { contact as Component } from './ClientComponent';
+import { Contact as Component } from './ClientComponent';
 
 export const metadata = {
   title: "Contact TDEE.TECH – Support & Feedback",
-  description: "Get in touch with the TDEE.TECH team for support, feedback, or partnership inquiries.",
+  description: "Get in touch with TDEE.TECH. We value your feedback, bug reports, and general inquiries.",
   alternates: { canonical: "https://tdee.tech/contact" },
   openGraph: {
     title: "Contact TDEE.TECH – Support & Feedback",
-    description: "Get in touch with the TDEE.TECH team for support, feedback, or partnership inquiries.",
+    description: "Get in touch with TDEE.TECH. We value your feedback, bug reports, and general inquiries.",
     url: "https://tdee.tech/contact",
   },
 };

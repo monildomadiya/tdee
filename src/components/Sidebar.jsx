@@ -23,7 +23,7 @@ const Sidebar = () => {
             {related.map(tool => (
               <li key={tool.path}>
                 <Link href={tool.path} className={path === tool.path ? 'active-link' : ''}>
-                  <span className="sidebar-tool-name">{tool.name}</span>
+                  <span className="sidebar-tool-name">{tool.name} {tool.isNew && <span style={{ fontSize: '0.65rem', background: 'var(--red)', color: '#fff', padding: '2px 6px', borderRadius: '4px', marginLeft: '6px', fontWeight: 800 }}>NEW!</span>}</span>
                   <span className="sidebar-tool-desc">{tool.desc}</span>
                 </Link>
               </li>
@@ -39,7 +39,10 @@ const Sidebar = () => {
             <ul>
               {cat.tools.filter(t => t.path !== path).slice(0, 5).map(tool => (
                 <li key={tool.path}>
-                  <Link href={tool.path}>{tool.short}</Link>
+                  <Link href={tool.path}>
+                    {tool.short}
+                    {tool.isNew && <span style={{ fontSize: '0.6rem', background: 'var(--red)', color: '#fff', padding: '2px 5px', borderRadius: '3px', marginLeft: '6px', fontWeight: 800 }}>NEW!</span>}
+                  </Link>
                 </li>
               ))}
             </ul>

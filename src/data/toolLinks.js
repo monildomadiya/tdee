@@ -38,6 +38,7 @@ export const TOOL_CATEGORIES = {
       { path: '/fat-intake-calculator',    name: 'Fat Intake Calculator',        short: 'Fat Intake',  desc: 'Daily dietary fat needs.' },
       { path: '/keto-macro-calculator',    name: 'Keto Macro Calculator',        short: 'Keto',        desc: 'Macros for ketogenic diets.' },
       { path: '/water-intake-calculator',  name: 'Water Intake Calculator',      short: 'Hydration',   desc: 'Daily water intake needs.' },
+      { path: '/guess-calories-game',      name: 'Guess the Calories Game',      short: 'Game',        desc: 'Test your nutrition knowledge.', isNew: true },
     ],
   },
   weight: {
@@ -54,6 +55,7 @@ export const TOOL_CATEGORIES = {
       { path: '/target-heart-rate-calculator', name: 'Target Heart Rate Calculator', short: 'Heart Rate', desc: 'Optimal heart rate zones.' },
       { path: '/gfr-calculator',           name: 'GFR Calculator',               short: 'GFR',         desc: 'Glomerular Filtration Rate.' },
       { path: '/bac-calculator',           name: 'BAC Calculator',               short: 'BAC',         desc: 'Blood Alcohol Content estimation.' },
+      { path: '/intermittent-fasting-calculator', name: 'Intermittent Fasting Calculator', short: 'IF Calc', desc: 'Track fasting and eating windows.', isNew: true },
     ],
   },
   pregnancy: {
@@ -111,6 +113,8 @@ export const RELATED_TOOLS = {
   '/period-calculator': ['/ovulation-calculator', '/conception-calculator', '/pregnancy-calculator'],
   '/pregnancy-weight-gain-calculator': ['/pregnancy-calculator', '/due-date-calculator', '/bmi-calculator', '/calorie-calculator'],
   '/pregnancy-conception-calculator': ['/conception-calculator', '/due-date-calculator', '/pregnancy-calculator'],
+  '/guess-calories-game': ['/calorie-calculator', '/tdee-calculator', '/macro-calculator', '/calorie-deficit', '/ideal-weight'],
+  '/intermittent-fasting-calculator': ['/tdee-calculator', '/calorie-deficit', '/macro-calculator', '/weight-loss-timeline', '/calorie-calculator'],
 };
 
 // Get related tool objects for a path

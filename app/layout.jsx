@@ -11,7 +11,7 @@ export const metadata = {
     template: '%s | TDEE.TECH',
   },
   description: 'Calculate your TDEE, BMR, BMI, and macros instantly with the most accurate free fitness calculators online. Science-backed formulas, no signup required.',
-  keywords: ['TDEE calculator', 'BMR calculator', 'macro calculator', 'BMI calculator', 'calorie calculator', 'fitness calculator', 'weight loss calculator'],
+  keywords: ['TDEE calculator', 'BMR calculator', 'macro calculator', 'BMI calculator', 'calorie calculator', 'fitness calculator', 'weight loss calculator', 'intermittent fasting calculator', 'guess calories game'],
   authors: [{ name: 'TDEE.TECH' }],
   creator: 'TDEE.TECH',
   publisher: 'TDEE.TECH',

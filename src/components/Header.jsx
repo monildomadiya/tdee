@@ -198,6 +198,7 @@ const Header = () => {
                             onClick={() => setOpenDropdown(null)}
                           >
                             {tool.name}
+                            {tool.isNew && <span style={{ fontSize: '0.65rem', background: 'var(--red)', color: '#fff', padding: '2px 6px', borderRadius: '4px', marginLeft: '6px', fontWeight: 800 }}>NEW!</span>}
                           </Link>
                         ))}
                       </div>
@@ -290,7 +291,10 @@ const Header = () => {
                             onClick={() => setIsSearchOpen(false)}
                             style={{ display: 'block', padding: '10px', borderBottom: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`, textDecoration: 'none', background: 'transparent' }}
                           >
-                            <div style={{ color: isDark ? '#f1f5f9' : '#0f172a', fontWeight: 700, fontSize: '14px', marginBottom: '2px' }}>{tool.name}</div>
+                            <div style={{ color: isDark ? '#f1f5f9' : '#0f172a', fontWeight: 700, fontSize: '14px', marginBottom: '2px' }}>
+                              {tool.name}
+                              {tool.isNew && <span style={{ fontSize: '0.6rem', background: 'var(--red)', color: '#fff', padding: '2px 5px', borderRadius: '3px', marginLeft: '6px', fontWeight: 800 }}>NEW!</span>}
+                            </div>
                             <div style={{ color: isDark ? '#94a3b8' : '#64748b', fontSize: '12px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{tool.desc}</div>
                           </Link>
                         ))

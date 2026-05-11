@@ -52,8 +52,9 @@ const Home = () => {
                       textDecoration: 'none',
                     }}
                   >
-                    <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', margin: '0 0 6px 0' }}>
+                    <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', margin: '0 0 6px 0', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
                       {t.name}
+                      {t.isNew && <span style={{ fontSize: '0.65rem', background: 'var(--red)', color: '#fff', padding: '2px 6px', borderRadius: '4px', fontWeight: 800 }}>NEW!</span>}
                     </h3>
                     <p style={{ fontSize: '0.88rem', color: 'var(--text-2)', margin: 0, lineHeight: 1.5 }}>
                       {t.desc}

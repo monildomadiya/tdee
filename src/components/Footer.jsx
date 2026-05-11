@@ -88,6 +88,7 @@ const Footer = () => (
             <FooterLink href="/fat-intake-calculator">Fat Intake Calculator</FooterLink>
             <FooterLink href="/keto-macro-calculator">Keto Macro Calculator</FooterLink>
             <FooterLink href="/water-intake-calculator">Water Intake Calculator</FooterLink>
+            <FooterLink href="/guess-calories-game">Guess the Calories Game <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
           </FooterSection>
 
           {/* Weight Management */}
@@ -99,6 +100,7 @@ const Footer = () => (
             <FooterLink href="/target-heart-rate-calculator">Target Heart Rate</FooterLink>
             <FooterLink href="/gfr-calculator">GFR Calculator</FooterLink>
             <FooterLink href="/bac-calculator">BAC Calculator</FooterLink>
+            <FooterLink href="/intermittent-fasting-calculator">Intermittent Fasting <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
           </FooterSection>
 
           {/* Women's Health */}

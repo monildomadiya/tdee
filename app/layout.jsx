@@ -56,12 +56,13 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/icons/tdee-favicon.png', type: 'image/png' },
+      { url: '/favicon-48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/favicon-192.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: [
-      { url: '/icons/tdee-favicon.png', type: 'image/png' },
+      { url: '/icons/tdee-favicon.png', sizes: '512x512', type: 'image/png' },
     ],
-    shortcut: '/icons/tdee-favicon.png',
+    shortcut: '/favicon-192.png',
   },
 };
 
@@ -95,9 +96,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/icons/tdee-favicon.png" type="image/png" />
-        <link rel="shortcut icon" href="/icons/tdee-favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/icons/tdee-favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

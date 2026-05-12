@@ -56,13 +56,17 @@ export const metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon-48.png', sizes: '48x48', type: 'image/png' },
       { url: '/favicon-192.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: [
-      { url: '/icons/tdee-favicon.png', sizes: '512x512', type: 'image/png' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/favicon-192.png',
+    shortcut: '/favicon.ico',
+    other: [
+      { rel: 'mask-icon', url: '/tdee-logo.svg', color: '#16a34a' },
+    ],
   },
 };
 
@@ -86,7 +90,12 @@ const websiteSchema = {
       '@id': 'https://tdee.tech/#organization',
       name: 'TDEE.TECH',
       url: 'https://tdee.tech',
-      logo: { '@type': 'ImageObject', url: 'https://tdee.tech/tdee-logo.svg' },
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://tdee.tech/favicon-192.png',
+        width: 192,
+        height: 192,
+      },
       sameAs: [],
     },
   ],
@@ -96,6 +105,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Explicit favicon links — required for Google Search favicon indexing */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+        <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

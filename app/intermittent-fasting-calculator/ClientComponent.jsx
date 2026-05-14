@@ -179,7 +179,7 @@ export default function ClientComponent() {
           {labels}
           <circle cx={nx.toFixed(1)} cy={ny.toFixed(1)} r="9" fill="var(--text)" />
           <circle cx={nx.toFixed(1)} cy={ny.toFixed(1)} r="3.5" fill="var(--bg)" />
-          <text x={cx} y={cy - 20} textAnchor="middle" fill="var(--muted)" fontSize="11" fontWeight="700" letterSpacing="0.05em" textTransform="uppercase">{cLabel}</text>
+          <text x={cx} y={cy - 20} textAnchor="middle" fill="var(--muted)" fontSize="11" fontWeight="700" letterSpacing="0.05em" style={{ textTransform: 'uppercase' }}>{cLabel}</text>
           <text x={cx} y={cy + 8} textAnchor="middle" fill={cColor} fontSize={inFast ? 24 : 20} fontWeight="800" fontFamily="inherit" letterSpacing={inFast ? '1' : '0'}>{cVal}</text>
           <text x={cx} y={cy + 30} textAnchor="middle" fill={inFast ? '#6366f1' : '#22c55e'} fontSize="12" fontWeight="600" opacity=".8">{inFast ? `${p.fast}:00 protocol` : 'Enjoy your meal 🥗'}</text>
         </svg>

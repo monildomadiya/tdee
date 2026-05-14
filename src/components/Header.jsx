@@ -209,6 +209,16 @@ const Header = () => {
                   )}
                 </React.Fragment>
               ))}
+              <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
+              <Link href="/blog" style={{
+                fontWeight: 600, color: isDark ? '#cbd5e1' : '#1e293b',
+                fontSize: '14.5px', display: 'flex', alignItems: 'center',
+                padding: '10px 4px', textDecoration: 'none', transition: 'color 0.2s'
+              }}
+              onMouseOver={e => e.currentTarget.style.color = isDark ? '#4ade80' : '#16a34a'}
+              onMouseOut={e => e.currentTarget.style.color = isDark ? '#cbd5e1' : '#1e293b'}>
+                Blog
+              </Link>
             </nav>
 
           {/* RIGHT: Desktop utilities */}
@@ -382,6 +392,9 @@ const Header = () => {
       <nav className={`mobile-nav-panel ${open ? 'open' : ''}`} aria-label="Mobile navigation">
         <Link href="/" className="mobile-home-link" onClick={() => setOpen(false)}>
           🏠 Home
+        </Link>
+        <Link href="/blog" className="mobile-home-link" style={{ borderBottom: '1px solid #e2e8f0', fontSize: '0.95rem' }} onClick={() => setOpen(false)}>
+          📝 Blog
         </Link>
 
         {categories.map(cat => (

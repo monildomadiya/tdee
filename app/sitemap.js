@@ -1,11 +1,15 @@
-/** @type {() => import('next').MetadataRoute.Sitemap} */
-export default function sitemap() {
+import { client } from '../sanity/lib/client';
+
+export default async function sitemap() {
   const baseUrl = 'https://tdee.tech';
   const now = new Date().toISOString();
 
-  const routes = [
+  const staticRoutes = [
     { url: '/', priority: 1.0, changeFrequency: 'daily' },
+    { url: '/blog', priority: 0.9, changeFrequency: 'daily' },
     { url: '/tdee-calculator', priority: 1.0, changeFrequency: 'weekly' },
+    { url: '/intermittent-fasting-calculator', priority: 0.9, changeFrequency: 'weekly' },
+    { url: '/guess-calories-game', priority: 0.8, changeFrequency: 'weekly' },
     { url: '/bmi-calculator', priority: 0.9, changeFrequency: 'weekly' },
     { url: '/macro-calculator', priority: 0.9, changeFrequency: 'weekly' },
     { url: '/bmr-calculator', priority: 0.9, changeFrequency: 'weekly' },
@@ -37,21 +41,25 @@ export default function sitemap() {
     { url: '/ovulation-calculator', priority: 0.7, changeFrequency: 'weekly' },
     { url: '/conception-calculator', priority: 0.6, changeFrequency: 'weekly' },
     { url: '/period-calculator', priority: 0.7, changeFrequency: 'weekly' },
-    { url: '/tdee-calculator-us', priority: 0.8, changeFrequency: 'weekly' },
-    { url: '/tdee-calculator-uk', priority: 0.8, changeFrequency: 'weekly' },
-    { url: '/tdee-calculator-canada', priority: 0.8, changeFrequency: 'weekly' },
-    { url: '/tdee-calculator-australia', priority: 0.8, changeFrequency: 'weekly' },
+    
+    // Top-tier countries specific routing for high SEO rank
+    { url: '/tdee-calculator-us', priority: 0.9, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-uk', priority: 0.9, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-canada', priority: 0.9, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-australia', priority: 0.9, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-new-zealand', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-germany', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-france', priority: 0.8, changeFrequency: 'weekly' },
+    
+    // Other regions
     { url: '/tdee-calculator-india', priority: 0.8, changeFrequency: 'weekly' },
-    { url: '/tdee-calculator-germany', priority: 0.7, changeFrequency: 'weekly' },
     { url: '/tdee-calculator-uae', priority: 0.7, changeFrequency: 'weekly' },
     { url: '/tdee-calculator-nigeria', priority: 0.7, changeFrequency: 'weekly' },
     { url: '/tdee-calculator-philippines', priority: 0.7, changeFrequency: 'weekly' },
     { url: '/tdee-calculator-russia', priority: 0.7, changeFrequency: 'weekly' },
-    { url: '/tdee-calculator-france', priority: 0.8, changeFrequency: 'weekly' },
-    { url: '/tdee-calculator-mexico', priority: 0.8, changeFrequency: 'weekly' },
-    { url: '/tdee-calculator-brazil', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-mexico', priority: 0.7, changeFrequency: 'weekly' },
+    { url: '/tdee-calculator-brazil', priority: 0.7, changeFrequency: 'weekly' },
     { url: '/tdee-calculator-south-africa', priority: 0.7, changeFrequency: 'weekly' },
-    { url: '/tdee-calculator-new-zealand', priority: 0.7, changeFrequency: 'weekly' },
 
     { url: '/about', priority: 0.5, changeFrequency: 'monthly' },
     { url: '/privacy', priority: 0.4, changeFrequency: 'monthly' },
@@ -60,10 +68,26 @@ export default function sitemap() {
     { url: '/contact', priority: 0.5, changeFrequency: 'monthly' },
   ];
 
-  return routes.map(({ url, priority, changeFrequency }) => ({
-    url: `${baseUrl}${url}`,
-    lastModified: now,
-    changeFrequency,
-    priority,
+  let blogRoutes = [];
+  try {
+    const query = `*[_type == "post"] { slug, _updatedAt }`;
+    const posts = await client.fetch(query);
+    blogRoutes = posts.map((post) => ({
+      url: `/blog/${post.slug.current}`,
+      lastModified: post._updatedAt,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    }));
+  } catch (error) {
+    console.error('Error fetching blog posts for sitemap:', error);
+  }
+
+  const allRoutes = [...staticRoutes, ...blogRoutes];
+
+  return allRoutes.map((route) => ({
+    url: `${baseUrl}${route.url}`,
+    lastModified: route.lastModified || now,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
   }));
 }

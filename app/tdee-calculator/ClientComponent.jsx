@@ -40,7 +40,7 @@ const getMacros = (cals) => {
   };
 };
 
-const TDEE = () => {
+const TDEE = ({ recentPosts }) => {
 
   const resultsRef = useRef(null);
   const searchParams = useSearchParams();
@@ -269,42 +269,59 @@ const TDEE = () => {
                 ) : (
                   <div style={{ width:'100%', animation:'popIn .4s ease both' }}>
 
-                    {/* Big number */}
+                    {/* Hero Number */}
                     <div style={{ textAlign:'center', marginBottom:'1.5rem', paddingBottom:'1.5rem', borderBottom:'1px solid var(--border)' }}>
                       <div style={{ fontSize:'.7rem', textTransform:'uppercase', letterSpacing:'.08em', color:'var(--muted)', fontWeight:700, marginBottom:'.35rem' }}>Your TDEE · Maintenance Calories</div>
                       <div style={{ fontSize:'3.75rem', fontWeight:900, lineHeight:1, color:'var(--green)', letterSpacing:'-.04em' }}>{result.tdee.toLocaleString()}</div>
-                      <div style={{ fontSize:'.95rem', color:'var(--text-2)', marginTop:'4px' }}>calories per day · {result.formula}</div>
+                      <div style={{ fontSize:'.9rem', color:'var(--text-2)', marginTop:'4px' }}>
+                        calories per day ·{' '}
+                        <a href={result.formula === 'Mifflin-St Jeor' ? 'https://pubmed.ncbi.nlm.nih.gov/2305711/' : 'https://pubmed.ncbi.nlm.nih.gov/3812338/'} target="_blank" rel="noopener noreferrer" style={{ color:'var(--green)', fontWeight:700, textDecoration:'none' }}>{result.formula}</a>
+                        <span style={{ fontSize:'.7rem', color:'var(--muted)', marginLeft:'4px' }}>[PubMed ↗]</span>
+                      </div>
                       <div style={{ display:'flex', gap:'8px', justifyContent:'center', marginTop:'.75rem', flexWrap:'wrap' }}>
-                        <span style={{ background:'var(--green-light)', color:'var(--green-dark)', padding:'3px 10px', borderRadius:'0', fontSize:'.75rem', fontWeight:700 }}>BMR {result.bmr.toLocaleString()} kcal</span>
-                        <span style={{ background:'var(--blue-light-alt)', color:'var(--blue-text)', padding:'3px 10px', borderRadius:'0', fontSize:'.75rem', fontWeight:700 }}>BMI {result.bmi} · {result.bmiCat}</span>
+                        <span style={{ background:'var(--green-light)', color:'var(--green-dark)', padding:'3px 10px', fontSize:'.75rem', fontWeight:700 }}>BMR {result.bmr.toLocaleString()} kcal</span>
+                        <span style={{ background:'var(--blue-light-alt)', color:'var(--blue-text)', padding:'3px 10px', fontSize:'.75rem', fontWeight:700 }}>BMI {result.bmi} · {result.bmiCat}</span>
                       </div>
                     </div>
 
-                    {/* Goal Targets */}
+                    {/* 5-Row Goal Calorie Table */}
                     <div style={{ marginBottom:'1.25rem' }}>
                       <div style={{ fontSize:'.7rem', textTransform:'uppercase', letterSpacing:'.08em', color:'var(--muted)', fontWeight:700, marginBottom:'.6rem' }}>Goal Calorie Targets</div>
-                      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'7px' }}>
-                        {[
-                          { label:'Fat Loss', cal:result.tdee-500, sub:'-500/day', color:'var(--red-text)', bg:'var(--red-light)' },
-                          { label:'Maintain', cal:result.tdee,     sub:'your TDEE', color:'var(--teal-text)', bg:'var(--green-light)' },
-                          { label:'Lean Bulk',cal:result.tdee+300, sub:'+300/day', color:'var(--blue-text)', bg:'var(--blue-light-alt)' },
-                        ].map(({ label, cal, sub, color, bg }) => (
-                          <div key={label} style={{ background:bg, border:`1px solid var(--border)`, borderRadius:'0', padding:'.75rem .4rem', textAlign:'center' }}>
-                            <div style={{ fontSize:'.62rem', textTransform:'uppercase', fontWeight:700, color, marginBottom:'2px' }}>{label}</div>
-                            <div style={{ fontSize:'1.2rem', fontWeight:800, color:'var(--text)' }}>{cal.toLocaleString()}</div>
-                            <div style={{ fontSize:'.62rem', color:'var(--muted)' }}>{sub}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Macro Table */}
-                    <div style={{ marginBottom:'1.25rem' }}>
-                      <div style={{ fontSize:'.7rem', textTransform:'uppercase', letterSpacing:'.08em', color:'var(--muted)', fontWeight:700, marginBottom:'.6rem' }}>Daily Macro Targets (Balanced Split)</div>
-                      <table style={{ width:'100%', borderCollapse:'collapse', fontSize:'.85rem' }}>
+                      <table style={{ width:'100%', borderCollapse:'collapse', fontSize:'.82rem' }}>
                         <thead>
                           <tr style={{ borderBottom:'2px solid var(--border)' }}>
-                            <th style={{ textAlign:'left', padding:'5px 6px', color:'var(--muted)', fontWeight:600, fontSize:'.68rem', textTransform:'uppercase' }}>Goal</th>
+                            <th style={{ textAlign:'left', padding:'5px 8px', color:'var(--muted)', fontWeight:600, fontSize:'.65rem', textTransform:'uppercase' }}>Goal</th>
+                            <th style={{ textAlign:'center', padding:'5px 6px', color:'var(--muted)', fontWeight:600, fontSize:'.65rem', textTransform:'uppercase' }}>Daily kcal</th>
+                            <th style={{ textAlign:'center', padding:'5px 6px', color:'var(--muted)', fontWeight:600, fontSize:'.65rem', textTransform:'uppercase' }}>vs TDEE</th>
+                            <th style={{ textAlign:'center', padding:'5px 6px', color:'var(--muted)', fontWeight:600, fontSize:'.65rem', textTransform:'uppercase' }}>Rate</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {[
+                            { label:'🔥 Aggressive Cut',  delta:-1000, color:'#dc2626', bg:'#fef2f2',  rate:'~1 kg/wk loss' },
+                            { label:'✂️ Mild Cut',         delta:-500,  color:'#ea580c', bg:'#fff7ed',  rate:'~0.5 kg/wk loss' },
+                            { label:'⚖️ Maintenance',      delta:0,     color:'#0d9488', bg:'var(--green-light)', rate:'Stable weight' },
+                            { label:'💪 Mild Bulk',        delta:300,   color:'#1d4ed8', bg:'#eff6ff',  rate:'~0.3 kg/wk gain' },
+                            { label:'🚀 Aggressive Bulk',  delta:500,   color:'#7c3aed', bg:'#faf5ff',  rate:'~0.5 kg/wk gain' },
+                          ].map(({ label, delta, color, bg, rate }) => (
+                            <tr key={label} style={{ borderBottom:'1px solid var(--border)', background: delta===0 ? bg : 'transparent' }}>
+                              <td style={{ padding:'7px 8px', fontWeight:700, color, fontSize:'.79rem' }}>{label}</td>
+                              <td style={{ textAlign:'center', padding:'7px 6px', fontWeight:800, color:'var(--text)', fontSize:'.95rem' }}>{(result.tdee + delta).toLocaleString()}</td>
+                              <td style={{ textAlign:'center', padding:'7px 6px', fontWeight:600, color, fontSize:'.79rem' }}>{delta === 0 ? '—' : (delta > 0 ? '+' : '') + delta}</td>
+                              <td style={{ textAlign:'center', padding:'7px 6px', color:'var(--muted)', fontSize:'.7rem' }}>{rate}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {/* Macro Table — 5 rows */}
+                    <div style={{ marginBottom:'1.25rem' }}>
+                      <div style={{ fontSize:'.7rem', textTransform:'uppercase', letterSpacing:'.08em', color:'var(--muted)', fontWeight:700, marginBottom:'.6rem' }}>Daily Macros by Goal (Balanced Split)</div>
+                      <table style={{ width:'100%', borderCollapse:'collapse', fontSize:'.82rem' }}>
+                        <thead>
+                          <tr style={{ borderBottom:'2px solid var(--border)' }}>
+                            <th style={{ textAlign:'left', padding:'5px 6px', color:'var(--muted)', fontWeight:600, fontSize:'.65rem', textTransform:'uppercase' }}>Goal</th>
                             <th style={{ textAlign:'center', padding:'5px 6px', color:'var(--teal-text)', fontWeight:700 }}>Protein</th>
                             <th style={{ textAlign:'center', padding:'5px 6px', color:'var(--yellow-text)', fontWeight:700 }}>Carbs</th>
                             <th style={{ textAlign:'center', padding:'5px 6px', color:'var(--purple-text)', fontWeight:700 }}>Fat</th>
@@ -312,22 +329,53 @@ const TDEE = () => {
                         </thead>
                         <tbody>
                           {[
-                            { label:'Fat Loss',  m: getMacros(result.tdee-500).mod },
-                            { label:'Maintain',  m: result.maintenance.macros.mod },
-                            { label:'Lean Bulk', m: getMacros(result.tdee+300).mod },
+                            { label:'Aggressive Cut', m: getMacros(result.tdee-1000).mod },
+                            { label:'Mild Cut',        m: getMacros(result.tdee-500).mod },
+                            { label:'Maintain',        m: result.maintenance.macros.mod },
+                            { label:'Mild Bulk',       m: getMacros(result.tdee+300).mod },
+                            { label:'Aggressive Bulk', m: getMacros(result.tdee+500).mod },
                           ].map(({ label, m }) => (
                             <tr key={label} style={{ borderBottom:'1px solid var(--border)' }}>
-                              <td style={{ padding:'7px 6px', fontWeight:600, color:'var(--text-2)', fontSize:'.8rem' }}>{label}</td>
-                              <td style={{ textAlign:'center', padding:'7px 6px', fontWeight:700 }}>{m.p}g</td>
-                              <td style={{ textAlign:'center', padding:'7px 6px', fontWeight:700 }}>{m.c}g</td>
-                              <td style={{ textAlign:'center', padding:'7px 6px', fontWeight:700 }}>{m.f}g</td>
+                              <td style={{ padding:'6px 6px', fontWeight:600, color:'var(--text-2)', fontSize:'.77rem' }}>{label}</td>
+                              <td style={{ textAlign:'center', padding:'6px 6px', fontWeight:700 }}>{m.p}g</td>
+                              <td style={{ textAlign:'center', padding:'6px 6px', fontWeight:700 }}>{m.c}g</td>
+                              <td style={{ textAlign:'center', padding:'6px 6px', fontWeight:700 }}>{m.f}g</td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
                     </div>
 
-
+                    {/* Activity Level Comparison */}
+                    <div>
+                      <div style={{ fontSize:'.7rem', textTransform:'uppercase', letterSpacing:'.08em', color:'var(--muted)', fontWeight:700, marginBottom:'.6rem' }}>TDEE at All Activity Levels</div>
+                      {[
+                        { label:'Sedentary',   mult:1.2,   desc:'Desk job, no exercise' },
+                        { label:'Light',       mult:1.375, desc:'1–3 days/week' },
+                        { label:'Moderate',    mult:1.55,  desc:'3–5 days/week' },
+                        { label:'Active',      mult:1.725, desc:'6–7 days/week' },
+                        { label:'Very Active', mult:1.9,   desc:'Physical job / 2× training' },
+                      ].map(({ label, mult, desc }) => {
+                        const cal = Math.round(result.bmr * mult);
+                        const isSelected = parseFloat(activity) === mult;
+                        const pct = ((mult - 1.2) / (1.9 - 1.2)) * 100;
+                        return (
+                          <div key={label} style={{ marginBottom:'6px', padding:'8px 10px', background: isSelected ? 'var(--green-light)' : 'var(--bg)', border: isSelected ? '1px solid var(--green)' : '1px solid var(--border)' }}>
+                            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'5px' }}>
+                              <div>
+                                <span style={{ fontWeight:700, fontSize:'.82rem', color: isSelected ? 'var(--green-dark)' : 'var(--text)' }}>{label}</span>
+                                {isSelected && <span style={{ marginLeft:'6px', fontSize:'.63rem', fontWeight:700, background:'var(--green)', color:'#fff', padding:'1px 5px' }}>YOUR LEVEL</span>}
+                                <span style={{ display:'block', fontSize:'.7rem', color:'var(--muted)' }}>{desc}</span>
+                              </div>
+                              <span style={{ fontWeight:800, fontSize:'1rem', color: isSelected ? 'var(--green)' : 'var(--text)' }}>{cal.toLocaleString()}</span>
+                            </div>
+                            <div style={{ height:'4px', background:'var(--border)' }}>
+                              <div style={{ height:'100%', width:`${pct}%`, background: isSelected ? 'var(--green)' : '#94a3b8', transition:'width .5s ease' }} />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
 
                   </div>
                 )}
@@ -446,6 +494,52 @@ const TDEE = () => {
               ))}
             </div>
           </div>
+
+          {/* Recent Blog Posts */}
+          {recentPosts && recentPosts.length > 0 && (
+            <div style={{ marginTop: '3rem', marginBottom: '1rem' }}>
+              <h2 style={{ fontSize: '1.5rem', borderBottom: '2px solid var(--border)', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>
+                Latest from the Blog
+              </h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                {recentPosts.map((post) => (
+                  <article key={post.slug.current} style={{ background: 'var(--card)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', transition: 'border-color 0.2s' }} onMouseOver={e => e.currentTarget.style.borderColor = 'var(--green)'} onMouseOut={e => e.currentTarget.style.borderColor = 'var(--border)'}>
+                    {post.imageUrl && (
+                      <Link href={`/blog/${post.slug.current}`} style={{ display: 'block', position: 'relative', width: '100%', height: '180px', backgroundColor: '#f3f4f6', overflow: 'hidden' }}>
+                        <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                      </Link>
+                    )}
+                    <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                        {post.categoryName && (
+                          <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, color: 'var(--green-dark)', background: 'var(--green-light)', border: '1px solid var(--green)', padding: '2px 8px' }}>
+                            {post.categoryName}
+                          </span>
+                        )}
+                        <span style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>
+                          {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        </span>
+                      </div>
+                      <Link href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text)', marginBottom: '12px', marginTop: 0, lineHeight: 1.4 }}>
+                          {post.title}
+                        </h3>
+                      </Link>
+                      <p style={{ color: 'var(--text-2)', fontSize: '0.9rem', marginBottom: '20px', flex: 1, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                        {post.shortDescription}
+                      </p>
+                      <Link href={`/blog/${post.slug.current}`} style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--text)', color: 'var(--text)', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em', padding: '8px 16px', textDecoration: 'none', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'var(--text)'; e.currentTarget.style.color = 'var(--bg)'; }} onMouseOut={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--text)'; }}>
+                        Read More →
+                      </Link>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+                <Link href="/blog" className="btn outline" style={{ display: 'inline-block' }}>View All Articles</Link>
+              </div>
+            </div>
+          )}
 
           {/* Disclaimer */}
           <div className="disclaimer-box">

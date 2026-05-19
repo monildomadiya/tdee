@@ -21,6 +21,17 @@ const Header = () => {
   }, [isDark]);
 
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
     setOpen(false);
     setOpenDropdown(null);
     setIsSearchOpen(false);
@@ -143,104 +154,176 @@ const Header = () => {
         <div
           className="container"
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'auto 1fr auto',
-            gap: '15px',
+            display: 'flex',
+            justifyContent: 'space-between',
             alignItems: 'center',
-            height: '60px'
+            height: '70px'
           }}
         >
           {/* LEFT: Logo */}
-          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <Link href="/" className="logo" aria-label="TDEE.TECH home">
-              <img src="/tdee-logo.svg" alt="TDEE.TECH" height="28" />
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
+            <Link href="/" className="logo" aria-label="TDEE.TECH home" onClick={() => { setOpen(false); setIsSearchOpen(false); setOpenDropdown(null); }} style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="/tdee-logo.svg" alt="TDEE.TECH" style={{ height: '32px', width: 'auto' }} />
             </Link>
           </div>
 
           {/* CENTER: Desktop Nav */}
-          <nav className="header-desktop-nav nav-links" ref={dropdownRef} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
-              {categories.map((cat, i) => (
-                <React.Fragment key={cat.id}>
+          <nav className="header-desktop-nav nav-links" ref={dropdownRef} style={{ flex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+              <div
+                className="dropdown"
+                onMouseEnter={() => setOpenDropdown('mega')}
+                onMouseLeave={() => setOpenDropdown(null)}
+                style={{ position: 'relative' }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenDropdown(openDropdown === 'mega' ? null : 'mega')}
+                  style={{
+                    cursor: 'pointer', fontWeight: 700, color: openDropdown === 'mega' ? '#0f172a' : '#1e293b',
+                    fontSize: '15px', display: 'flex', alignItems: 'center',
+                    gap: '6px', background: 'none', border: 'none',
+                    fontFamily: 'inherit', padding: '10px 0',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  Our Calculators
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ transform: openDropdown === 'mega' ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </button>
+                {openDropdown === 'mega' && (
                   <div
-                    className="dropdown"
-                    onMouseEnter={() => setOpenDropdown(cat.id)}
-                    onMouseLeave={() => setOpenDropdown(null)}
-                    style={{ position: 'relative' }}
+                    role="menu"
+                    className="dropdown-content"
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(3, 1fr)',
+                      gap: '24px',
+                      position: 'absolute',
+                      top: '100%',
+                      left: '-300px', // Shift left to center the mega menu relative to the button
+                      width: '800px',
+                      background: isDark ? '#1e293b' : '#fff',
+                      border: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`,
+                      borderRadius: '8px',
+                      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
+                      padding: '24px',
+                      zIndex: 1000
+                    }}
                   >
-                    <button
-                      type="button"
-                      onClick={() => setOpenDropdown(openDropdown === cat.id ? null : cat.id)}
-                      style={{
-                        cursor: 'pointer', fontWeight: 600, color: openDropdown === cat.id ? '#0f172a' : '#1e293b',
-                        fontSize: '14.5px', display: 'flex', alignItems: 'center',
-                        gap: '5px', background: 'none', border: 'none',
-                        fontFamily: 'inherit', padding: '10px 4px',
-                        whiteSpace: 'nowrap'
-                      }}
-                    >
-                      {cat.label}
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ transform: openDropdown === cat.id ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                      </svg>
-                    </button>
-                    {openDropdown === cat.id && (
-                      <div
-                        role="menu"
-                        className="dropdown-content"
-                        style={{
-                          display: 'block', position: 'absolute', top: '100%', left: '0',
-                          background: isDark ? '#1e293b' : '#fff', border: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`,
-                          borderRadius: '0', minWidth: '220px', zIndex: 1001,
-                          boxShadow: '0 4px 12px rgba(0,0,0,0.05)', padding: '4px 0'
-                        }}
-                      >
-                        {cat.tools.map(tool => (
-                          <Link
-                            key={tool.path}
-                            href={tool.path}
-                            role="menuitem"
-                            className="dropdown-item"
-                            style={{ padding: '8px 16px', display: 'block', color: isDark ? '#cbd5e1' : '#334155', fontSize: '14px', fontWeight: 500 }}
-                            onClick={() => setOpenDropdown(null)}
-                          >
-                            {tool.name}
-                            {tool.isNew && <span style={{ fontSize: '0.65rem', background: 'var(--red)', color: '#fff', padding: '2px 6px', borderRadius: '4px', marginLeft: '6px', fontWeight: 800 }}>NEW!</span>}
-                          </Link>
-                        ))}
+                    {categories.map((cat) => (
+                      <div key={cat.id}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', paddingBottom: '8px', borderBottom: `1px solid ${isDark ? '#334155' : '#f1f5f9'}` }}>
+                          <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: cat.color }} />
+                          <h4 style={{ margin: 0, fontSize: '14px', fontWeight: 700, color: isDark ? '#f1f5f9' : '#0f172a', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
+                            {cat.label}
+                          </h4>
+                        </div>
+                        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                          {cat.tools.map((tool) => (
+                            <li key={tool.path}>
+                              <Link
+                                href={tool.path}
+                                onClick={() => setOpenDropdown(null)}
+                                style={{
+                                  display: 'block',
+                                  padding: '6px 8px',
+                                  fontSize: '13.5px',
+                                  color: isDark ? '#cbd5e1' : '#475569',
+                                  textDecoration: 'none',
+                                  borderRadius: '4px',
+                                  transition: 'all 0.1s'
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.background = isDark ? '#334155' : '#f8fafc'; e.currentTarget.style.color = cat.color; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = isDark ? '#cbd5e1' : '#475569'; }}
+                              >
+                                {tool.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    )}
+                    ))}
                   </div>
-                  {i < categories.length - 1 && (
-                    <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
-                  )}
-                </React.Fragment>
-              ))}
-              <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
-              <Link href="/blog" style={{ cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#1e293b', fontSize: '14.5px', padding: '10px 4px', textDecoration: 'none' }}>Blog</Link>
+                )}
+              </div>
+              <div style={{ width: '1px', height: '16px', background: isDark ? '#334155' : '#e2e8f0', margin: '0 4px' }} />
+              <Link
+                href="/tdee-calculator"
+                style={{
+                  cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569',
+                  fontSize: '14.5px', padding: '8px 14px', textDecoration: 'none',
+                  borderRadius: '20px', transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = isDark ? '#fff' : '#0f172a'; e.currentTarget.style.background = isDark ? '#334155' : '#f1f5f9'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = isDark ? '#cbd5e1' : '#475569'; e.currentTarget.style.background = 'transparent'; }}
+              >
+                TDEE
+              </Link>
+              <Link
+                href="/calorie-calculator"
+                style={{
+                  cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569',
+                  fontSize: '14.5px', padding: '8px 14px', textDecoration: 'none',
+                  borderRadius: '20px', transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = isDark ? '#fff' : '#0f172a'; e.currentTarget.style.background = isDark ? '#334155' : '#f1f5f9'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = isDark ? '#cbd5e1' : '#475569'; e.currentTarget.style.background = 'transparent'; }}
+              >
+                Calories
+              </Link>
+              <Link
+                href="/bmi-calculator"
+                style={{
+                  cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569',
+                  fontSize: '14.5px', padding: '8px 14px', textDecoration: 'none',
+                  borderRadius: '20px', transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = isDark ? '#fff' : '#0f172a'; e.currentTarget.style.background = isDark ? '#334155' : '#f1f5f9'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = isDark ? '#cbd5e1' : '#475569'; e.currentTarget.style.background = 'transparent'; }}
+              >
+                BMI
+              </Link>
+              <Link
+                href="/guess-calories-game"
+                style={{
+                  cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569',
+                  fontSize: '14.5px', padding: '8px 14px', textDecoration: 'none',
+                  borderRadius: '20px', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '6px'
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = isDark ? '#fff' : '#0f172a'; e.currentTarget.style.background = isDark ? '#334155' : '#f1f5f9'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = isDark ? '#cbd5e1' : '#475569'; e.currentTarget.style.background = 'transparent'; }}
+              >
+                Game
+                <span style={{ fontSize: '10px', background: '#10b981', color: '#fff', padding: '2px 6px', borderRadius: '10px', fontWeight: 'bold' }}>NEW</span>
+              </Link>
             </nav>
 
           {/* RIGHT: Desktop utilities */}
-          <div className="header-right-desktop" style={{ gridColumn: 3, display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
+          <div className="header-right-desktop" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
 
             {/* Dark Mode Toggle */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <div
-                onClick={() => setIsDark(!isDark)}
-                style={{ width: '42px', height: '24px', border: '1px solid #cbd5e1', background: isDark ? '#0f172a' : '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '2px', transition: 'background 0.2s' }}
-              >
-                <div style={{ width: '18px', height: '18px', background: isDark ? '#fff' : '#0f172a', transform: isDark ? 'translateX(18px)' : 'translateX(0)', transition: 'transform 0.2s, background 0.2s' }}></div>
-              </div>
-              <div onClick={() => setIsDark(!isDark)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-                {isDark ? (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f1f5f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                  </svg>
-                ) : (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                  </svg>
-                )}
-              </div>
+            <div
+              onClick={() => setIsDark(!isDark)}
+              style={{
+                width: '40px', height: '40px', borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', transition: 'background 0.2s',
+                background: isDark ? '#1e293b' : 'transparent',
+                border: isDark ? '1px solid #334155' : 'none'
+              }}
+              onMouseEnter={(e) => { if(!isDark) e.currentTarget.style.background = '#f1f5f9'; }}
+              onMouseLeave={(e) => { if(!isDark) e.currentTarget.style.background = 'transparent'; }}
+            >
+              {isDark ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f1f5f9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              )}
             </div>
 
             <div style={{ width: '1px', height: '24px', background: '#e2e8f0' }} />
@@ -250,17 +333,21 @@ const Header = () => {
               <div
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                 style={{
-                  width: '38px', height: '38px',
-                  background: isSearchOpen ? '#0f172a' : (isDark ? '#1e293b' : '#eef2f6'),
-                  border: `1px solid ${isDark ? '#334155' : '#cbd5e1'}`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  cursor: 'pointer'
+                  height: '40px', borderRadius: '20px', padding: '0 12px 0 16px',
+                  background: isSearchOpen ? (isDark ? '#334155' : '#e2e8f0') : (isDark ? '#0f172a' : '#f8fafc'),
+                  border: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                  cursor: 'pointer', transition: 'all 0.2s'
                 }}
+                onMouseEnter={(e) => { if(!isSearchOpen) e.currentTarget.style.border = `1px solid ${isDark ? '#475569' : '#cbd5e1'}`; }}
+                onMouseLeave={(e) => { if(!isSearchOpen) e.currentTarget.style.border = `1px solid ${isDark ? '#334155' : '#e2e8f0'}`; }}
               >
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke={isSearchOpen ? '#fff' : (isDark ? '#f1f5f9' : '#0f172a')} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={isDark ? '#94a3b8' : '#64748b'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
+                <span style={{ fontSize: '13.5px', fontWeight: 500, color: isDark ? '#94a3b8' : '#64748b' }}>Search...</span>
+                <div style={{ marginLeft: '4px', padding: '2px 6px', borderRadius: '4px', background: isDark ? '#1e293b' : '#e2e8f0', fontSize: '11px', color: isDark ? '#cbd5e1' : '#64748b', fontWeight: 600 }}>Ctrl K</div>
               </div>
 
               {isSearchOpen && (
@@ -317,7 +404,7 @@ const Header = () => {
           </div>
 
           {/* MOBILE RIGHT: Search + Hamburger */}
-          <div className="header-mobile-btn" style={{ gridColumn: 3, justifyContent: 'flex-end', alignItems: 'center', gap: '10px' }}>
+          <div className="header-mobile-btn" style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center', gap: '10px' }}>
             {/* Mobile Search Icon */}
             <div
               onClick={() => { setIsSearchOpen(!isSearchOpen); setOpen(false); }}
@@ -409,9 +496,6 @@ const Header = () => {
           </React.Fragment>
         ))}
 
-        <Link href="/blog" className="mobile-home-link" onClick={() => setOpen(false)}>
-          Blog
-        </Link>
 
         {/* Bottom bar with dark mode toggle */}
         <div className="mobile-bottom-bar">

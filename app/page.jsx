@@ -37,7 +37,6 @@ export default function Page() {
   return (
     <section>
       <JsonLd schema={webAppSchema} />
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center text-slate-900 my-8">Free TDEE & Fitness Calculator</h1>
       <Suspense fallback={null}>
         <Component />
       </Suspense>

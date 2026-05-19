@@ -7,12 +7,13 @@ import Script from 'next/script';
 export const metadata = {
   title: "Intermittent Fasting Calculator – 16:8, 18:6 & OMAD Tracker",
   description: "Calculate your intermittent fasting windows, track your fasting and eating times, and follow protocols like 16:8, 18:6, and OMAD. Free fasting tracker.",
-  keywords: "intermittent fasting calculator, fasting tracker, 16:8 fast, 18:6 fast, OMAD calculator, intermittent fasting schedule, fasting window calculator",
-  alternates: { canonical: "https://tdee.tech/intermittent-fasting-calculator" },
+  
+  alternates: { canonical: 'https://tdee.tech/intermittent-fasting-calculator/' },
   openGraph: {
+    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
     title: "Intermittent Fasting Calculator – 16:8, 18:6 & OMAD Tracker",
     description: "Calculate your intermittent fasting windows, track your fasting and eating times, and follow protocols like 16:8, 18:6, and OMAD. Free fasting tracker.",
-    url: "https://tdee.tech/intermittent-fasting-calculator",
+    url: 'https://tdee.tech/intermittent-fasting-calculator/',
     type: "website",
   },
 };

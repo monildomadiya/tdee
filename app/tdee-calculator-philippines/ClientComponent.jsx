@@ -54,7 +54,8 @@ export const TDEEIndia = () => (
     title="TDEE Calculator India — Free Daily Calorie Calculator | tdee.tech"
     description="Free TDEE calculator for India. Calculate your daily calorie needs in kcal using metric units (kg, cm). Perfect for Indian diet planning."
     localNote="Supports metric units (kg, cm) — the standard used across India."
-  >
+  
+  intro="Understanding your Total Daily Energy Expenditure (TDEE) is uniquely important in India, where traditional diets are incredibly diverse, rich in complex carbohydrates, and often feature calorie-dense cooking methods. The Indian Council of Medical Research (ICMR) provides baseline dietary guidelines, but individual caloric requirements can fluctuate massively depending on your specific height, weight, and lifestyle. Our India-focused TDEE calculator utilizes the highly accurate Mifflin-St Jeor equation and supports metric measurements (kilograms and centimeters) to deliver a perfectly tailored caloric baseline. This precision is essential for Indian users looking to balance the nutritional benefits of traditional regional cuisines with modern fitness goals, such as managing a healthy BMI or reducing body fat. By calculating your exact daily energy needs, you can easily adjust your intake of local staples while maintaining a healthy, sustainable diet plan.">
     <h2>TDEE Calculator for India</h2>
     <p>Whether you follow a vegetarian, vegan, or omnivorous Indian diet, knowing your <strong>Total Daily Energy Expenditure (TDEE)</strong> is the most important step in managing your nutrition. Our free TDEE calculator works in metric units (kg and cm) — the standard measurement system used across India.</p>
     <h2>Indian Diet & TDEE — What to Know</h2>
@@ -77,7 +78,8 @@ export const TDEEGermany = () => (
     title="TDEE Rechner — Tageskalorienbedarf berechnen | tdee.tech"
     description="Free TDEE calculator for Germany. Calculate your daily calorie needs using the Mifflin-St Jeor formula. Supports metric units (kg, cm)."
     localNote="Metric units (kg, cm) — standard in Germany, Austria & Switzerland."
-  >
+  
+  intro="For users in Germany, achieving precise fitness and weight management goals begins with a thorough understanding of your Total Daily Energy Expenditure (TDEE). While the German Nutrition Society (DGE) provides excellent general guidelines for a balanced diet and regular physical activity, individual metabolic rates require a personalized calculation rather than reliance on national averages. Our Germany-optimized TDEE calculator is fully aligned with the metric system, allowing you to use kilograms and centimeters for flawless integration with European nutritional labels. Driven by the gold-standard Mifflin-St Jeor formula, this tool accurately accounts for your specific age, gender, and activity level. Whether you are participating in Germany's vibrant outdoor sports culture or simply looking to balance your intake of rich traditional foods, knowing your exact TDEE is the most effective way to manage your caloric deficit or surplus safely.">
     <h2>TDEE Calculator for Germany (Deutschland)</h2>
     <p>Our free <strong>TDEE calculator</strong> (Tageskalorienbedarf-Rechner) helps people in Germany calculate their exact daily calorie needs using the scientifically validated Mifflin-St Jeor formula. Enter your weight (kg) and height (cm) for an instant personalised result.</p>
     <h2>Nutrition & Fitness in Germany</h2>

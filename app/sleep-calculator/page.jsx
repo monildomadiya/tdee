@@ -4,11 +4,12 @@ import Component from './ClientComponent';
 export const metadata = {
   title: 'Sleep Calculator – Best Sleep & Wake Times Based on Sleep Cycles',
   description: 'Calculate the best time to wake up or go to sleep based on 90-minute sleep cycles. Avoid waking mid-cycle and feel refreshed every morning.',
-  alternates: { canonical: 'https://tdee.tech/sleep-calculator' },
+  alternates: { canonical: 'https://tdee.tech/sleep-calculator/' },
   openGraph: {
+    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
     title: 'Sleep Calculator – Best Sleep & Wake Times Based on Sleep Cycles',
     description: 'Calculate the best time to wake up or go to sleep based on 90-minute sleep cycles.',
-    url: 'https://tdee.tech/sleep-calculator',
+    url: 'https://tdee.tech/sleep-calculator/',
   },
 };
 

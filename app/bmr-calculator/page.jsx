@@ -4,11 +4,12 @@ import Component from './ClientComponent';
 export const metadata = {
   title: "BMR Calculator – Basal Metabolic Rate Calculator",
   description: "Calculate your Basal Metabolic Rate (BMR) — the calories your body burns at complete rest. Uses Mifflin-St Jeor formula.",
-  alternates: { canonical: "https://tdee.tech/bmr-calculator" },
+  alternates: { canonical: 'https://tdee.tech/bmr-calculator/' },
   openGraph: {
+    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
     title: "BMR Calculator – Basal Metabolic Rate Calculator",
     description: "Calculate your Basal Metabolic Rate (BMR) — the calories your body burns at complete rest. Uses Mifflin-St Jeor formula.",
-    url: "https://tdee.tech/bmr-calculator",
+    url: 'https://tdee.tech/bmr-calculator/',
   },
 };
 

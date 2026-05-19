@@ -26,7 +26,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://tdee.tech',
+    url: 'https://tdee.tech/',
     siteName: 'TDEE.TECH',
     title: 'Free Fitness & Calorie Calculators | TDEE.TECH',
     description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. Calculate TDEE, BMR, BMI, macros, body fat, and more. No signup required.',
@@ -48,7 +48,7 @@ export const metadata = {
     images: ['/og-image.png'],
   },
   alternates: {
-    canonical: 'https://tdee.tech',
+    canonical: 'https://tdee.tech/',
   },
   icons: {
     icon: [

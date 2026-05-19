@@ -91,17 +91,17 @@ const Footer = () => (
             <FooterLink href="/guess-calories-game">Guess the Calories Game <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
           </FooterSection>
 
-          <FooterSection title="Weight &amp; Fitness">
-            <FooterLink href="/weight-loss-timeline">Weight Loss Timeline</FooterLink>
-            <FooterLink href="/calories-burned-calculator">Calories Burned</FooterLink>
-            <FooterLink href="/pace-calculator">Pace Calculator</FooterLink>
-            <FooterLink href="/one-rep-max-calculator">One Rep Max (1RM)</FooterLink>
-            <FooterLink href="/target-heart-rate-calculator">Target Heart Rate</FooterLink>
-            <FooterLink href="/intermittent-fasting-calculator">Intermittent Fasting <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
+          <FooterSection title="Weight Management">
+            <FooterLink href="/weight-loss-timeline/">Weight Loss Timeline</FooterLink>
+            <FooterLink href="/calories-burned-calculator/">Calories Burned</FooterLink>
+            <FooterLink href="/pace-calculator/">Pace Calculator</FooterLink>
+            <FooterLink href="/one-rep-max-calculator/">One Rep Max (1RM)</FooterLink>
+            <FooterLink href="/target-heart-rate-calculator/">Target Heart Rate</FooterLink>
+            <FooterLink href="/intermittent-fasting-calculator/">Intermittent Fasting <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
           </FooterSection>
 
-          {/* General Health */}
-          <FooterSection title="General Health">
+          {/* Health & Medical */}
+          <FooterSection title="Health &amp; Medical">
             <FooterLink href="/gfr-calculator">GFR Calculator</FooterLink>
             <FooterLink href="/bac-calculator">BAC Calculator</FooterLink>
             <FooterLink href="/sleep-calculator">Sleep Calculator <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
@@ -145,21 +145,7 @@ const Footer = () => (
             <FooterLink href="/disclaimer">Medical Disclaimer</FooterLink>
           </FooterSection>
 
-          {/* Partner Tools */}
-          <FooterSection title="Partner Tools">
-            <li style={{ marginBottom: '10px' }}>
-              <a 
-                href="https://bruttonettocalculator.com/" 
-                target="_blank" 
-                rel="noopener"
-                style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.15s' }}
-                onMouseOver={e => e.currentTarget.style.color = '#0f172a'}
-                onMouseOut={e => e.currentTarget.style.color = '#64748b'}
-              >
-                Brutto Netto Calculator
-              </a>
-            </li>
-          </FooterSection>
+
 
         </div>
 

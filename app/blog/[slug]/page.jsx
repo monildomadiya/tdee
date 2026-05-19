@@ -15,6 +15,7 @@ export async function generateMetadata({ params }) {
     description: blog.excerpt || `Read ${blog.title} on TDEE.TECH`,
     alternates: { canonical: `https://tdee.tech/blog/${blog.slug}` },
     openGraph: {
+    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
       title: blog.title,
       description: blog.excerpt,
       type: 'article',
@@ -49,7 +50,7 @@ export default async function BlogPostPage({ params }) {
       name: 'TDEE.TECH',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://tdee.tech/favicon-192.png'
+        url: 'https://tdee.tech/favicon-192.png/'
       }
     },
     mainEntityOfPage: {

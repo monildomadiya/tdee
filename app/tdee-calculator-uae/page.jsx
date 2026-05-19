@@ -6,22 +6,22 @@ export const metadata = {
   description:
     'Free TDEE calculator for the United Arab Emirates. Calculate your daily maintenance calories, BMR, BMI, and macros in metric units (kg, cm). Science-backed. No signup required.',
   alternates: {
-    canonical: 'https://tdee.tech/tdee-calculator-uae',
+    canonical: 'https://tdee.tech/tdee-calculator-uae/',
     languages: { 'ar-AE': 'https://tdee.tech/tdee-calculator-uae' },
   },
   openGraph: {
     title: 'TDEE Calculator UAE — Free Daily Calorie Tool for the Emirates',
     description:
       'Free TDEE calculator for the UAE. Calculate your daily maintenance calories, BMR, BMI, and macros in metric units.',
-    url: 'https://tdee.tech/tdee-calculator-uae',
+    url: 'https://tdee.tech/tdee-calculator-uae/',
     type: 'website',
-    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630, alt: 'TDEE Calculator UAE – TDEE.TECH' }],
+    images: [{ url: 'https://tdee.tech/og-image.png/', width: 1200, height: 630, alt: 'TDEE Calculator UAE – TDEE.TECH' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'TDEE Calculator UAE — Free Daily Calorie Tool',
     description: 'Free TDEE calculator for the UAE. Metric units. No signup required.',
-    images: ['https://tdee.tech/og-image.png'],
+    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
   },
 };
 

@@ -4,11 +4,12 @@ import Component from './ClientComponent';
 export const metadata = {
   title: "Lean Body Mass Calculator – Calculate Your LBM",
   description: "Calculate your Lean Body Mass (LBM) — the weight of everything in your body except fat.",
-  alternates: { canonical: "https://tdee.tech/lean-body-mass-calculator" },
+  alternates: { canonical: 'https://tdee.tech/lean-body-mass-calculator/' },
   openGraph: {
+    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
     title: "Lean Body Mass Calculator – Calculate Your LBM",
     description: "Calculate your Lean Body Mass (LBM) — the weight of everything in your body except fat.",
-    url: "https://tdee.tech/lean-body-mass-calculator",
+    url: 'https://tdee.tech/lean-body-mass-calculator/',
   },
 };
 

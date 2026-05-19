@@ -71,7 +71,7 @@ export const TOOL_CATEGORIES = {
   },
   health: {
     id: 'health',
-    label: 'General Health',
+    label: 'Health & Medical',
     color: '#dc2626',
     bg: '#fef2f2',
     border: '#fecaca',

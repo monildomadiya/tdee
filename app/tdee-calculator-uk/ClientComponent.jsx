@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Sidebar from '../../src/components/Sidebar';
 
 /* Reusable country page template */
-const CountryPage = ({ country, code, unit, titleFocus, desc, tips, slug, cities, faqs }) => {
+const CountryPage = ({ country, code, unit, titleFocus, desc, intro, tips, slug, cities, faqs }) => {
   const schemaOrgJSONLD = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -41,6 +41,7 @@ const CountryPage = ({ country, code, unit, titleFocus, desc, tips, slug, cities
           <div className="badge badge-blue" style={{ marginBottom:'.75rem' }}>🌍 {country}</div>
           <h1>TDEE Calculator {country}</h1>
           <p>{desc}</p>
+          {intro && <p style={{ marginTop: '1.5rem', fontSize: '1.05rem', lineHeight: '1.7', textAlign: 'left', background: 'var(--card)', border: '1px solid var(--border)', padding: '1.5rem', borderRadius: 'var(--r-lg)' }}>{intro}</p>}
         </div>
       </div>
       <main className="container tool-layout-container" style={{ paddingTop:'2rem', paddingBottom:'4rem' }}>
@@ -151,7 +152,8 @@ export const TDEECanada = () => <CountryPage
     'Canadian nutrition labels show calories per 100g; knowing your TDEE helps you understand these in context.',
     'Popular Canadian winter activities (hockey, skiing) are high-energy — choose "Active" or "Very Active" if you participate regularly.',
   ]}
-/>;
+
+  intro="Navigating nutritional goals in Canada is vastly simplified when you understand your Total Daily Energy Expenditure (TDEE). Health Canada provides excellent generalized dietary guidelines, emphasizing whole foods and active living, but individual caloric needs vary drastically based on your unique body metrics and activity level. Our Canada-optimized TDEE calculator is designed to seamlessly support both the official metric system (kilograms and centimeters) used on Canadian nutrition labels, as well as the imperial system (pounds) commonly used for personal body weight. Whether you are extremely active during the winter months participating in hockey and skiing, or maintaining a moderate exercise routine, this tool uses the clinical-grade Mifflin-St Jeor equation to pinpoint your exact caloric baseline. This level of precision is fundamental for structuring a safe, effective calorie deficit for fat loss or a surplus for muscle gain." />;
 
 export const TDEEAustralia = () => <CountryPage
   country="Australia" code="australia" unit="metric (kg/cm)"
@@ -168,7 +170,8 @@ export const TDEEAustralia = () => <CountryPage
     'Australians have high outdoor activity rates. If you surf, hike, or play sport regularly, choose "Active" or above.',
     'Heat affects energy expenditure — Australians in hot climates may need to hydrate more carefully when tracking calories.',
   ]}
-/>;
+
+  intro="In Australia, a nation characterized by an incredibly active, outdoor-centric lifestyle, accurately calculating your Total Daily Energy Expenditure (TDEE) is crucial for optimal health and athletic performance. The Australian Dietary Guidelines suggest average daily intakes, but the significant variations in daily activity—from regular surfing and hiking to intense gym sessions—demand a personalized approach to nutrition. Our Australia-specific TDEE calculator uses the globally validated Mifflin-St Jeor formula and natively supports the metric system (kilograms and centimeters), ensuring perfect alignment with local food packaging and nutritional labels. By determining your precise maintenance calories, you can confidently navigate Australia's robust food culture while making informed decisions about portion sizes and macronutrient distribution. This targeted approach is the cornerstone of sustainable weight loss, muscle development, and long-term metabolic health." />;
 
 export const TDEEUA = () => <CountryPage
   country="UAE" code="uae" unit="metric (kg/cm)"
@@ -180,4 +183,5 @@ export const TDEEUA = () => <CountryPage
     'Ramadan affects eating patterns significantly. During Ramadan, use your TDEE as a total daily calorie target and distribute meals to suhoor and iftar.',
     'UAE gyms and fitness culture are thriving. If you train 4–5 days/week, use the "Active" activity level.',
   ]}
-/>;
+
+  intro="In the United Arab Emirates, where extreme summer temperatures often shift physical activity indoors and cultural practices like Ramadan significantly alter eating patterns, understanding your Total Daily Energy Expenditure (TDEE) is vital. The UAE boasts a incredibly diverse expat population and a thriving fitness culture, meaning generalized dietary advice often falls short of individual needs. Our UAE-focused TDEE calculator uses the globally validated Mifflin-St Jeor equation and operates seamlessly in metric units (kilograms and centimeters). By identifying your precise maintenance calories, you can accurately plan your meals—whether you are structuring suhoor and iftar during fasting months, or balancing the rich, calorie-dense foods common in Middle Eastern and international cuisines. This scientific approach ensures your nutrition aligns perfectly with your specific lifestyle, body composition, and long-term health objectives." />;

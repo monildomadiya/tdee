@@ -4,11 +4,12 @@ import Component from './ClientComponent';
 export const metadata = {
   title: "Pregnancy Weight Gain Calculator – IOM Guidelines",
   description: "Track your pregnancy weight gain against IOM guidelines based on your pre-pregnancy BMI.",
-  alternates: { canonical: "https://tdee.tech/pregnancy-weight-gain-calculator" },
+  alternates: { canonical: 'https://tdee.tech/pregnancy-weight-gain-calculator/' },
   openGraph: {
+    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
     title: "Pregnancy Weight Gain Calculator – IOM Guidelines",
     description: "Track your pregnancy weight gain against IOM guidelines based on your pre-pregnancy BMI.",
-    url: "https://tdee.tech/pregnancy-weight-gain-calculator",
+    url: 'https://tdee.tech/pregnancy-weight-gain-calculator/',
   },
 };
 

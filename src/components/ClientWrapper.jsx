@@ -3,6 +3,7 @@ import { usePathname } from 'next/navigation'
 import Header from './Header'
 import Footer from './Footer'
 import ScrollToTop from './ScrollToTop'
+import ToolPageHeader from './ToolPageHeader'
 
 export default function ClientWrapper({ children }) {
   const pathname = usePathname()
@@ -21,6 +22,7 @@ export default function ClientWrapper({ children }) {
     <>
       <ScrollToTop />
       <Header />
+      <ToolPageHeader />
       <main id="main-content" style={{ outline: 'none', flex: 1 }}>
         {children}
       </main>

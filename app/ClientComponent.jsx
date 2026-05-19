@@ -11,7 +11,7 @@ const Home = () => {
         {/* UTILITY HEADER */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h1 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--text)', margin: '0 0 12px 0', letterSpacing: '-0.02em' }}>
-            Free TDEE Calculator &amp; Fitness Tools
+            Free TDEE Calculator — Total Daily Energy Expenditure
           </h1>
           <p style={{ fontSize: '1.1rem', color: 'var(--text-2)', margin: '0 auto', maxWidth: '700px', lineHeight: 1.6 }}>
             Accurate, instantaneous, and completely free health tools. Calculate your Total Daily Energy Expenditure (TDEE), BMI, BMR, and optimal macronutrients without registration.

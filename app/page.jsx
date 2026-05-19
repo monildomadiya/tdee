@@ -17,7 +17,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Free Fitness & Calorie Calculators | TDEE.TECH',
     description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. No signup required.',
-    images: ['/og-image.png'],
+    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
   },
 };
 

@@ -8,12 +8,13 @@ import Script from 'next/script';
 export const metadata = {
   title: "Guess the Calories Game & Quiz – Test Your Nutrition Knowledge",
   description: "Play the ultimate Guess the Calories Game! Test your food calorie knowledge, learn about nutrition, and improve your diet with this interactive food calorie quiz.",
-  keywords: "guess the calories game, food calorie quiz, calorie guessing game, nutrition trivia, guess food calories, diet game, US food calories, UK food calories",
-  alternates: { canonical: "https://tdee.tech/guess-calories-game" },
+  
+  alternates: { canonical: 'https://tdee.tech/guess-calories-game/' },
   openGraph: {
+    images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
     title: "Guess the Calories Game & Quiz – Test Your Nutrition Knowledge",
     description: "Play the ultimate Guess the Calories Game! Test your food calorie knowledge and improve your diet with this interactive food calorie quiz.",
-    url: "https://tdee.tech/guess-calories-game",
+    url: 'https://tdee.tech/guess-calories-game/',
     type: "website",
   },
 };

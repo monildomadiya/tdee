@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Turbopack root fix
-  turbopack: {
-    root: __dirname,
-  },
+  // Disable strict mode in dev to prevent double-effect invocation
+  reactStrictMode: false,
 
   // Compress responses
   compress: true,
+
+  // Remove X-Powered-By header
+  poweredByHeader: false,
 
   // Security + SEO headers
   async headers() {
@@ -28,12 +29,6 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 86400,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-      },
-    ],
   },
 };
 

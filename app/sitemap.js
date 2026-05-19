@@ -1,4 +1,4 @@
-import { client } from '../sanity/lib/client';
+
 
 export default async function sitemap() {
   const baseUrl = 'https://tdee.tech';
@@ -6,7 +6,6 @@ export default async function sitemap() {
 
   const staticRoutes = [
     { url: '/', priority: 1.0, changeFrequency: 'daily' },
-    { url: '/blog', priority: 0.9, changeFrequency: 'daily' },
     { url: '/tdee-calculator', priority: 1.0, changeFrequency: 'weekly' },
     { url: '/intermittent-fasting-calculator', priority: 0.9, changeFrequency: 'weekly' },
     { url: '/guess-calories-game', priority: 0.8, changeFrequency: 'weekly' },
@@ -68,21 +67,7 @@ export default async function sitemap() {
     { url: '/contact', priority: 0.5, changeFrequency: 'monthly' },
   ];
 
-  let blogRoutes = [];
-  try {
-    const query = `*[_type == "post"] { slug, _updatedAt }`;
-    const posts = await client.fetch(query);
-    blogRoutes = posts.map((post) => ({
-      url: `/blog/${post.slug.current}`,
-      lastModified: post._updatedAt,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    }));
-  } catch (error) {
-    console.error('Error fetching blog posts for sitemap:', error);
-  }
-
-  const allRoutes = [...staticRoutes, ...blogRoutes];
+  const allRoutes = [...staticRoutes];
 
   return allRoutes.map((route) => ({
     url: `${baseUrl}${route.url}`,

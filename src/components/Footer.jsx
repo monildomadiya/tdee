@@ -134,7 +134,7 @@ const Footer = () => (
           <FooterSection title="Legal & Company">
             <FooterLink href="/about">About Us</FooterLink>
             <FooterLink href="/contact">Contact Support</FooterLink>
-            <FooterLink href="/blog">Blog</FooterLink>
+
             <FooterLink href="/privacy">Privacy Policy</FooterLink>
             <FooterLink href="/terms">Terms of Service</FooterLink>
             <FooterLink href="/disclaimer">Medical Disclaimer</FooterLink>

@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import Component from './ClientComponent';
+import RecentBlogs from '../src/components/RecentBlogs';
 
 export const metadata = {
   title: 'TDEE Calculator: Total Daily Energy Expenditure (Free & Accurate)',
@@ -52,6 +53,10 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Suspense fallback={null}>
         <Component />
+      </Suspense>
+      {/* Blog section rendered on server */}
+      <Suspense fallback={null}>
+        <RecentBlogs />
       </Suspense>
     </>
   );

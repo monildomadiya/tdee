@@ -40,27 +40,87 @@ const getMacros = (cals) => {
   };
 };
 
-const TDEE = ({ recentPosts }) => {
+const TDEE = () => {
 
   const resultsRef = useRef(null);
   const searchParams = useSearchParams();
   
-  const [gender,   setGender]   = useState(searchParams.get('g') || 'male');
-  const [age,      setAge]      = useState(searchParams.get('a') || '');
-  const [unit,     setUnit]     = useState(searchParams.get('u') || 'metric');
-  const [weightKg, setWeightKg] = useState(searchParams.get('wk') || '');
-  const [weightLb, setWeightLb] = useState(searchParams.get('wl') || '');
-  const [heightCm, setHeightCm] = useState(searchParams.get('hc') || '');
-  const [heightFt, setHeightFt] = useState(searchParams.get('hf') || '');
-  const [heightIn, setHeightIn] = useState(searchParams.get('hi') || '');
-  const [activity, setActivity] = useState(searchParams.get('act') || '1.55');
-  const [bodyFat,  setBodyFat]  = useState(searchParams.get('bf') || '');
+  const [gender,   setGender]   = useState('male');
+  const [age,      setAge]      = useState('');
+  const [unit,     setUnit]     = useState('metric');
+  const [weightKg, setWeightKg] = useState('');
+  const [weightLb, setWeightLb] = useState('');
+  const [heightCm, setHeightCm] = useState('');
+  const [heightFt, setHeightFt] = useState('');
+  const [heightIn, setHeightIn] = useState('');
+  const [activity, setActivity] = useState('1.55');
+  const [bodyFat,  setBodyFat]  = useState('');
   
   useEffect(() => {
-    if (searchParams.get('a') && ((searchParams.get('wk') && searchParams.get('hc')) || (searchParams.get('wl') && searchParams.get('hf')))) {
-      setTimeout(() => document.querySelector('form.calc-form')?.requestSubmit(), 100);
+    // Populate form from URL params after mount (prevents infinite Suspense loop)
+    const g   = searchParams.get('g');   if (g)   setGender(g);
+    const a   = searchParams.get('a');   if (a)   setAge(a);
+    const u   = searchParams.get('u');   if (u)   setUnit(u);
+    const wk  = searchParams.get('wk'); if (wk)  setWeightKg(wk);
+    const wl  = searchParams.get('wl'); if (wl)  setWeightLb(wl);
+    const hc  = searchParams.get('hc'); if (hc)  setHeightCm(hc);
+    const hf  = searchParams.get('hf'); if (hf)  setHeightFt(hf);
+    const hi  = searchParams.get('hi'); if (hi)  setHeightIn(hi);
+    const act = searchParams.get('act');if (act) setActivity(act);
+    const bf  = searchParams.get('bf'); if (bf)  setBodyFat(bf);
+
+    // Auto-calculate if all required params are present
+    const ageParam = searchParams.get('a');
+    const unitParam = searchParams.get('u') || 'metric';
+    const wkParam = searchParams.get('wk');
+    const hcParam = searchParams.get('hc');
+    const wlParam = searchParams.get('wl');
+    const hfParam = searchParams.get('hf');
+    const hiParam = searchParams.get('hi');
+    const actParam = searchParams.get('act') || '1.55';
+    const bfParam = searchParams.get('bf');
+    const gParam = searchParams.get('g') || 'male';
+
+    const hasMetric = ageParam && wkParam && hcParam;
+    const hasImperial = ageParam && wlParam && hfParam;
+    if (hasMetric || hasImperial) {
+      setTimeout(() => {
+        let wKg = unitParam === 'metric' ? parseFloat(wkParam) : parseFloat(wlParam) * 0.453592;
+        let hCm = unitParam === 'imperial'
+          ? parseFloat(hfParam || 0) * 30.48 + parseFloat(hiParam || 0) * 2.54
+          : parseFloat(hcParam);
+        const a2 = parseFloat(ageParam);
+        const act2 = parseFloat(actParam);
+        const bf2 = parseFloat(bfParam);
+        if (!wKg || !hCm || !a2 || wKg <= 0 || hCm <= 0 || a2 <= 0) return;
+        let bmr = 0, formula = '';
+        if (bf2 > 0 && bf2 < 80) {
+          bmr = 370 + (21.6 * wKg * (1 - bf2 / 100));
+          formula = 'Katch-McArdle';
+        } else {
+          bmr = gParam === 'male' ? (10 * wKg) + (6.25 * hCm) - (5 * a2) + 5 : (10 * wKg) + (6.25 * hCm) - (5 * a2) - 161;
+          formula = 'Mifflin-St Jeor';
+        }
+        const tdee = Math.round(bmr * act2);
+        const bmi = +(wKg / ((hCm / 100) ** 2)).toFixed(1);
+        const bmiCat = bmi < 18.5 ? 'Underweight' : bmi < 25 ? 'Healthy' : bmi < 30 ? 'Overweight' : 'Obese';
+        const inchesOver5ft = Math.max(0, (hCm / 2.54) - 60);
+        const ibwKg = gParam === 'male' ? 48 + 2.7 * inchesOver5ft : 45.5 + 2.2 * inchesOver5ft;
+        const maxMuscleKg = gParam === 'male' ? hCm - 100 : hCm - 105;
+        const maintenanceMacros = getMacros(tdee);
+        setResult({
+          bmr: Math.round(bmr), tdee, bmi, bmiCat, formula,
+          ibw: Math.round(ibwKg), maxMuscle: Math.round(maxMuscleKg),
+          wKg, unit: unitParam,
+          maintenance: { cals: tdee, macros: maintenanceMacros },
+          cutting: { cals: tdee - 500, macros: getMacros(tdee - 500) },
+          bulking: { cals: tdee + 500, macros: getMacros(tdee + 500) },
+        });
+      }, 150);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   
   const [result,   setResult]   = useState(null);
   const [copied,   setCopied]   = useState(false);
@@ -495,51 +555,7 @@ const TDEE = ({ recentPosts }) => {
             </div>
           </div>
 
-          {/* Recent Blog Posts */}
-          {recentPosts && recentPosts.length > 0 && (
-            <div style={{ marginTop: '3rem', marginBottom: '1rem' }}>
-              <h2 style={{ fontSize: '1.5rem', borderBottom: '2px solid var(--border)', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>
-                Latest from the Blog
-              </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-                {recentPosts.map((post) => (
-                  <article key={post.slug.current} style={{ background: 'var(--card)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column', transition: 'border-color 0.2s' }} onMouseOver={e => e.currentTarget.style.borderColor = 'var(--green)'} onMouseOut={e => e.currentTarget.style.borderColor = 'var(--border)'}>
-                    {post.imageUrl && (
-                      <Link href={`/blog/${post.slug.current}`} style={{ display: 'block', position: 'relative', width: '100%', height: '180px', backgroundColor: '#f3f4f6', overflow: 'hidden' }}>
-                        <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      </Link>
-                    )}
-                    <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                        {post.categoryName && (
-                          <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, color: 'var(--green-dark)', background: 'var(--green-light)', border: '1px solid var(--green)', padding: '2px 8px' }}>
-                            {post.categoryName}
-                          </span>
-                        )}
-                        <span style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>
-                          {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                        </span>
-                      </div>
-                      <Link href={`/blog/${post.slug.current}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text)', marginBottom: '12px', marginTop: 0, lineHeight: 1.4 }}>
-                          {post.title}
-                        </h3>
-                      </Link>
-                      <p style={{ color: 'var(--text-2)', fontSize: '0.9rem', marginBottom: '20px', flex: 1, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                        {post.shortDescription}
-                      </p>
-                      <Link href={`/blog/${post.slug.current}`} style={{ alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--text)', color: 'var(--text)', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em', padding: '8px 16px', textDecoration: 'none', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'var(--text)'; e.currentTarget.style.color = 'var(--bg)'; }} onMouseOut={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--text)'; }}>
-                        Read More →
-                      </Link>
-                    </div>
-                  </article>
-                ))}
-              </div>
-              <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
-                <Link href="/blog" className="btn outline" style={{ display: 'inline-block' }}>View All Articles</Link>
-              </div>
-            </div>
-          )}
+
 
           {/* Disclaimer */}
           <div className="disclaimer-box">

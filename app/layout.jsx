@@ -1,8 +1,6 @@
 import './globals.css';
 import Script from 'next/script';
-import Header from '../src/components/Header';
-import Footer from '../src/components/Footer';
-import ScrollToTop from '../src/components/ScrollToTop';
+import ClientWrapper from '../src/components/ClientWrapper';
 
 export const metadata = {
   metadataBase: new URL('https://tdee.tech'),
@@ -122,7 +120,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body>
+      <body data-gramm="false" data-grammarly-skip="true">
         {/* Google Analytics GA4 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6B9VVJPKVF"
@@ -137,12 +135,9 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <ScrollToTop />
-          <Header />
-          <main id="main-content" style={{ outline: 'none', flex: 1 }}>
+          <ClientWrapper>
             {children}
-          </main>
-          <Footer />
+          </ClientWrapper>
         </div>
       </body>
     </html>

@@ -12,7 +12,8 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const searchRef = useRef(null);
+  const desktopSearchRef = useRef(null);
+  const mobileSearchRef = useRef(null);
 
   useEffect(() => {
     if (isDark) document.documentElement.classList.add('dark');
@@ -36,7 +37,11 @@ const Header = () => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setOpenDropdown(null);
       }
-      if (searchRef.current && !searchRef.current.contains(e.target)) {
+      
+      const inDesktop = desktopSearchRef.current && desktopSearchRef.current.contains(e.target);
+      const inMobile = mobileSearchRef.current && mobileSearchRef.current.contains(e.target);
+      
+      if (!inDesktop && !inMobile) {
         setIsSearchOpen(false);
       }
     };
@@ -55,7 +60,7 @@ const Header = () => {
 
   return (
     <>
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .header-desktop-nav { display: flex; }
         .header-right-desktop { display: flex; }
         .header-mobile-btn { display: none; }
@@ -132,7 +137,7 @@ const Header = () => {
           bottom: 0;
         }
         html.dark .mobile-bottom-bar { background: #1e293b; border-top-color: #334155; }
-      `}</style>
+      `}} />
 
       <header role="banner" style={{ background: isDark ? '#1e293b' : '#fff', borderBottom: '1px solid #e2e8f0', position: 'relative', zIndex: 1000, height: '60px' }}>
         <div
@@ -153,6 +158,10 @@ const Header = () => {
 
           {/* CENTER: Desktop Nav */}
           <nav className="header-desktop-nav nav-links" ref={dropdownRef} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
+              <Link href="/blog" style={{ cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#1e293b', fontSize: '14.5px', padding: '10px 4px', textDecoration: 'none' }}>Blog</Link>
+              <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
+              <Link href="/admin/blog" style={{ cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#1e293b', fontSize: '14.5px', padding: '10px 4px', textDecoration: 'none' }}>Admin</Link>
+              <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
               {categories.map((cat, i) => (
                 <React.Fragment key={cat.id}>
                   <div
@@ -209,16 +218,7 @@ const Header = () => {
                   )}
                 </React.Fragment>
               ))}
-              <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
-              <Link href="/blog" style={{
-                fontWeight: 600, color: isDark ? '#cbd5e1' : '#1e293b',
-                fontSize: '14.5px', display: 'flex', alignItems: 'center',
-                padding: '10px 4px', textDecoration: 'none', transition: 'color 0.2s'
-              }}
-              onMouseOver={e => e.currentTarget.style.color = isDark ? '#4ade80' : '#16a34a'}
-              onMouseOut={e => e.currentTarget.style.color = isDark ? '#cbd5e1' : '#1e293b'}>
-                Blog
-              </Link>
+
             </nav>
 
           {/* RIGHT: Desktop utilities */}
@@ -248,7 +248,7 @@ const Header = () => {
             <div style={{ width: '1px', height: '24px', background: '#e2e8f0' }} />
 
             {/* Search */}
-            <div ref={searchRef} style={{ position: 'relative' }}>
+            <div ref={desktopSearchRef} style={{ position: 'relative' }}>
               <div
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                 style={{
@@ -355,7 +355,7 @@ const Header = () => {
 
         {/* Mobile Search Bar — full-width below header */}
         {isSearchOpen && (
-          <div className="mobile-search-bar" ref={searchRef} style={{ padding: '12px 16px', background: '#fff', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0', position: 'absolute', width: '100%', zIndex: 998, top: '60px', left: 0 }}>
+          <div className="mobile-search-bar" ref={mobileSearchRef} style={{ padding: '12px 16px', background: '#fff', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0', position: 'absolute', width: '100%', zIndex: 998, top: '60px', left: 0 }}>
             <div style={{ position: 'relative', width: '100%' }}>
               <input
                 autoFocus
@@ -393,9 +393,13 @@ const Header = () => {
         <Link href="/" className="mobile-home-link" onClick={() => setOpen(false)}>
           🏠 Home
         </Link>
-        <Link href="/blog" className="mobile-home-link" style={{ borderBottom: '1px solid #e2e8f0', fontSize: '0.95rem' }} onClick={() => setOpen(false)}>
+        <Link href="/blog" className="mobile-home-link" onClick={() => setOpen(false)}>
           📝 Blog
         </Link>
+        <Link href="/admin/blog" className="mobile-home-link" onClick={() => setOpen(false)}>
+          ⚙️ Admin
+        </Link>
+
 
         {categories.map(cat => (
           <React.Fragment key={cat.id}>

@@ -1,8 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './app/blog/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: [],
   corePlugins: {
     preflight: false, // Prevents Tailwind from resetting global styles
   },

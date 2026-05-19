@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { createBlog, updateBlog, deleteBlog } from '../../../src/actions/blogActions';
+import { createBlog, updateBlog, deleteBlog } from '../../src/actions/blogActions';
 import Link from 'next/link';
 
 export default function AdminBlogClient({ initialBlogs }) {
@@ -113,12 +113,12 @@ export default function AdminBlogClient({ initialBlogs }) {
   };
 
   const handleLogout = async () => {
-    const { logoutAdmin } = await import('../../../src/actions/authActions');
+    const { logoutAdmin } = await import('../../src/actions/authActions');
     await logoutAdmin();
     window.location.reload();
   };
 
-  const Sidebar = () => (
+  const renderSidebar = () => (
     <aside style={{
       width: isSidebarOpen ? '250px' : '0px',
       background: '#0f172a',
@@ -189,7 +189,7 @@ export default function AdminBlogClient({ initialBlogs }) {
     </aside>
   );
 
-  const Topbar = () => (
+  const renderTopbar = () => (
     <header style={{ 
       background: '#fff', 
       padding: '0 20px', 
@@ -218,7 +218,7 @@ export default function AdminBlogClient({ initialBlogs }) {
     </header>
   );
 
-  const RenderForm = () => (
+  const renderForm = () => (
     <div style={{ background: '#fff', padding: '30px', borderRadius: '8px', border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', maxWidth: '1000px', margin: '0 auto' }}>
       
       {error && <div style={{ color: '#b91c1c', background: '#fef2f2', border: '1px solid #fecaca', padding: '12px 16px', borderRadius: '6px', marginBottom: '20px', fontSize: '0.9rem', fontWeight: 500 }}>{error}</div>}
@@ -300,14 +300,14 @@ export default function AdminBlogClient({ initialBlogs }) {
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', width: '100%', background: '#f8fafc', fontFamily: "'Inter', sans-serif" }}>
-      <Sidebar />
+      {renderSidebar()}
       
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-        <Topbar />
+        {renderTopbar()}
         
         <main style={{ padding: '30px', flex: 1, overflowY: 'auto' }}>
           
-          {(view === 'create' || view === 'edit') && <RenderForm />}
+          {(view === 'create' || view === 'edit') && renderForm()}
 
           {view === 'list' && (
             <div style={{ background: '#fff', borderRadius: '8px', border: '1px solid #e2e8f0', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', overflow: 'hidden' }}>

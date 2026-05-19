@@ -1,4 +1,4 @@
-import { getBlogs } from '../../../src/actions/blogActions';
+import { getBlogs } from '../../src/actions/blogActions';
 import AdminBlogClient from './AdminBlogClient';
 import AdminLogin from './AdminLogin';
 import { cookies } from 'next/headers';

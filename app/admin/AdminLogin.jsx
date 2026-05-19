@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { loginAdmin } from '../../../src/actions/authActions';
+import { loginAdmin } from '../../src/actions/authActions';
 
 export default function AdminLogin() {
   const [password, setPassword] = useState('');

@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }) {
         </Link>
       </div>
       
-      <article style={{ background: '#fff', borderRadius: '12px', border: '1px solid var(--border)', overflow: 'hidden', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
+      <article style={{ background: 'var(--card)', borderRadius: '12px', border: '1px solid var(--border)', overflow: 'hidden', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
         
         {blog.thumbnail_url && (
           <div style={{ width: '100%', aspectRatio: '1200/630', background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}>

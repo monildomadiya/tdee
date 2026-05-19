@@ -158,10 +158,6 @@ const Header = () => {
 
           {/* CENTER: Desktop Nav */}
           <nav className="header-desktop-nav nav-links" ref={dropdownRef} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
-              <Link href="/blog" style={{ cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#1e293b', fontSize: '14.5px', padding: '10px 4px', textDecoration: 'none' }}>Blog</Link>
-              <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
-              <Link href="/admin/blog" style={{ cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#1e293b', fontSize: '14.5px', padding: '10px 4px', textDecoration: 'none' }}>Admin</Link>
-              <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
               {categories.map((cat, i) => (
                 <React.Fragment key={cat.id}>
                   <div
@@ -218,7 +214,8 @@ const Header = () => {
                   )}
                 </React.Fragment>
               ))}
-
+              <div style={{ width: '1px', height: '20px', background: '#e2e8f0', flexShrink: 0 }} />
+              <Link href="/blog" style={{ cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#1e293b', fontSize: '14.5px', padding: '10px 4px', textDecoration: 'none' }}>Blog</Link>
             </nav>
 
           {/* RIGHT: Desktop utilities */}
@@ -393,12 +390,6 @@ const Header = () => {
         <Link href="/" className="mobile-home-link" onClick={() => setOpen(false)}>
           🏠 Home
         </Link>
-        <Link href="/blog" className="mobile-home-link" onClick={() => setOpen(false)}>
-          📝 Blog
-        </Link>
-        <Link href="/admin/blog" className="mobile-home-link" onClick={() => setOpen(false)}>
-          ⚙️ Admin
-        </Link>
 
 
         {categories.map(cat => (
@@ -416,6 +407,10 @@ const Header = () => {
             ))}
           </React.Fragment>
         ))}
+
+        <Link href="/blog" className="mobile-home-link" onClick={() => setOpen(false)}>
+          📝 Blog
+        </Link>
 
         {/* Bottom bar with dark mode toggle */}
         <div className="mobile-bottom-bar">

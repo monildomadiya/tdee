@@ -1,8 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createBlog, updateBlog, deleteBlog } from '../../../src/actions/blogActions';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import 'react-quill/dist/quill.snow.css';
+
+const modules = {
+  toolbar: [
+    [{ 'header': [1, 2, 3, false] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+    ['link', 'image'],
+    ['clean']
+  ],
+};
+
+const formats = [
+  'header',
+  'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet', 'indent',
+  'link', 'image'
+];
 
 export default function AdminBlogClient({ initialBlogs }) {
   const [blogs, setBlogs] = useState(initialBlogs || []);
@@ -11,6 +32,37 @@ export default function AdminBlogClient({ initialBlogs }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const [editorContent, setEditorContent] = useState('');
+  const [title, setTitle] = useState('');
+  const [slug, setSlug] = useState('');
+
+  // Update editor content when editing a post
+  useEffect(() => {
+    if (view === 'edit' && currentBlog) {
+      setEditorContent(currentBlog.content || '');
+      setTitle(currentBlog.title || '');
+      setSlug(currentBlog.slug || '');
+    } else if (view === 'create') {
+      setEditorContent('');
+      setTitle('');
+      setSlug('');
+    }
+  }, [view, currentBlog]);
+
+  const generateSlug = (text) => {
+    return text.toString().toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '');            // Trim - from end of text
+  };
+
+  const handleTitleChange = (e) => {
+    const newTitle = e.target.value;
+    setTitle(newTitle);
+    setSlug(generateSlug(newTitle));
+  };
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -18,6 +70,7 @@ export default function AdminBlogClient({ initialBlogs }) {
     setError('');
     
     const formData = new FormData(e.target);
+    formData.set('content', editorContent);
     const result = await createBlog(formData);
     
     if (result.success) {
@@ -36,6 +89,7 @@ export default function AdminBlogClient({ initialBlogs }) {
     setError('');
     
     const formData = new FormData(e.target);
+    formData.set('content', editorContent);
     const result = await updateBlog(currentBlog.id, formData);
     
     if (result.success) {
@@ -153,12 +207,12 @@ export default function AdminBlogClient({ initialBlogs }) {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#334155', textTransform: 'uppercase' }}>Article Title</label>
-            <input type="text" name="title" defaultValue={currentBlog?.title || ''} required placeholder="Enter an engaging title..." style={{ padding: '12px 16px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '1rem', color: '#0f172a', outline: 'none', transition: 'border 0.2s' }} />
+            <input type="text" name="title" value={title} onChange={handleTitleChange} required placeholder="Enter an engaging title..." style={{ padding: '12px 16px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '1rem', color: '#0f172a', outline: 'none', transition: 'border 0.2s' }} />
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#334155', textTransform: 'uppercase' }}>URL Slug</label>
-            <input type="text" name="slug" defaultValue={currentBlog?.slug || ''} placeholder="auto-generated-if-empty" style={{ padding: '12px 16px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '0.95rem', color: '#0f172a', outline: 'none' }} />
+            <input type="text" name="slug" value={slug} onChange={(e) => setSlug(e.target.value)} placeholder="auto-generated-if-empty" style={{ padding: '12px 16px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '0.95rem', color: '#0f172a', outline: 'none' }} />
           </div>
         </div>
         
@@ -175,12 +229,22 @@ export default function AdminBlogClient({ initialBlogs }) {
           <textarea name="excerpt" defaultValue={currentBlog?.excerpt || ''} rows="2" placeholder="A brief summary for SEO and the blog index page..." style={{ padding: '12px 16px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '0.95rem', color: '#0f172a', outline: 'none', resize: 'vertical' }} />
         </div>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', position: 'relative' }}>
           <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#334155', textTransform: 'uppercase', display: 'flex', justifyContent: 'space-between' }}>
-            <span>Full Content (HTML)</span>
-            <span style={{ color: '#94a3b8', textTransform: 'none', fontWeight: 500 }}>Supports &lt;h2&gt;, &lt;p&gt;, &lt;strong&gt;, etc.</span>
+            <span>Advanced Content Editor</span>
+            <span style={{ color: '#94a3b8', textTransform: 'none', fontWeight: 500 }}>Format headings, lists, and links</span>
           </label>
-          <textarea name="content" defaultValue={currentBlog?.content || ''} rows="15" required placeholder="<h2>Start writing your professional article...</h2>" style={{ padding: '16px', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '0.95rem', color: '#0f172a', outline: 'none', resize: 'vertical', fontFamily: 'monospace', lineHeight: 1.6 }} />
+          <div style={{ border: '1px solid #cbd5e1', borderRadius: '6px', overflow: 'hidden' }}>
+            <ReactQuill 
+              theme="snow" 
+              value={editorContent} 
+              onChange={setEditorContent} 
+              modules={modules}
+              formats={formats}
+              style={{ minHeight: '350px', background: '#fff' }}
+            />
+          </div>
+          <input type="hidden" name="content" value={editorContent} />
         </div>
         
         <div style={{ display: 'flex', gap: '15px', marginTop: '10px', paddingTop: '20px', borderTop: '1px solid #e2e8f0' }}>

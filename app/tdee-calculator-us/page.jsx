@@ -5,7 +5,10 @@ export const metadata = {
   title: 'TDEE Calculator USA — Daily Calories in Pounds & Inches | TDEE.TECH',
   description:
     'Free TDEE calculator for US users. Calculate maintenance calories, BMR, BMI, and macros in pounds and inches. Science-backed Mifflin-St Jeor formula. No signup required.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-us' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-us',
+    languages: { 'en-US': 'https://tdee.tech/tdee-calculator-us' },
+  },
   openGraph: {
     title: 'TDEE Calculator USA — Daily Calories in Pounds & Inches',
     description:

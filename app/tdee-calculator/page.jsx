@@ -2,12 +2,12 @@ import React, { Suspense } from 'react';
 import Component from './ClientComponent';
 
 export const metadata = {
-  title: 'TDEE Calculator — Free & Accurate Total Daily Energy Expenditure',
+  title: 'Free TDEE Calculator – Accurate & Instant | TDEE.TECH',
   description:
     'Calculate your Total Daily Energy Expenditure (TDEE) instantly. Uses the Mifflin-St Jeor equation. Get your BMR, BMI, maintenance calories, and macro targets. 100% free.',
   alternates: { canonical: 'https://tdee.tech/tdee-calculator' },
   openGraph: {
-    title: 'TDEE Calculator — Free & Accurate Total Daily Energy Expenditure',
+    title: 'Free TDEE Calculator – Accurate & Instant | TDEE.TECH',
     description:
       'Calculate your Total Daily Energy Expenditure (TDEE) instantly. Uses the Mifflin-St Jeor equation. Get your BMR, BMI, maintenance calories, and macro targets. 100% free.',
     url: 'https://tdee.tech/tdee-calculator',

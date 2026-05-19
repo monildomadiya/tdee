@@ -14,7 +14,7 @@ export const About = () => (
   <PageWrapper title="About TDEE.TECH">
 
     <p style={{ fontSize:'1.1rem', color:'var(--text-2)', marginBottom:'2rem', lineHeight:1.8 }}>
-      TDEE.TECH is a free, evidence-based fitness calculator platform built by developers and nutrition researchers who believe clinical-grade health science should be accessible to everyone — no paywall, no signup, no personal data collection.
+      TDEE.TECH is a free, evidence-based fitness calculator platform built by developers and nutrition researchers who believe science-backed health research should be accessible to everyone — no paywall, no signup, no personal data collection.
     </p>
 
     <h2 style={{ marginTop:0 }}>Our Mission</h2>

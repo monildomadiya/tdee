@@ -5,7 +5,10 @@ export const metadata = {
   title: 'TDEE Calculator Canada — Daily Calories in kg or lbs | TDEE.TECH',
   description:
     'Free TDEE calculator for Canadians. Calculate maintenance calories in metric or imperial. Get BMR, BMI, and macros aligned with Health Canada guidelines. No signup required.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-canada' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-canada',
+    languages: { 'en-CA': 'https://tdee.tech/tdee-calculator-canada' },
+  },
   openGraph: {
     title: 'TDEE Calculator Canada — Daily Calories in kg or lbs',
     description:

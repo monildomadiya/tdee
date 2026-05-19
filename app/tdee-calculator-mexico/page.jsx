@@ -5,7 +5,10 @@ export const metadata = {
   title: 'Calculadora TDEE México — Calorías Diarias Gratis | TDEE.TECH',
   description:
     'Calculadora TDEE gratuita para México. Calcula tus calorías de mantenimiento, BMR, IMC y macros en sistema métrico. Ideal para perder peso o ganar músculo. Sin registro.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-mexico' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-mexico',
+    languages: { 'es-MX': 'https://tdee.tech/tdee-calculator-mexico' },
+  },
   openGraph: {
     title: 'Calculadora TDEE México — Calorías Diarias Gratis',
     description:

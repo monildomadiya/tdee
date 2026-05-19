@@ -5,7 +5,10 @@ export const metadata = {
   title: 'TDEE Calculator UK — Daily Calories in Stone, kg or lbs | TDEE.TECH',
   description:
     'Free TDEE calculator for UK users. Calculate your maintenance calories in stone, kg, or lbs. Get BMR, BMI, and macros aligned with NHS-informed deficit recommendations. No signup required.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-uk' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-uk',
+    languages: { 'en-GB': 'https://tdee.tech/tdee-calculator-uk' },
+  },
   openGraph: {
     title: 'TDEE Calculator UK — Daily Calories in Stone, kg or lbs',
     description:

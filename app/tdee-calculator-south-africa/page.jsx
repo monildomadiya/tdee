@@ -5,7 +5,10 @@ export const metadata = {
   title: 'TDEE Calculator South Africa — Free Daily Calories & Macros | TDEE.TECH',
   description:
     'Free TDEE calculator for South Africa. Calculate your maintenance calories, BMR, BMI, and macros in metric units. Trusted by South African fitness enthusiasts in Johannesburg, Cape Town, and Durban. No signup.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-south-africa' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-south-africa',
+    languages: { 'en-ZA': 'https://tdee.tech/tdee-calculator-south-africa' },
+  },
   openGraph: {
     title: 'TDEE Calculator South Africa — Free Daily Calories & Macros',
     description:

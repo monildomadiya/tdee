@@ -53,8 +53,6 @@ export const TOOL_CATEGORIES = {
       { path: '/pace-calculator',          name: 'Pace Calculator',              short: 'Pace',        desc: 'Running pace and speed.' },
       { path: '/one-rep-max-calculator',   name: 'One Rep Max Calculator',       short: '1RM',         desc: 'Estimate your 1RM for strength training.' },
       { path: '/target-heart-rate-calculator', name: 'Target Heart Rate Calculator', short: 'Heart Rate', desc: 'Optimal heart rate zones.' },
-      { path: '/gfr-calculator',           name: 'GFR Calculator',               short: 'GFR',         desc: 'Glomerular Filtration Rate.' },
-      { path: '/bac-calculator',           name: 'BAC Calculator',               short: 'BAC',         desc: 'Blood Alcohol Content estimation.' },
       { path: '/intermittent-fasting-calculator', name: 'Intermittent Fasting Calculator', short: 'IF Calc', desc: 'Track fasting and eating windows.', isNew: true },
       { path: '/sleep-calculator',          name: 'Sleep Calculator',              short: 'Sleep',       desc: 'Best sleep & wake times by sleep cycle.', isNew: true },
       { path: '/vo2-max-calculator',        name: 'VO2 Max Calculator',            short: 'VO2 Max',     desc: 'Estimate your maximal aerobic fitness.', isNew: true },
@@ -69,6 +67,17 @@ export const TOOL_CATEGORIES = {
     tools: [
       { path: '/waist-to-hip-ratio-calculator', name: 'Waist-to-Hip Ratio Calculator', short: 'WHR',      desc: 'WHO cardiovascular health risk assessment.', isNew: true },
       { path: '/creatine-calculator',      name: 'Creatine Calculator',          short: 'Creatine',    desc: 'Loading & maintenance dose for your weight.', isNew: true },
+    ],
+  },
+  health: {
+    id: 'health',
+    label: 'General Health',
+    color: '#dc2626',
+    bg: '#fef2f2',
+    border: '#fecaca',
+    tools: [
+      { path: '/gfr-calculator',           name: 'GFR Calculator',               short: 'GFR',         desc: 'Glomerular Filtration Rate for kidney health.' },
+      { path: '/bac-calculator',           name: 'BAC Calculator',               short: 'BAC',         desc: 'Blood Alcohol Content estimation.' },
     ],
   },
   pregnancy: {

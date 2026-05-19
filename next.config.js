@@ -9,6 +9,22 @@ const nextConfig = {
   // Remove X-Powered-By header
   poweredByHeader: false,
 
+  // 301 redirects for consistent URL slugs (FIX 4)
+  async redirects() {
+    return [
+      {
+        source: '/calorie-deficit-calculator',
+        destination: '/calorie-deficit',
+        permanent: true,
+      },
+      {
+        source: '/ideal-weight-calculator',
+        destination: '/ideal-weight',
+        permanent: true,
+      },
+    ];
+  },
+
   // Security + SEO headers
   async headers() {
     return [

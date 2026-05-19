@@ -5,7 +5,10 @@ export const metadata = {
   title: 'TDEE Calculator Australia — Daily Calories in kg | TDEE.TECH',
   description:
     'Free TDEE calculator for Australians. Calculate maintenance calories, BMR, BMI, and macros in metric units. Aligned with Australian Dietary Guidelines. No signup required.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-australia' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-australia',
+    languages: { 'en-AU': 'https://tdee.tech/tdee-calculator-australia' },
+  },
   openGraph: {
     title: 'TDEE Calculator Australia — Daily Calories in kg',
     description:

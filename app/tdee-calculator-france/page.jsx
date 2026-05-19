@@ -5,7 +5,10 @@ export const metadata = {
   title: 'Calculateur TDEE France — Calories Journalières Gratuites | TDEE.TECH',
   description:
     'Calculateur TDEE gratuit pour la France. Calculez vos calories de maintenance, BMR, IMC et macros en unités métriques. Formule Mifflin-St Jeor validée scientifiquement. Sans inscription.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-france' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-france',
+    languages: { 'fr-FR': 'https://tdee.tech/tdee-calculator-france' },
+  },
   openGraph: {
     title: 'Calculateur TDEE France — Calories Journalières Gratuites',
     description:

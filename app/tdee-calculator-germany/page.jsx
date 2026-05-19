@@ -5,7 +5,10 @@ export const metadata = {
   title: 'TDEE Rechner — Tageskalorienbedarf berechnen kostenlos | TDEE.TECH',
   description:
     'Kostenloser TDEE Rechner für Deutschland. Berechne deinen Tageskalorienbedarf, BMR, BMI und Makros in metrischen Einheiten (kg, cm). Wissenschaftlich basiert auf der Mifflin-St Jeor Formel.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-germany' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-germany',
+    languages: { 'de-DE': 'https://tdee.tech/tdee-calculator-germany' },
+  },
   openGraph: {
     title: 'TDEE Rechner — Tageskalorienbedarf berechnen kostenlos',
     description:

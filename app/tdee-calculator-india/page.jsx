@@ -5,7 +5,10 @@ export const metadata = {
   title: 'TDEE Calculator for India — Free Daily Calorie Tool | TDEE.TECH',
   description:
     'Free TDEE calculator for India. Calculate your daily calorie needs in metric units (kg, cm) — perfect for Indian diet planning. Based on the Mifflin-St Jeor equation. No signup.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-india' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-india',
+    languages: { 'en-IN': 'https://tdee.tech/tdee-calculator-india' },
+  },
   openGraph: {
     title: 'TDEE Calculator for India — Free Daily Calorie Tool',
     description:

@@ -5,7 +5,10 @@ export const metadata = {
   title: 'TDEE Calculator Philippines — Free Calorie Tool for Filipinos | TDEE.TECH',
   description:
     'Free TDEE calculator for the Philippines. Calculate your daily calorie needs in metric units (kg, cm). Perfect for Filipino diet and fitness planning. No registration required.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-philippines' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-philippines',
+    languages: { 'en-PH': 'https://tdee.tech/tdee-calculator-philippines' },
+  },
   openGraph: {
     title: 'TDEE Calculator Philippines — Free Calorie Tool for Filipinos',
     description:

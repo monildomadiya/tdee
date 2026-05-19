@@ -41,6 +41,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@tdeetech',
+    creator: '@tdeetech',
     title: 'Free Fitness & Calorie Calculators | TDEE.TECH',
     description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. Calculate TDEE, BMR, BMI, macros, body fat, and more.',
     images: ['/og-image.png'],

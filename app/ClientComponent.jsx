@@ -11,7 +11,7 @@ const Home = () => {
         {/* UTILITY HEADER */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h1 style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--text)', margin: '0 0 12px 0', letterSpacing: '-0.02em' }}>
-            Free Fitness & Health Calculators
+            Free TDEE Calculator &amp; Fitness Tools
           </h1>
           <p style={{ fontSize: '1.1rem', color: 'var(--text-2)', margin: '0 auto', maxWidth: '700px', lineHeight: 1.6 }}>
             Accurate, instantaneous, and completely free health tools. Calculate your Total Daily Energy Expenditure (TDEE), BMI, BMR, and optimal macronutrients without registration.
@@ -68,7 +68,7 @@ const Home = () => {
 
         {/* SEO TEXT BLOCK AT BOTTOM (ConvertCase style) */}
         <div style={{ marginTop: '60px', padding: '30px', background: 'var(--card)', border: '1px solid var(--border)' }}>
-          <h2 style={{ fontSize: '1.2rem', color: 'var(--text)', marginTop: 0, marginBottom: '12px' }}>Why use our Clinical Fitness Tools?</h2>
+          <h2 style={{ fontSize: '1.2rem', color: 'var(--text)', marginTop: 0, marginBottom: '12px' }}>Why use our Science-Backed Fitness Tools?</h2>
           <p style={{ fontSize: '0.95rem', color: 'var(--text-2)', lineHeight: 1.7, marginBottom: '16px' }}>
             Most online calorie calculators use outdated or over-simplified formulas. TDEE.TECH implements the industry-standard <strong>Mifflin-St Jeor equation</strong> (widely considered the most accurate metabolic rate formula since 1990) alongside the <strong>Katch-McArdle formula</strong> for users who know their body fat percentage. 
           </p>

@@ -5,7 +5,10 @@ export const metadata = {
   title: 'TDEE Calculator New Zealand — Free Daily Calorie Tool for Kiwis | TDEE.TECH',
   description:
     'Free TDEE calculator for New Zealand. Calculate your maintenance calories, BMR, BMI, and macros in metric units. Trusted by Kiwis across Auckland, Wellington, and Christchurch. No signup.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-new-zealand' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-new-zealand',
+    languages: { 'en-NZ': 'https://tdee.tech/tdee-calculator-new-zealand' },
+  },
   openGraph: {
     title: 'TDEE Calculator New Zealand — Free Daily Calorie Tool for Kiwis',
     description:

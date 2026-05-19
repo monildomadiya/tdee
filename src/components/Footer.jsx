@@ -37,7 +37,7 @@ const Footer = () => (
           <div style={{ maxWidth: '500px' }}>
             <img src="/tdee-logo.svg" alt="TDEE Calculator" height="32" style={{ marginBottom: '16px', filter: 'brightness(0) invert(1)' }} />
             <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.7, margin: '0 0 20px 0' }}>
-              TDEE.TECH provides clinical-grade fitness and nutrition calculators completely free. Science-backed formulas (Mifflin-St Jeor, Katch-McArdle) with no registration required.
+              TDEE.TECH provides science-backed fitness and nutrition calculators completely free. Science-backed formulas (Mifflin-St Jeor, Katch-McArdle) with no registration required.
             </p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               {['US', 'UK', 'CA', 'AU', 'DE', 'IN'].map(c => (
@@ -91,16 +91,21 @@ const Footer = () => (
             <FooterLink href="/guess-calories-game">Guess the Calories Game <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
           </FooterSection>
 
-          {/* Weight Management */}
-          <FooterSection title="Weight & Fitness">
+          <FooterSection title="Weight &amp; Fitness">
             <FooterLink href="/weight-loss-timeline">Weight Loss Timeline</FooterLink>
             <FooterLink href="/calories-burned-calculator">Calories Burned</FooterLink>
             <FooterLink href="/pace-calculator">Pace Calculator</FooterLink>
             <FooterLink href="/one-rep-max-calculator">One Rep Max (1RM)</FooterLink>
             <FooterLink href="/target-heart-rate-calculator">Target Heart Rate</FooterLink>
+            <FooterLink href="/intermittent-fasting-calculator">Intermittent Fasting <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
+          </FooterSection>
+
+          {/* General Health */}
+          <FooterSection title="General Health">
             <FooterLink href="/gfr-calculator">GFR Calculator</FooterLink>
             <FooterLink href="/bac-calculator">BAC Calculator</FooterLink>
-            <FooterLink href="/intermittent-fasting-calculator">Intermittent Fasting <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
+            <FooterLink href="/sleep-calculator">Sleep Calculator <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
+            <FooterLink href="/vo2-max-calculator">VO2 Max Calculator <span style={{ color: 'var(--red)', fontSize: '0.65rem', fontWeight: 800, marginLeft: '4px' }}>NEW!</span></FooterLink>
           </FooterSection>
 
           {/* Women's Health */}

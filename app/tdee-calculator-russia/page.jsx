@@ -5,7 +5,10 @@ export const metadata = {
   title: 'Калькулятор TDEE — Расчёт Суточных Калорий | TDEE.TECH',
   description:
     'Бесплатный калькулятор TDEE для России. Рассчитайте суточную норму калорий (ккал), BMR, ИМТ и макронутриенты по формуле Миффлина–Сан Жеора. Без регистрации.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator-russia' },
+  alternates: {
+    canonical: 'https://tdee.tech/tdee-calculator-russia',
+    languages: { 'ru-RU': 'https://tdee.tech/tdee-calculator-russia' },
+  },
   openGraph: {
     title: 'Калькулятор TDEE — Расчёт Суточных Калорий',
     description:

@@ -40,7 +40,7 @@ const Footer = () => (
               TDEE.TECH provides clinical-grade fitness and nutrition calculators completely free. Science-backed formulas (Mifflin-St Jeor, Katch-McArdle) with no registration required.
             </p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {['🇺🇸 US', '🇬🇧 UK', '🇨🇦 CA', '🇦🇺 AU', '🇩🇪 DE', '🇮🇳 IN'].map(c => (
+              {['US', 'UK', 'CA', 'AU', 'DE', 'IN'].map(c => (
                 <span key={c} style={{ fontSize: '0.75rem', fontWeight: 700, padding: '4px 10px', border: '1px solid #334155', color: '#94a3b8', background: 'transparent' }}>
                   {c}
                 </span>
@@ -49,7 +49,7 @@ const Footer = () => (
           </div>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <Link href="/tdee-calculator" style={{ background: '#16a34a', color: '#fff', padding: '12px 24px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none', display: 'inline-block' }}>
-              🔥 TDEE Calculator
+              TDEE Calculator
             </Link>
             <Link href="/bmi-calculator" style={{ background: 'transparent', color: '#94a3b8', padding: '12px 24px', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none', display: 'inline-block', border: '1px solid #334155' }}>
               BMI Calculator
@@ -135,10 +135,25 @@ const Footer = () => (
             <FooterLink href="/about">About Us</FooterLink>
             <FooterLink href="/contact">Contact Support</FooterLink>
             <FooterLink href="/blog">Blog / Articles</FooterLink>
-            
             <FooterLink href="/privacy">Privacy Policy</FooterLink>
             <FooterLink href="/terms">Terms of Service</FooterLink>
             <FooterLink href="/disclaimer">Medical Disclaimer</FooterLink>
+          </FooterSection>
+
+          {/* Partner Tools */}
+          <FooterSection title="Partner Tools">
+            <li style={{ marginBottom: '10px' }}>
+              <a 
+                href="https://bruttonettocalculator.com/" 
+                target="_blank" 
+                rel="noopener"
+                style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.15s' }}
+                onMouseOver={e => e.currentTarget.style.color = '#0f172a'}
+                onMouseOut={e => e.currentTarget.style.color = '#64748b'}
+              >
+                Brutto Netto Calculator
+              </a>
+            </li>
           </FooterSection>
 
         </div>
@@ -146,7 +161,7 @@ const Footer = () => (
         {/* MEDICAL DISCLAIMER */}
         <div style={{ background: '#fff3cd', border: '1px solid #fde68a', padding: '16px 20px', marginBottom: '30px' }}>
           <p style={{ fontSize: '0.82rem', color: '#92400e', lineHeight: 1.7, margin: 0 }}>
-            <strong>⚠️ Medical Disclaimer:</strong> All tools on TDEE.TECH are for <strong>educational and informational purposes only</strong> and are not a substitute for professional medical advice, diagnosis, or treatment. Results are estimates based on validated formulas (Mifflin-St Jeor, Katch-McArdle). Always consult a qualified healthcare provider before making significant changes to your diet, exercise, or nutrition plan.
+            <strong>Important Medical Disclaimer:</strong> All tools on TDEE.TECH are for <strong>educational and informational purposes only</strong> and are not a substitute for professional medical advice, diagnosis, or treatment. Results are estimates based on validated formulas (Mifflin-St Jeor, Katch-McArdle). Always consult a qualified healthcare provider before making significant changes to your diet, exercise, or nutrition plan.
           </p>
         </div>
 

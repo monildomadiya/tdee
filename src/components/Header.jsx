@@ -388,7 +388,7 @@ const Header = () => {
       {/* Mobile Navigation Panel */}
       <nav className={`mobile-nav-panel ${open ? 'open' : ''}`} aria-label="Mobile navigation">
         <Link href="/" className="mobile-home-link" onClick={() => setOpen(false)}>
-          🏠 Home
+          Home
         </Link>
 
 
@@ -409,13 +409,13 @@ const Header = () => {
         ))}
 
         <Link href="/blog" className="mobile-home-link" onClick={() => setOpen(false)}>
-          📝 Blog
+          Blog
         </Link>
 
         {/* Bottom bar with dark mode toggle */}
         <div className="mobile-bottom-bar">
           <span style={{ fontSize: '0.9rem', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569' }}>
-            {isDark ? '🌙 Dark Mode' : '☀️ Light Mode'}
+            {isDark ? 'Dark Mode' : 'Light Mode'}
           </span>
           <div
             onClick={() => setIsDark(!isDark)}

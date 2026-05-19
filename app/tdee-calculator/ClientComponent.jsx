@@ -187,7 +187,7 @@ const TDEE = () => {
 
   const copyResult = () => {
     if (!result) return;
-    const t = `🔥 My TDEE Results from tdee.tech\n\nMaintenance: ${result.tdee.toLocaleString()} kcal/day\nBMR: ${result.bmr.toLocaleString()} kcal\nBMI: ${result.bmi} (${result.bmiCat})\n\nGoal Targets:\n  Fat Loss (-500): ${(result.tdee-500).toLocaleString()} kcal\n  Lean Bulk (+300): ${(result.tdee+300).toLocaleString()} kcal\n\nMacros (Balanced):\n  Protein: ${result.maintenance.macros.mod.p}g\n  Carbs: ${result.maintenance.macros.mod.c}g\n  Fat: ${result.maintenance.macros.mod.f}g\n\nFormula: ${result.formula} | tdee.tech`;
+    const t = `My TDEE Results from tdee.tech\n\nMaintenance: ${result.tdee.toLocaleString()} kcal/day\nBMR: ${result.bmr.toLocaleString()} kcal\nBMI: ${result.bmi} (${result.bmiCat})\n\nGoal Targets:\n  Fat Loss (-500): ${(result.tdee-500).toLocaleString()} kcal\n  Lean Bulk (+300): ${(result.tdee+300).toLocaleString()} kcal\n\nMacros (Balanced):\n  Protein: ${result.maintenance.macros.mod.p}g\n  Carbs: ${result.maintenance.macros.mod.c}g\n  Fat: ${result.maintenance.macros.mod.f}g\n\nFormula: ${result.formula} | tdee.tech`;
     navigator.clipboard.writeText(t).then(()=>{ setCopied(true); setTimeout(()=>setCopied(false),2500); });
   };
 
@@ -300,7 +300,7 @@ const TDEE = () => {
 
                 {error && (
                   <p role="alert" style={{ color:'var(--red-text)', background:'var(--red-light)', padding:'10px 14px', borderRadius:'var(--r-sm)', fontSize:'.9rem', marginBottom:'1rem' }}>
-                    ⚠ {error}
+                    {error}
                   </p>
                 )}
 
@@ -358,11 +358,11 @@ const TDEE = () => {
                         </thead>
                         <tbody>
                           {[
-                            { label:'🔥 Aggressive Cut',  delta:-1000, color:'#dc2626', bg:'#fef2f2',  rate:'~1 kg/wk loss' },
-                            { label:'✂️ Mild Cut',         delta:-500,  color:'#ea580c', bg:'#fff7ed',  rate:'~0.5 kg/wk loss' },
-                            { label:'⚖️ Maintenance',      delta:0,     color:'#0d9488', bg:'var(--green-light)', rate:'Stable weight' },
-                            { label:'💪 Mild Bulk',        delta:300,   color:'#1d4ed8', bg:'#eff6ff',  rate:'~0.3 kg/wk gain' },
-                            { label:'🚀 Aggressive Bulk',  delta:500,   color:'#7c3aed', bg:'#faf5ff',  rate:'~0.5 kg/wk gain' },
+                            { label:'Aggressive Cut',  delta:-1000, color:'#dc2626', bg:'#fef2f2',  rate:'~1 kg/wk loss' },
+                            { label:'Mild Cut',         delta:-500,  color:'#ea580c', bg:'#fff7ed',  rate:'~0.5 kg/wk loss' },
+                            { label:'Maintenance',      delta:0,     color:'#0d9488', bg:'var(--green-light)', rate:'Stable weight' },
+                            { label:'Mild Bulk',        delta:300,   color:'#1d4ed8', bg:'#eff6ff',  rate:'~0.3 kg/wk gain' },
+                            { label:'Aggressive Bulk',  delta:500,   color:'#7c3aed', bg:'#faf5ff',  rate:'~0.5 kg/wk gain' },
                           ].map(({ label, delta, color, bg, rate }) => (
                             <tr key={label} style={{ borderBottom:'1px solid var(--border)', background: delta===0 ? bg : 'transparent' }}>
                               <td style={{ padding:'7px 8px', fontWeight:700, color, fontSize:'.79rem' }}>{label}</td>
@@ -510,10 +510,10 @@ const TDEE = () => {
           <p>Once you know your TDEE, the next step is choosing a goal. Here is exactly what to eat based on each objective:</p>
           <div style={{ display:'grid', gap:'1rem', margin:'1.5rem 0' }}>
             {[
-              { goal:'⚖️ Maintain Weight',  target:'Eat = TDEE',       detail:'Consume exactly your TDEE in calories each day. Your weight will remain stable over time. Ideal during a body recomposition phase.', color:'var(--teal-text)' },
-              { goal:'🔥 Lose Fat',          target:'Eat TDEE − 300 to 500 cal', detail:'A 500 cal/day deficit = ~0.45 kg (1 lb) fat loss per week. A 300 cal deficit is gentler but more sustainable long-term. Never go below your BMR.', color:'var(--red-text)' },
-              { goal:'💪 Lean Bulk',         target:'Eat TDEE + 200 to 300 cal', detail:'A small surplus ("lean bulk") of 200–300 cal/day maximises muscle gain while minimising fat accumulation. Patience is required — muscle grows slowly.', color:'var(--blue-text)' },
-              { goal:'🚀 Aggressive Bulk',   target:'Eat TDEE + 500 cal', detail:'A 500 cal surplus accelerates muscle gain but will also add some body fat. Best for beginners or those returning to training after a long break.', color:'var(--purple-text)' },
+              { goal:'Maintain Weight',  target:'Eat = TDEE',       detail:'Consume exactly your TDEE in calories each day. Your weight will remain stable over time. Ideal during a body recomposition phase.', color:'var(--teal-text)' },
+              { goal:'Lose Fat',          target:'Eat TDEE − 300 to 500 cal', detail:'A 500 cal/day deficit = ~0.45 kg (1 lb) fat loss per week. A 300 cal deficit is gentler but more sustainable long-term. Never go below your BMR.', color:'var(--red-text)' },
+              { goal:'Lean Bulk',         target:'Eat TDEE + 200 to 300 cal', detail:'A small surplus ("lean bulk") of 200–300 cal/day maximises muscle gain while minimising fat accumulation. Patience is required — muscle grows slowly.', color:'var(--blue-text)' },
+              { goal:'Aggressive Bulk',   target:'Eat TDEE + 500 cal', detail:'A 500 cal surplus accelerates muscle gain but will also add some body fat. Best for beginners or those returning to training after a long break.', color:'var(--purple-text)' },
             ].map(({ goal, target, detail, color }, i) => (
               <div key={i} style={{ background:'var(--card)', border:`1px solid var(--border)`, borderLeft:`4px solid ${color}`, borderRadius:'0', padding:'1.25rem 1.5rem' }}>
                 <div style={{ fontWeight:700, fontSize:'1.05rem', marginBottom:'.25rem' }}>{goal}</div>
@@ -560,7 +560,7 @@ const TDEE = () => {
           {/* Disclaimer */}
           <div className="disclaimer-box">
             <p>
-              <strong>⚠ Medical Disclaimer:</strong> The results from this TDEE calculator are estimates intended for educational and informational purposes only. They are not a substitute for professional medical or nutritional advice, diagnosis, or treatment. Individual calorie needs vary based on medical history, medications, and other factors not captured by any formula. Always consult a qualified healthcare provider or registered dietitian before making significant changes to your diet or exercise routine.
+              <strong>Important Medical Disclaimer:</strong> The results from this TDEE calculator are estimates intended for educational and informational purposes only. They are not a substitute for professional medical or nutritional advice, diagnosis, or treatment. Individual calorie needs vary based on medical history, medications, and other factors not captured by any formula. Always consult a qualified healthcare provider or registered dietitian before making significant changes to your diet or exercise routine.
             </p>
           </div>
         </div>

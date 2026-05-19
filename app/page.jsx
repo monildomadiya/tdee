@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import Component from './ClientComponent';
 import RecentBlogs from '../src/components/RecentBlogs';
+import JsonLd from '../src/components/JsonLd';
 
 export const metadata = {
   title: 'Free Fitness & Calorie Calculators | TDEE.TECH',
@@ -21,41 +22,22 @@ export const metadata = {
   },
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'What is a TDEE Calculator?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'A TDEE (Total Daily Energy Expenditure) Calculator is a tool that estimates the total number of calories you burn in a day, taking into account your basal metabolic rate (BMR) and your activity level. It tells you your maintenance calories.'
-      }
-    },
-    {
-      '@type': 'Question',
-      name: 'How do you calculate Total Daily Energy Expenditure?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'TDEE is calculated by first determining your Basal Metabolic Rate (BMR) using equations like the Mifflin-St Jeor formula, and then multiplying that number by an activity multiplier (ranging from 1.2 for sedentary to 1.9 for highly active).'
-      }
-    },
-    {
-      '@type': 'Question',
-      name: 'Is the TDEE Calculator accurate?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes, our TDEE Calculator uses the clinical Mifflin-St Jeor equation, which is considered the gold standard and the most accurate formula by the Academy of Nutrition and Dietetics.'
-      }
-    }
-  ]
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "TDEE.TECH",
+  "url": "https://tdee.tech",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "description": "Free fitness and nutrition calculators including TDEE, BMR, BMI, and macros.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 };
 
 export default function Page() {
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+    <section>
+      <JsonLd schema={webAppSchema} />
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center text-slate-900 my-8">Free TDEE & Fitness Calculator</h1>
       <Suspense fallback={null}>
         <Component />
       </Suspense>
@@ -63,6 +45,6 @@ export default function Page() {
       <Suspense fallback={null}>
         <RecentBlogs />
       </Suspense>
-    </>
+    </section>
   );
 }

@@ -144,7 +144,8 @@ const Header = () => {
           className="container"
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr auto 1fr',
+            gridTemplateColumns: 'auto 1fr auto',
+            gap: '15px',
             alignItems: 'center',
             height: '60px'
           }}

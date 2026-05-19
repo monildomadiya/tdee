@@ -82,24 +82,24 @@ export default function ToolPageHeader() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      <div style={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '12px 0' }}>
+      <div style={{ background: 'var(--blue-light, #f8fafc)', borderBottom: '1px solid var(--border, #e2e8f0)', padding: '12px 0' }}>
         <div className="container">
           <nav aria-label="Breadcrumb">
-            <ol style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: '#64748b' }}>
+            <ol style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', fontSize: '0.85rem', color: 'var(--text-2)' }}>
               <li>
-                <Link href="/" style={{ color: '#0f172a', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
+                <Link href="/" style={{ color: 'var(--text)', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
               </li>
               <li>
-                <span style={{ color: '#94a3b8' }}>›</span>
+                <span style={{ color: 'var(--muted)' }}>›</span>
               </li>
               <li>
-                <span style={{ color: '#475569', fontWeight: 500 }}>{category.label}</span>
+                <span style={{ color: 'var(--text-2)', fontWeight: 500 }}>{category.label}</span>
               </li>
               <li>
-                <span style={{ color: '#94a3b8' }}>›</span>
+                <span style={{ color: 'var(--muted)' }}>›</span>
               </li>
               <li>
-                <span style={{ color: '#64748b' }} aria-current="page">{toolName}</span>
+                <span style={{ color: 'var(--text-2)' }} aria-current="page">{toolName}</span>
               </li>
             </ol>
           </nav>

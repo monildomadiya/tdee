@@ -3,6 +3,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createBlog, updateBlog, deleteBlog } from '../../src/actions/blogActions';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const Editor = dynamic(() => import('react-simple-wysiwyg'), { ssr: false });
 
 export default function AdminBlogClient({ initialBlogs }) {
   const [blogs, setBlogs] = useState(initialBlogs || []);
@@ -35,28 +38,6 @@ export default function AdminBlogClient({ initialBlogs }) {
       .replace(/\-\-+/g, '-')         // Replace multiple - with single -
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
-  };
-
-  const editorRef = useRef(null);
-
-  const insertTag = (tagOpen, tagClose = '') => {
-    if (!editorRef.current) return;
-    const textarea = editorRef.current;
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    const text = textarea.value;
-    const before = text.substring(0, start);
-    const selected = text.substring(start, end);
-    const after = text.substring(end);
-    
-    const newText = before + tagOpen + selected + tagClose + after;
-    setEditorContent(newText);
-    
-    // Reset focus and selection
-    setTimeout(() => {
-      textarea.focus();
-      textarea.setSelectionRange(start + tagOpen.length, start + tagOpen.length + selected.length);
-    }, 0);
   };
 
   const handleTitleChange = (e) => {
@@ -252,37 +233,17 @@ export default function AdminBlogClient({ initialBlogs }) {
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', position: 'relative' }}>
           <label style={{ fontSize: '0.85rem', fontWeight: 700, color: '#334155', textTransform: 'uppercase', display: 'flex', justifyContent: 'space-between' }}>
-            <span>Content Editor (HTML)</span>
-            <span style={{ color: '#94a3b8', textTransform: 'none', fontWeight: 500 }}>Use the toolbar to insert formatting</span>
+            <span>Advanced Content Editor</span>
+            <span style={{ color: '#94a3b8', textTransform: 'none', fontWeight: 500 }}>Rich text formatting</span>
           </label>
           <div style={{ border: '1px solid #cbd5e1', borderRadius: '6px', overflow: 'hidden', background: '#fff' }}>
-            
-            {/* Custom Toolbar */}
-            <div style={{ background: '#f8fafc', padding: '10px', borderBottom: '1px solid #cbd5e1', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-              <button type="button" onClick={() => insertTag('<h2>', '</h2>')} style={{ padding: '6px 12px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '4px', cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem' }}>H2</button>
-              <button type="button" onClick={() => insertTag('<h3>', '</h3>')} style={{ padding: '6px 12px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '4px', cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem' }}>H3</button>
-              <button type="button" onClick={() => insertTag('<p>', '</p>')} style={{ padding: '6px 12px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '4px', cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem' }}>P</button>
-              <div style={{ width: '1px', background: '#cbd5e1', margin: '0 4px' }}></div>
-              <button type="button" onClick={() => insertTag('<strong>', '</strong>')} style={{ padding: '6px 12px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '4px', cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem' }}>B</button>
-              <button type="button" onClick={() => insertTag('<em>', '</em>')} style={{ padding: '6px 12px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '4px', cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem', fontStyle: 'italic' }}>I</button>
-              <button type="button" onClick={() => insertTag('<u>', '</u>')} style={{ padding: '6px 12px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '4px', cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'underline' }}>U</button>
-              <div style={{ width: '1px', background: '#cbd5e1', margin: '0 4px' }}></div>
-              <button type="button" onClick={() => insertTag('<ul>\n  <li>', '</li>\n</ul>')} style={{ padding: '6px 12px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '4px', cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem' }}>List</button>
-              <button type="button" onClick={() => insertTag('<a href="URL_HERE">', '</a>')} style={{ padding: '6px 12px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '4px', cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem', color: '#2563eb' }}>Link</button>
-              <button type="button" onClick={() => insertTag('<img src="IMAGE_URL" alt="Description" />')} style={{ padding: '6px 12px', background: '#fff', border: '1px solid #cbd5e1', borderRadius: '4px', cursor: 'pointer', fontWeight: 700, fontSize: '0.85rem', color: '#16a34a' }}>Image</button>
-            </div>
-
-            <textarea 
-              ref={editorRef}
-              name="content" 
+            <Editor 
               value={editorContent} 
-              onChange={(e) => setEditorContent(e.target.value)}
-              rows="16" 
-              required 
-              placeholder="<h2>Write your engaging article here...</h2>" 
-              style={{ width: '100%', padding: '16px', border: 'none', fontSize: '0.95rem', color: '#0f172a', outline: 'none', resize: 'vertical', fontFamily: 'monospace', lineHeight: 1.6 }} 
+              onChange={(e) => setEditorContent(e.target.value)} 
+              containerProps={{ style: { minHeight: '400px' } }}
             />
           </div>
+          <input type="hidden" name="content" value={editorContent} />
         </div>
         
         <div style={{ display: 'flex', gap: '15px', marginTop: '10px', paddingTop: '20px', borderTop: '1px solid #e2e8f0' }}>

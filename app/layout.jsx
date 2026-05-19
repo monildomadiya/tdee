@@ -48,9 +48,6 @@ export const metadata = {
   alternates: {
     canonical: 'https://tdee.tech',
   },
-  verification: {
-    google: 'YOUR_REAL_GSC_TOKEN_HERE',
-  },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },

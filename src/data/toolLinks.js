@@ -56,6 +56,19 @@ export const TOOL_CATEGORIES = {
       { path: '/gfr-calculator',           name: 'GFR Calculator',               short: 'GFR',         desc: 'Glomerular Filtration Rate.' },
       { path: '/bac-calculator',           name: 'BAC Calculator',               short: 'BAC',         desc: 'Blood Alcohol Content estimation.' },
       { path: '/intermittent-fasting-calculator', name: 'Intermittent Fasting Calculator', short: 'IF Calc', desc: 'Track fasting and eating windows.', isNew: true },
+      { path: '/sleep-calculator',          name: 'Sleep Calculator',              short: 'Sleep',       desc: 'Best sleep & wake times by sleep cycle.', isNew: true },
+      { path: '/vo2-max-calculator',        name: 'VO2 Max Calculator',            short: 'VO2 Max',     desc: 'Estimate your maximal aerobic fitness.', isNew: true },
+    ],
+  },
+  body: {
+    id: 'body',
+    label: 'Body Composition',
+    color: '#0891b2',
+    bg: '#ecfeff',
+    border: '#a5f3fc',
+    tools: [
+      { path: '/waist-to-hip-ratio-calculator', name: 'Waist-to-Hip Ratio Calculator', short: 'WHR',      desc: 'WHO cardiovascular health risk assessment.', isNew: true },
+      { path: '/creatine-calculator',      name: 'Creatine Calculator',          short: 'Creatine',    desc: 'Loading & maintenance dose for your weight.', isNew: true },
     ],
   },
   pregnancy: {

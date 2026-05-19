@@ -40,6 +40,12 @@ export default async function sitemap() {
     { url: '/ovulation-calculator', priority: 0.7, changeFrequency: 'weekly' },
     { url: '/conception-calculator', priority: 0.6, changeFrequency: 'weekly' },
     { url: '/period-calculator', priority: 0.7, changeFrequency: 'weekly' },
+
+    // New low-competition tools
+    { url: '/sleep-calculator', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/waist-to-hip-ratio-calculator', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/creatine-calculator', priority: 0.8, changeFrequency: 'weekly' },
+    { url: '/vo2-max-calculator', priority: 0.8, changeFrequency: 'weekly' },
     
     // Top-tier countries specific routing for high SEO rank
     { url: '/tdee-calculator-us', priority: 0.9, changeFrequency: 'weekly' },

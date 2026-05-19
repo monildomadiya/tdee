@@ -10,10 +10,7 @@ export default async function AdminBlogPage() {
   const blogs = await getBlogs();
   
   return (
-    <div className="container" style={{ padding: '40px 20px' }}>
-      <h1>Blog Administration</h1>
-      <p style={{ color: 'var(--text-2)', marginBottom: '2rem' }}>Manage your SEO blog posts here.</p>
-      
+    <div style={{ padding: 0, margin: 0, width: '100%', height: '100%' }}>
       <AdminBlogClient initialBlogs={blogs} />
     </div>
   );

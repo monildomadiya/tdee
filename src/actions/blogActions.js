@@ -45,6 +45,7 @@ export async function createBlog(formData) {
     const title = formData.get('title');
     const content = formData.get('content');
     const excerpt = formData.get('excerpt');
+    const thumbnail_url = formData.get('thumbnail_url');
     let slug = formData.get('slug');
 
     if (!slug) {
@@ -52,8 +53,8 @@ export async function createBlog(formData) {
     }
 
     await pool.query(
-      'INSERT INTO blogs (title, slug, excerpt, content) VALUES (?, ?, ?, ?)',
-      [title, slug, excerpt, content]
+      'INSERT INTO blogs (title, slug, excerpt, thumbnail_url, content) VALUES (?, ?, ?, ?, ?)',
+      [title, slug, excerpt, thumbnail_url, content]
     );
 
     revalidatePath('/blog');
@@ -70,11 +71,12 @@ export async function updateBlog(id, formData) {
     const title = formData.get('title');
     const content = formData.get('content');
     const excerpt = formData.get('excerpt');
+    const thumbnail_url = formData.get('thumbnail_url');
     const slug = formData.get('slug');
 
     await pool.query(
-      'UPDATE blogs SET title = ?, slug = ?, excerpt = ?, content = ? WHERE id = ?',
-      [title, slug, excerpt, content, id]
+      'UPDATE blogs SET title = ?, slug = ?, excerpt = ?, thumbnail_url = ?, content = ? WHERE id = ?',
+      [title, slug, excerpt, thumbnail_url, content, id]
     );
 
     revalidatePath('/blog');

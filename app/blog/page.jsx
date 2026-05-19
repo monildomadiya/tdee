@@ -41,6 +41,11 @@ export default async function BlogListPage() {
             >
               <style>{`.blog-card-link:hover { border-color: var(--green) !important; }`}</style>
               <h2 style={{ fontSize: '1.25rem', marginTop: 0, marginBottom: '10px' }}>{blog.title}</h2>
+              {blog.thumbnail_url && (
+                <div style={{ width: '100%', aspectRatio: '1200/630', marginBottom: '15px', overflow: 'hidden', borderRadius: '4px', background: 'var(--bg)' }}>
+                  <img src={blog.thumbnail_url} alt={blog.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+              )}
               <div style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '15px', fontWeight: 600 }}>
                 {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </div>

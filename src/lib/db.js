@@ -20,6 +20,7 @@ export async function initDb() {
         title VARCHAR(255) NOT NULL,
         slug VARCHAR(255) NOT NULL UNIQUE,
         excerpt TEXT,
+        thumbnail_url VARCHAR(500),
         content LONGTEXT NOT NULL,
         author VARCHAR(100) DEFAULT 'Admin',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

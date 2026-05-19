@@ -7,10 +7,10 @@ import ScrollToTop from './ScrollToTop'
 export default function ClientWrapper({ children }) {
   const pathname = usePathname()
   
-  // If we are in the Sanity Studio, do NOT render the main website's Header or Footer!
-  if (pathname && pathname.startsWith('/studio')) {
+  // If we are in the Admin panel, do NOT render the main website's Header or Footer!
+  if (pathname && pathname.startsWith('/admin')) {
     return (
-      <main style={{ flex: 1, height: '100vh', overflow: 'hidden' }}>
+      <main style={{ flex: 1, minHeight: '100vh', background: '#f8fafc' }}>
         {children}
       </main>
     )

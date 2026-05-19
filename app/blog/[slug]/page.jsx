@@ -32,9 +32,14 @@ export default async function BlogPostPage({ params }) {
       <article className="article-section" style={{ padding: '0', border: 'none', background: 'transparent' }}>
         <header style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '1px solid var(--border)' }}>
           <h1 style={{ fontSize: '2.5rem', marginBottom: '10px', lineHeight: 1.2 }}>{blog.title}</h1>
-          <div style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600 }}>
+          <div style={{ color: 'var(--muted)', fontSize: '0.9rem', fontWeight: 600, marginBottom: blog.thumbnail_url ? '20px' : '0' }}>
             Published on {new Date(blog.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
           </div>
+          {blog.thumbnail_url && (
+            <div style={{ width: '100%', aspectRatio: '1200/630', overflow: 'hidden', borderRadius: '8px', background: 'var(--bg)' }}>
+              <img src={blog.thumbnail_url} alt={blog.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+          )}
         </header>
 
         <div 

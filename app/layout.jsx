@@ -5,11 +5,10 @@ import ClientWrapper from '../src/components/ClientWrapper';
 export const metadata = {
   metadataBase: new URL('https://tdee.tech'),
   title: {
-    default: 'TDEE Calculator – Free & Accurate | TDEE.TECH',
+    default: 'Free Fitness & Calorie Calculators | TDEE.TECH',
     template: '%s | TDEE.TECH',
   },
-  description: 'Calculate your TDEE, BMR, BMI, and macros instantly with the most accurate free fitness calculators online. Science-backed formulas, no signup required.',
-  keywords: ['TDEE calculator', 'BMR calculator', 'macro calculator', 'BMI calculator', 'calorie calculator', 'fitness calculator', 'weight loss calculator', 'intermittent fasting calculator', 'guess calories game'],
+  description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. Calculate TDEE, BMR, BMI, macros, body fat, and more. No signup required.',
   authors: [{ name: 'TDEE.TECH' }],
   creator: 'TDEE.TECH',
   publisher: 'TDEE.TECH',
@@ -29,8 +28,8 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://tdee.tech',
     siteName: 'TDEE.TECH',
-    title: 'TDEE Calculator – Free & Accurate | TDEE.TECH',
-    description: 'Calculate your TDEE, BMR, BMI, and macros instantly. Science-backed, 100% free, no signup.',
+    title: 'Free Fitness & Calorie Calculators | TDEE.TECH',
+    description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. Calculate TDEE, BMR, BMI, macros, body fat, and more. No signup required.',
     images: [
       {
         url: '/og-image.png',
@@ -42,15 +41,15 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TDEE Calculator – Free & Accurate | TDEE.TECH',
-    description: 'Calculate your TDEE, BMR, BMI & macros instantly. Science-backed tools, 100% free.',
+    title: 'Free Fitness & Calorie Calculators | TDEE.TECH',
+    description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. Calculate TDEE, BMR, BMI, macros, body fat, and more.',
     images: ['/og-image.png'],
   },
   alternates: {
     canonical: 'https://tdee.tech',
   },
   verification: {
-    google: 'your-google-verification-code',
+    google: 'YOUR_REAL_GSC_TOKEN_HERE',
   },
   icons: {
     icon: [

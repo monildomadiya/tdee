@@ -3,16 +3,21 @@ import Component from './ClientComponent';
 import RecentBlogs from '../src/components/RecentBlogs';
 
 export const metadata = {
-  title: 'TDEE Calculator: Total Daily Energy Expenditure (Free & Accurate)',
-  description: 'Use our free TDEE Calculator to find your Total Daily Energy Expenditure, maintenance calories, BMR, and macro split. Based on the accurate Mifflin-St Jeor equation.',
-  keywords: ['TDEE calculator', 'Total Daily Energy Expenditure', 'maintenance calories calculator', 'how many calories do I burn', 'BMR calculator', 'daily calorie burn calculator'],
+  title: 'Free Fitness & Calorie Calculators | TDEE.TECH',
+  description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. Calculate TDEE, BMR, BMI, macros, body fat, and more. No signup required.',
   alternates: { canonical: 'https://tdee.tech' },
   openGraph: {
-    title: 'TDEE Calculator: Total Daily Energy Expenditure',
-    description: 'Calculate your exact maintenance calories, BMR, and macro targets instantly. 100% free with no signup.',
+    title: 'Free Fitness & Calorie Calculators | TDEE.TECH',
+    description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. Calculate TDEE, BMR, BMI, macros, body fat, and more. No signup required.',
     url: 'https://tdee.tech',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TDEE Calculator' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TDEE.TECH – Free Fitness Calculators' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Fitness & Calorie Calculators | TDEE.TECH',
+    description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. No signup required.',
+    images: ['/og-image.png'],
   },
 };
 

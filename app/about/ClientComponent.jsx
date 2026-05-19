@@ -97,8 +97,6 @@ export const About = () => (
       <p style={{ margin:'.5rem 0 0', color:'var(--text-2)', fontSize:'.9rem' }}>All calculator inputs are processed 100% client-side in your browser using JavaScript. No data is ever sent to our servers. We use Google Analytics 4 for anonymous, aggregated traffic statistics (pages visited, session duration, country-level location) — this data cannot identify you individually.</p>
     </div>
 
-    <h2>Advertising</h2>
-    <p>TDEE.TECH displays advertisements through Google AdSense to support hosting and ongoing development. All ads are clearly separated from calculator results and editorial content. We comply fully with Google AdSense publisher policies and place ads only in non-intrusive positions.</p>
 
     <h2>Contact</h2>
     <p>Found an error in our calculations, have a feature request, or want to report a bug? Visit our <a href="/contact">Contact page</a> — we review every message and typically respond within 48 hours on business days.</p>
@@ -128,23 +126,18 @@ export const Privacy = () => (
     <h3>c) Visitor Counter (Firebase Realtime Database)</h3>
     <p>We maintain a daily counter of calculator uses via Firebase Realtime Database. This stores only: a date string (e.g., "2026-05-04") and an integer count. No personal information is associated with this counter.</p>
 
-    <h2>2. Google AdSense and Advertising</h2>
-    <p>We display advertisements on this website through <strong>Google AdSense</strong>. Google AdSense uses cookies and web beacons to serve ads based on your prior visits to this and other websites. This allows Google to display personalized advertisements.</p>
-    <p><strong>You can opt out of personalized advertising</strong> at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google's Ad Settings</a> or <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.</p>
-    <p>Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our site and/or other sites on the Internet. For more information, see <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google's Advertising Policies</a>.</p>
 
     <h2>3. Cookies</h2>
     <p>We do not set first-party cookies ourselves. The following third-party cookies may be present:</p>
     <ul>
       <li><strong>Google Analytics (_ga, _gid, _gat):</strong> Used to distinguish users and throttle request rate.</li>
-      <li><strong>Google AdSense (IDE, DSID, NID):</strong> Used to show personalized advertisements.</li>
     </ul>
-    <p>You can control cookies through your browser settings. Disabling cookies may affect ad personalization but will not impact the functionality of our calculators.</p>
+    <p>You can control cookies through your browser settings.</p>
 
     <h2>4. Third-Party Services</h2>
     <ul>
       <li><strong>Google Analytics:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-      <li><strong>Google AdSense:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+
       <li><strong>Firebase (Google):</strong> <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
       <li><strong>Google Fonts:</strong> Served from Google CDN — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
     </ul>
@@ -159,7 +152,7 @@ export const Privacy = () => (
       <li>Right to data portability</li>
       <li>Right to object to processing</li>
     </ul>
-    <p>Since we do not collect personal data through our calculators, there is no personal data stored on our servers to access or delete. For data held by Google Analytics or AdSense, please use <a href="https://myaccount.google.com" target="_blank" rel="noopener noreferrer">Google's Privacy Controls</a>.</p>
+    <p>Since we do not collect personal data through our calculators, there is no personal data stored on our servers to access or delete. For data held by Google Analytics, please use <a href="https://myaccount.google.com" target="_blank" rel="noopener noreferrer">Google's Privacy Controls</a>.</p>
 
     <h2>6. CCPA (California Users)</h2>
     <p>If you are a California resident, you have rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, the right to delete personal information, and the right to opt-out of the sale of personal information. We do not sell personal information.</p>
@@ -203,8 +196,6 @@ export const Terms = () => (
     <h2>5. Intellectual Property</h2>
     <p>All content on this website — including text, design, code, and graphics — is the property of TDEE.TECH and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written permission.</p>
 
-    <h2>6. Advertising</h2>
-    <p>This website displays third-party advertisements through Google AdSense. We are not responsible for the content of any advertisement. The display of advertisements does not constitute our endorsement of any advertised product or service.</p>
 
     <h2>7. Limitation of Liability</h2>
     <p>To the fullest extent permitted by law, TDEE.TECH shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of, or inability to use, this website or its calculator results.</p>
@@ -344,7 +335,7 @@ export const Contact = () => {
         <h3 style={{ marginTop: 0 }}>Common Questions</h3>
         <ul style={{ color: 'var(--text-muted)' }}>
           <li>For calculator accuracy questions, please include your inputs and expected vs. actual results.</li>
-          <li>For AdSense or advertising inquiries, reference your publisher ID.</li>
+
           <li>Our team is typically available Monday–Friday.</li>
         </ul>
       </div>

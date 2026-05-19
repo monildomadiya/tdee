@@ -11,10 +11,7 @@ const Sidebar = () => {
 
   return (
     <aside className="tool-sidebar">
-      {/* Future AdSense Placement */}
-      <div className="sidebar-ad-placeholder">
-        Advertisement
-      </div>
+
 
       {related.length > 0 && (
         <div className="sidebar-widget">

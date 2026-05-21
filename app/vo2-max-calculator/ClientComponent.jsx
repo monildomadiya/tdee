@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Sidebar from '../../src/components/Sidebar';
+import EmbedButton from '../../src/components/EmbedButton';
 
 // VO2 Max norms by age/gender (ml/kg/min)
 const VO2_NORMS = {
@@ -82,10 +83,13 @@ export default function VO2MaxCalculator() {
       <div className="container tool-layout-container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
         <div className="tool-main-content">
           <div className="calculator-card">
-            <div className="mac-header">
-              <div className="mac-dots"><span className="mac-dot red"></span><span className="mac-dot yellow"></span><span className="mac-dot green"></span></div>
-              <div className="mac-title">VO2 Max Estimator</div>
+            <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="mac-dots" style={{ display: 'none' }}></div>
+              <div className="mac-title" style={{ marginLeft: '12px' }}>VO2 Max Estimator</div>
             </div>
+            <EmbedButton slug="vo2-max-calculator" />
+          </div>
             <div className="calculator-card-body" style={{ padding: '2rem' }}>
               <div style={{ display: 'flex', gap: '10px', marginBottom: '1.5rem' }}>
                 <button type="button" onClick={() => { setMethod('pace'); setResult(null); }} style={{ flex: 1, padding: '10px', fontWeight: 700, fontSize: '0.9rem', background: method === 'pace' ? 'var(--text)' : 'var(--card)', color: method === 'pace' ? 'var(--bg)' : 'var(--text)', border: '1px solid var(--border)', cursor: 'pointer' }}>1-Mile Run Test</button>

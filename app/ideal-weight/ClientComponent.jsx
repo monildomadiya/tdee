@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import Link from 'next/link';
 import Sidebar from '../../src/components/Sidebar';
+import EmbedButton from '../../src/components/EmbedButton';
 
 const IdealWeight = () => {
   const [unit, setUnit] = useState('metric');
@@ -53,13 +54,12 @@ const IdealWeight = () => {
         <div className="main-content">
 
         <div className="calculator-card">
-          <div className="mac-header">
-            <div className="mac-dots">
-              <span className="mac-dot red"></span>
-              <span className="mac-dot yellow"></span>
-              <span className="mac-dot green"></span>
+          <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="mac-dots" style={{ display: 'none' }}></div>
+              <div className="mac-title" style={{ marginLeft: '12px' }}>Hamwi Formula • Ideal Weight</div>
             </div>
-            <div className="mac-title">Hamwi Formula • Ideal Weight</div>
+            <EmbedButton slug="ideal-weight" />
           </div>
           <div className="calculator-card-body">
             <div className="calculator-grid">

@@ -47,9 +47,7 @@ export const metadata = {
     description: 'TDEE.TECH offers 38+ free science-backed fitness calculators. Calculate TDEE, BMR, BMI, macros, body fat, and more.',
     images: ['/og-image.png'],
   },
-  alternates: {
-    canonical: 'https://tdee.tech/',
-  },
+
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },

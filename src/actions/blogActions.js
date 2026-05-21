@@ -5,8 +5,9 @@ import { revalidatePath } from 'next/cache';
 
 export async function getBlogs() {
   try {
-    const [rows] = await pool.query('SELECT * FROM blogs ORDER BY created_at DESC');
-    return rows;
+    return [];
+    // const [rows] = await pool.query('SELECT * FROM blogs ORDER BY created_at DESC');
+    // return rows;
   } catch (error) {
     console.error('Error fetching blogs:', error);
     return [];
@@ -15,8 +16,12 @@ export async function getBlogs() {
 
 export async function getRecentBlogs(limit = 3) {
   try {
-    const [rows] = await pool.query('SELECT * FROM blogs ORDER BY created_at DESC LIMIT ?', [limit]);
-    return rows;
+    // TEMPORARY FIX: Bypass DB query to prevent ECONNREFUSED timeouts
+    // Remove this when MySQL database is properly configured
+    return [];
+    
+    // const [rows] = await pool.query('SELECT * FROM blogs ORDER BY created_at DESC LIMIT ?', [limit]);
+    // return rows;
   } catch (error) {
     console.error('Error fetching recent blogs:', error);
     return [];

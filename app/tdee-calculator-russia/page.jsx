@@ -2,25 +2,25 @@ import React, { Suspense } from 'react';
 import { TDEERussia as Component } from './ClientComponent';
 
 export const metadata = {
-  title: 'Калькулятор TDEE — Расчёт Суточных Калорий | TDEE.TECH',
+  title: 'Калькулятор TDEE — Расчёт Суточных Калорий | TDEE.TECH (2026)',
   description:
-    'Бесплатный калькулятор TDEE для России. Рассчитайте суточную норму калорий (ккал), BMR, ИМТ и макронутриенты по формуле Миффлина–Сан Жеора. Без регистрации.',
+    'Бесплатный калькулятор TDEE для России. Рассчитайте суточную норму калорий (ккал), BMR, ИМТ и макронутриенты по формуле Миффлина–Сан Жеора. Без регистрации. Updated for 2026. Free to use, no signup required.',
   alternates: {
-    canonical: 'https://tdee.tech/tdee-calculator-russia/',
+    canonical: 'https://tdee.tech/tdee-calculator-russia',
     languages: { 'ru-RU': 'https://tdee.tech/tdee-calculator-russia' },
   },
   openGraph: {
-    title: 'Калькулятор TDEE — Расчёт Суточных Калорий',
+    title: 'Калькулятор TDEE — Расчёт Суточных Калорий (2026)',
     description:
-      'Бесплатный калькулятор TDEE для России. Рассчитайте суточную норму калорий, BMR, ИМТ и макронутриенты.',
+      'Бесплатный калькулятор TDEE для России. Рассчитайте суточную норму калорий, BMR, ИМТ и макронутриенты. Updated for 2026. Free to use, no signup required.',
     url: 'https://tdee.tech/tdee-calculator-russia/',
     type: 'website',
     images: [{ url: 'https://tdee.tech/og-image.png/', width: 1200, height: 630, alt: 'TDEE Calculator Russia – TDEE.TECH' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Калькулятор TDEE — Расчёт Суточных Калорий | TDEE.TECH',
-    description: 'Бесплатный калькулятор TDEE для России. Метрическая система. Без регистрации.',
+    title: 'Калькулятор TDEE — Расчёт Суточных Калорий | TDEE.TECH (2026)',
+    description: 'Бесплатный калькулятор TDEE для России. Метрическая система. Без регистрации. Updated for 2026. Free to use, no signup required.',
     images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
   },
 };

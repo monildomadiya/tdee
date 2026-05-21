@@ -88,7 +88,7 @@ const Header = () => {
           display: none;
           flex-direction: column;
           position: fixed;
-          top: 60px;
+          top: 70px;
           left: 0;
           right: 0;
           bottom: 0;
@@ -150,14 +150,15 @@ const Header = () => {
         html.dark .mobile-bottom-bar { background: #1e293b; border-top-color: #334155; }
       `}} />
 
-      <header role="banner" style={{ background: isDark ? '#1e293b' : '#fff', borderBottom: '1px solid #e2e8f0', position: 'relative', zIndex: 1000, height: '60px' }}>
+      <header role="banner" style={{ background: isDark ? '#1e293b' : '#fff', borderBottom: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`, position: 'relative', zIndex: 1000, height: '70px' }}>
         <div
           className="container"
           style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            height: '70px'
+            height: '100%',
+            padding: '0 16px'
           }}
         >
           {/* LEFT: Logo */}
@@ -168,86 +169,19 @@ const Header = () => {
           </div>
 
           {/* CENTER: Desktop Nav */}
-          <nav className="header-desktop-nav nav-links" ref={dropdownRef} style={{ flex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
-              <div
-                className="dropdown"
-                onMouseEnter={() => setOpenDropdown('mega')}
-                onMouseLeave={() => setOpenDropdown(null)}
-                style={{ position: 'relative' }}
+          <nav className="header-desktop-nav nav-links" style={{ flex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+              <Link
+                href="/"
+                style={{
+                  cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569',
+                  fontSize: '14.5px', padding: '8px 14px', textDecoration: 'none',
+                  borderRadius: '20px', transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = isDark ? '#fff' : '#0f172a'; e.currentTarget.style.background = isDark ? '#334155' : '#f1f5f9'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = isDark ? '#cbd5e1' : '#475569'; e.currentTarget.style.background = 'transparent'; }}
               >
-                <button
-                  type="button"
-                  onClick={() => setOpenDropdown(openDropdown === 'mega' ? null : 'mega')}
-                  style={{
-                    cursor: 'pointer', fontWeight: 700, color: openDropdown === 'mega' ? '#0f172a' : '#1e293b',
-                    fontSize: '15px', display: 'flex', alignItems: 'center',
-                    gap: '6px', background: 'none', border: 'none',
-                    fontFamily: 'inherit', padding: '10px 0',
-                    whiteSpace: 'nowrap'
-                  }}
-                >
-                  Our Calculators
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ transform: openDropdown === 'mega' ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-                {openDropdown === 'mega' && (
-                  <div
-                    role="menu"
-                    className="dropdown-content"
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(3, 1fr)',
-                      gap: '24px',
-                      position: 'absolute',
-                      top: '100%',
-                      left: '-300px', // Shift left to center the mega menu relative to the button
-                      width: '800px',
-                      background: isDark ? '#1e293b' : '#fff',
-                      border: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`,
-                      borderRadius: '8px',
-                      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
-                      padding: '24px',
-                      zIndex: 1000
-                    }}
-                  >
-                    {categories.map((cat) => (
-                      <div key={cat.id}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', paddingBottom: '8px', borderBottom: `1px solid ${isDark ? '#334155' : '#f1f5f9'}` }}>
-                          <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: cat.color }} />
-                          <h4 style={{ margin: 0, fontSize: '14px', fontWeight: 700, color: isDark ? '#f1f5f9' : '#0f172a', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
-                            {cat.label}
-                          </h4>
-                        </div>
-                        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                          {cat.tools.map((tool) => (
-                            <li key={tool.path}>
-                              <Link
-                                href={tool.path}
-                                onClick={() => setOpenDropdown(null)}
-                                style={{
-                                  display: 'block',
-                                  padding: '6px 8px',
-                                  fontSize: '13.5px',
-                                  color: isDark ? '#cbd5e1' : '#475569',
-                                  textDecoration: 'none',
-                                  borderRadius: '4px',
-                                  transition: 'all 0.1s'
-                                }}
-                                onMouseEnter={(e) => { e.currentTarget.style.background = isDark ? '#334155' : '#f8fafc'; e.currentTarget.style.color = cat.color; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = isDark ? '#cbd5e1' : '#475569'; }}
-                              >
-                                {tool.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <div style={{ width: '1px', height: '16px', background: isDark ? '#334155' : '#e2e8f0', margin: '0 4px' }} />
+                All Tools
+              </Link>
               <Link
                 href="/tdee-calculator"
                 style={{
@@ -271,6 +205,18 @@ const Header = () => {
                 onMouseLeave={(e) => { e.currentTarget.style.color = isDark ? '#cbd5e1' : '#475569'; e.currentTarget.style.background = 'transparent'; }}
               >
                 Calories
+              </Link>
+              <Link
+                href="/macro-calculator"
+                style={{
+                  cursor: 'pointer', fontWeight: 600, color: isDark ? '#cbd5e1' : '#475569',
+                  fontSize: '14.5px', padding: '8px 14px', textDecoration: 'none',
+                  borderRadius: '20px', transition: 'all 0.2s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = isDark ? '#fff' : '#0f172a'; e.currentTarget.style.background = isDark ? '#334155' : '#f1f5f9'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = isDark ? '#cbd5e1' : '#475569'; e.currentTarget.style.background = 'transparent'; }}
+              >
+                Macros
               </Link>
               <Link
                 href="/bmi-calculator"
@@ -409,14 +355,14 @@ const Header = () => {
             <div
               onClick={() => { setIsSearchOpen(!isSearchOpen); setOpen(false); }}
               style={{
-                width: '38px', height: '38px',
-                background: isSearchOpen ? '#0f172a' : '#eef2f6',
-                border: '1px solid #cbd5e1',
+                width: '48px', height: '48px',
+                background: isSearchOpen ? (isDark ? '#cbd5e1' : '#0f172a') : (isDark ? '#1e293b' : '#eef2f6'),
+                border: `1px solid ${isDark ? '#334155' : '#cbd5e1'}`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                cursor: 'pointer'
+                cursor: 'pointer', borderRadius: '4px'
               }}
             >
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke={isSearchOpen ? '#fff' : '#0f172a'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke={isSearchOpen ? (isDark ? '#0f172a' : '#fff') : (isDark ? '#cbd5e1' : '#0f172a')} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
@@ -427,10 +373,11 @@ const Header = () => {
               onClick={() => { setOpen(o => !o); setIsSearchOpen(false); }}
               aria-label={open ? 'Close menu' : 'Open menu'}
               style={{
-                width: '38px', height: '38px', background: open ? '#0f172a' : '#fff',
-                border: '1px solid #cbd5e1', cursor: 'pointer',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: open ? '#fff' : '#0f172a', fontSize: '1.2rem', fontWeight: 700
+                width: '48px', height: '48px', 
+                background: open ? (isDark ? '#cbd5e1' : '#0f172a') : (isDark ? '#1e293b' : '#fff'),
+                border: `1px solid ${isDark ? '#334155' : '#cbd5e1'}`, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '4px',
+                color: open ? (isDark ? '#0f172a' : '#fff') : (isDark ? '#cbd5e1' : '#0f172a'), fontSize: '1.2rem', fontWeight: 700
               }}
             >
               {open ? '✕' : '☰'}
@@ -440,7 +387,7 @@ const Header = () => {
 
         {/* Mobile Search Bar — full-width below header */}
         {isSearchOpen && (
-          <div className="mobile-search-bar" ref={mobileSearchRef} style={{ padding: '12px 16px', background: '#fff', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0', position: 'absolute', width: '100%', zIndex: 998, top: '60px', left: 0 }}>
+          <div className="mobile-search-bar" ref={mobileSearchRef} style={{ padding: '12px 16px', background: isDark ? '#0f172a' : '#fff', borderTop: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`, borderBottom: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`, position: 'absolute', width: '100%', zIndex: 998, top: '70px', left: 0 }}>
             <div style={{ position: 'relative', width: '100%' }}>
               <input
                 autoFocus
@@ -450,20 +397,20 @@ const Header = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 style={{
                   width: '100%', padding: '10px 14px', fontSize: '15px',
-                  border: '1px solid #0f172a', background: '#fff', color: '#0f172a'
+                  border: `1px solid ${isDark ? '#334155' : '#cbd5e1'}`, background: isDark ? '#1e293b' : '#fff', color: isDark ? '#f1f5f9' : '#0f172a'
                 }}
               />
               {searchQuery.trim() !== '' && searchResults.length > 0 && (
-                <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderTop: 'none', maxHeight: '280px', overflowY: 'auto' }}>
+                <div style={{ background: isDark ? '#1e293b' : '#fff', border: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`, borderTop: 'none', maxHeight: '280px', overflowY: 'auto' }}>
                   {searchResults.map(tool => (
                     <Link
                       key={tool.path}
                       href={tool.path}
                       onClick={() => { setIsSearchOpen(false); setSearchQuery(''); }}
-                      style={{ display: 'block', padding: '12px 14px', borderBottom: '1px solid #f1f5f9', textDecoration: 'none' }}
+                      style={{ display: 'block', padding: '12px 14px', borderBottom: `1px solid ${isDark ? '#334155' : '#f1f5f9'}`, textDecoration: 'none' }}
                     >
-                      <div style={{ color: '#0f172a', fontWeight: 700, fontSize: '14px' }}>{tool.name}</div>
-                      <div style={{ color: '#64748b', fontSize: '12px' }}>{tool.desc}</div>
+                      <div style={{ color: isDark ? '#f1f5f9' : '#0f172a', fontWeight: 700, fontSize: '14px' }}>{tool.name}</div>
+                      <div style={{ color: isDark ? '#94a3b8' : '#64748b', fontSize: '12px' }}>{tool.desc}</div>
                     </Link>
                   ))}
                 </div>

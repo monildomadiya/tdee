@@ -2,8 +2,8 @@ import { getBlogs } from '../../src/actions/blogActions';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Fitness & Health Blog - TDEE.TECH',
-  description: 'Read the latest articles on fitness, health, nutrition, and weight management from the experts at TDEE.TECH.',
+  title: 'Fitness & Health Blog - TDEE.TECH (2026)',
+  description: 'Read the latest articles on fitness, health, nutrition, and weight management from the experts at TDEE.TECH. Updated for 2026. Free to use, no signup required.',
 };
 
 export default async function BlogListPage() {

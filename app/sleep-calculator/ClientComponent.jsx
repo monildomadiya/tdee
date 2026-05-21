@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Sidebar from '../../src/components/Sidebar';
+import EmbedButton from '../../src/components/EmbedButton';
 
 const CYCLE_MINUTES = 90;
 const FALL_ASLEEP_MINUTES = 14;
@@ -62,10 +63,13 @@ export default function SleepCalculator() {
       <div className="container tool-layout-container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
         <div className="tool-main-content">
           <div className="calculator-card">
-            <div className="mac-header">
-              <div className="mac-dots"><span className="mac-dot red"></span><span className="mac-dot yellow"></span><span className="mac-dot green"></span></div>
-              <div className="mac-title">Sleep Cycle Calculator</div>
+            <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="mac-dots" style={{ display: 'none' }}></div>
+              <div className="mac-title" style={{ marginLeft: '12px' }}>Sleep Cycle Calculator</div>
             </div>
+            <EmbedButton slug="sleep-calculator" />
+          </div>
             <div className="calculator-card-body" style={{ padding: '2rem' }}>
               <div style={{ display: 'flex', gap: '10px', marginBottom: '1.5rem' }}>
                 <button type="button" onClick={() => { setMode('bedtime'); setResults(null); }} style={{ flex: 1, padding: '12px', fontWeight: 700, fontSize: '0.95rem', background: mode === 'bedtime' ? 'var(--text)' : 'var(--card)', color: mode === 'bedtime' ? 'var(--bg)' : 'var(--text)', border: '1px solid var(--border)', cursor: 'pointer' }}>I know my bedtime</button>

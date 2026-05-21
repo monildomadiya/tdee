@@ -57,15 +57,15 @@ export const Privacy = () => (
 
     <h3>b) Usage Analytics (Google Analytics 4)</h3>
     <p>We use Google Analytics 4 to collect anonymous, aggregated usage statistics including: pages visited, session duration, browser type, device type, and general geographic region (country/city level). This data cannot identify you individually. Google Analytics uses cookies to distinguish unique visitors.</p>
-    <p>You can opt out using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
+    <p>You can opt out using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="nofollow noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
 
     <h3>c) Visitor Counter (Firebase Realtime Database)</h3>
     <p>We maintain a daily counter of calculator uses via Firebase Realtime Database. This stores only: a date string (e.g., "2026-05-04") and an integer count. No personal information is associated with this counter.</p>
 
     <h2>2. Google AdSense and Advertising</h2>
     <p>We display advertisements on this website through <strong>Google AdSense</strong>. Google AdSense uses cookies and web beacons to serve ads based on your prior visits to this and other websites. This allows Google to display personalized advertisements.</p>
-    <p><strong>You can opt out of personalized advertising</strong> at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google's Ad Settings</a> or <a href="http://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.</p>
-    <p>Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our site and/or other sites on the Internet. For more information, see <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google's Advertising Policies</a>.</p>
+    <p><strong>You can opt out of personalized advertising</strong> at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="nofollow noopener noreferrer">Google's Ad Settings</a> or <a href="http://www.aboutads.info/choices/" target="_blank" rel="nofollow noopener noreferrer">www.aboutads.info</a>.</p>
+    <p>Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our site and/or other sites on the Internet. For more information, see <a href="https://policies.google.com/technologies/ads" target="_blank" rel="nofollow noopener noreferrer">Google's Advertising Policies</a>.</p>
 
     <h2>3. Cookies</h2>
     <p>We do not set first-party cookies ourselves. The following third-party cookies may be present:</p>
@@ -77,10 +77,10 @@ export const Privacy = () => (
 
     <h2>4. Third-Party Services</h2>
     <ul>
-      <li><strong>Google Analytics:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-      <li><strong>Google AdSense:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-      <li><strong>Firebase (Google):</strong> <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-      <li><strong>Google Fonts:</strong> Served from Google CDN — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+      <li><strong>Google Analytics:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="nofollow noopener noreferrer">Privacy Policy</a></li>
+      <li><strong>Google AdSense:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="nofollow noopener noreferrer">Privacy Policy</a></li>
+      <li><strong>Firebase (Google):</strong> <a href="https://firebase.google.com/support/privacy" target="_blank" rel="nofollow noopener noreferrer">Privacy Policy</a></li>
+      <li><strong>Google Fonts:</strong> Served from Google CDN — <a href="https://policies.google.com/privacy" target="_blank" rel="nofollow noopener noreferrer">Privacy Policy</a></li>
     </ul>
 
     <h2>5. GDPR (European Users)</h2>
@@ -93,7 +93,7 @@ export const Privacy = () => (
       <li>Right to data portability</li>
       <li>Right to object to processing</li>
     </ul>
-    <p>Since we do not collect personal data through our calculators, there is no personal data stored on our servers to access or delete. For data held by Google Analytics or AdSense, please use <a href="https://myaccount.google.com" target="_blank" rel="noopener noreferrer">Google's Privacy Controls</a>.</p>
+    <p>Since we do not collect personal data through our calculators, there is no personal data stored on our servers to access or delete. For data held by Google Analytics or AdSense, please use <a href="https://myaccount.google.com" target="_blank" rel="nofollow noopener noreferrer">Google's Privacy Controls</a>.</p>
 
     <h2>6. CCPA (California Users)</h2>
     <p>If you are a California resident, you have rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, the right to delete personal information, and the right to opt-out of the sale of personal information. We do not sell personal information.</p>

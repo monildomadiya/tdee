@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Sidebar from '../../src/components/Sidebar';
+import EmbedButton from '../../src/components/EmbedButton';
 
 export default function CreatineCalculator() {
   const [weight, setWeight] = useState('');
@@ -42,10 +43,13 @@ export default function CreatineCalculator() {
       <div className="container tool-layout-container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
         <div className="tool-main-content">
           <div className="calculator-card">
-            <div className="mac-header">
-              <div className="mac-dots"><span className="mac-dot red"></span><span className="mac-dot yellow"></span><span className="mac-dot green"></span></div>
-              <div className="mac-title">Creatine Dosage Calculator</div>
+            <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="mac-dots" style={{ display: 'none' }}></div>
+              <div className="mac-title" style={{ marginLeft: '12px' }}>Creatine Dosage Calculator</div>
             </div>
+            <EmbedButton slug="creatine-calculator" />
+          </div>
             <div className="calculator-card-body" style={{ padding: '2rem' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '16px', marginBottom: '1.5rem' }}>
                 <div className="input-group">

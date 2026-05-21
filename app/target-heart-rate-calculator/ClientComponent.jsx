@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 import Sidebar from '../../src/components/Sidebar';
+import EmbedButton from '../../src/components/EmbedButton';
 
 const TargetHeartRateCalculator = () => {
   const [age, setAge] = useState('');
@@ -36,14 +37,13 @@ const TargetHeartRateCalculator = () => {
         <div className="main-content">
 
           <div className="calculator-card">
-            <div className="mac-header">
-              <div className="mac-dots">
-                <span className="mac-dot red"></span>
-                <span className="mac-dot yellow"></span>
-                <span className="mac-dot green"></span>
-              </div>
-              <div className="mac-title">TARGET HEART RATE CALCULATOR</div>
+            <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="mac-dots" style={{ display: 'none' }}></div>
+              <div className="mac-title" style={{ marginLeft: '12px' }}>TARGET HEART RATE CALCULATOR</div>
             </div>
+            <EmbedButton slug="target-heart-rate-calculator" />
+          </div>
             <div className="calculator-card-body">
               <div className="calculator-grid">
                 <div className="calc-form-container">

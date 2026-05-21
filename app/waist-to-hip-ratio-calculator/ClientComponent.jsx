@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Sidebar from '../../src/components/Sidebar';
+import EmbedButton from '../../src/components/EmbedButton';
 
 const WHR_RISK = {
   male:   [{ max: 0.90, risk: 'Low',       color: '#16a34a', bg: '#f0fdf4' }, { max: 0.95, risk: 'Moderate', color: '#d97706', bg: '#fffbeb' }, { max: 999, risk: 'High',       color: '#dc2626', bg: '#fef2f2' }],
@@ -43,10 +44,13 @@ export default function WHRCalculator() {
       <div className="container tool-layout-container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
         <div className="tool-main-content">
           <div className="calculator-card">
-            <div className="mac-header">
-              <div className="mac-dots"><span className="mac-dot red"></span><span className="mac-dot yellow"></span><span className="mac-dot green"></span></div>
-              <div className="mac-title">WHR Calculator</div>
+            <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="mac-dots" style={{ display: 'none' }}></div>
+              <div className="mac-title" style={{ marginLeft: '12px' }}>WHR Calculator</div>
             </div>
+            <EmbedButton slug="waist-to-hip-ratio-calculator" />
+          </div>
             <div className="calculator-card-body" style={{ padding: '2rem' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '1.5rem' }}>
                 <div className="input-group">

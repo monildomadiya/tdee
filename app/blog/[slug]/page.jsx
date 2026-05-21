@@ -7,11 +7,11 @@ export async function generateMetadata({ params }) {
   const blog = await getBlogBySlug(slug);
 
   if (!blog) {
-    return { title: 'Post Not Found | TDEE.TECH' };
+    return { title: 'Post Not Found | TDEE.TECH (2026)' };
   }
 
   return {
-    title: `${blog.title} | TDEE.TECH`,
+    title: `${blog.title} | TDEE.TECH (2026)`,
     description: blog.excerpt || `Read ${blog.title} on TDEE.TECH`,
     alternates: { canonical: `https://tdee.tech/blog/${blog.slug}` },
     openGraph: {

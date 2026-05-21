@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import Sidebar from '../../src/components/Sidebar';
 import Link from 'next/link';
+import EmbedButton from '../../src/components/EmbedButton';
 
 const KetoMacro = () => {
   const [unit, setUnit]       = useState('kg');
@@ -63,10 +64,13 @@ const KetoMacro = () => {
         <div className="tool-main-content">
         <div className="main-content">
           <div className="calculator-card">
-            <div className="mac-header">
-              <div className="mac-dots"><span className="mac-dot red"/><span className="mac-dot yellow"/><span className="mac-dot green"/></div>
-              <div className="mac-title">KETO MACRO CALCULATOR</div>
+            <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="mac-dots" style={{ display: 'none' }}></div>
+              <div className="mac-title" style={{ marginLeft: '12px' }}>KETO MACRO CALCULATOR</div>
             </div>
+            <EmbedButton slug="keto-macro-calculator" />
+          </div>
             <div className="calculator-card-body">
               <div className="calculator-grid">
                 <div className="calc-form-container">

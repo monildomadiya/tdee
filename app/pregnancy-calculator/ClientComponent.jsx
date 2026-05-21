@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 import Sidebar from '../../src/components/Sidebar';
+import EmbedButton from '../../src/components/EmbedButton';
 
 const PregnancyCalculator = () => {
   const [lmp, setLmp] = useState('');
@@ -32,14 +33,13 @@ const PregnancyCalculator = () => {
         <div className="main-content">
 
           <div className="calculator-card">
-            <div className="mac-header">
-              <div className="mac-dots">
-                <span className="mac-dot red"></span>
-                <span className="mac-dot yellow"></span>
-                <span className="mac-dot green"></span>
-              </div>
-              <div className="mac-title">PREGNANCY CALCULATOR</div>
+            <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="mac-dots" style={{ display: 'none' }}></div>
+              <div className="mac-title" style={{ marginLeft: '12px' }}>PREGNANCY CALCULATOR</div>
             </div>
+            <EmbedButton slug="pregnancy-calculator" />
+          </div>
             <div className="calculator-card-body">
               <div className="calculator-grid">
                 <div className="calc-form-container">

@@ -4,7 +4,7 @@ import AdminLogin from './AdminLogin';
 import { cookies } from 'next/headers';
 
 export const metadata = {
-  title: 'Blog Admin - TDEE.TECH',
+  title: 'Blog Admin - TDEE.TECH (2026)',
   robots: { index: false, follow: false },
 };
 

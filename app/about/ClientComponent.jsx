@@ -71,12 +71,12 @@ export const About = () => (
           <p style={{ marginBottom:'.5rem', fontSize:'.9rem' }}>{detail}</p>
           <div style={{ fontSize:'.8rem', color:'var(--muted)', fontStyle:'italic', marginBottom:'.35rem' }}>{citation}</div>
           {pmid && (
-            <a href={url} target="_blank" rel="noopener noreferrer" style={{ fontSize:'.78rem', fontWeight:700, color:'var(--green)' }}>
+            <a href={url} target="_blank" rel="nofollow noopener noreferrer" style={{ fontSize:'.78rem', fontWeight:700, color:'var(--green)' }}>
               📖 PubMed PMID: {pmid} ↗
             </a>
           )}
           {!pmid && (
-            <a href={url} target="_blank" rel="noopener noreferrer" style={{ fontSize:'.78rem', fontWeight:700, color:'var(--green)' }}>
+            <a href={url} target="_blank" rel="nofollow noopener noreferrer" style={{ fontSize:'.78rem', fontWeight:700, color:'var(--green)' }}>
               🔗 Source ↗
             </a>
           )}
@@ -121,7 +121,7 @@ export const Privacy = () => (
 
     <h3>b) Usage Analytics (Google Analytics 4)</h3>
     <p>We use Google Analytics 4 to collect anonymous, aggregated usage statistics including: pages visited, session duration, browser type, device type, and general geographic region (country/city level). This data cannot identify you individually. Google Analytics uses cookies to distinguish unique visitors.</p>
-    <p>You can opt out using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
+    <p>You can opt out using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="nofollow noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
 
     <h3>c) Visitor Counter (Firebase Realtime Database)</h3>
     <p>We maintain a daily counter of calculator uses via Firebase Realtime Database. This stores only: a date string (e.g., "2026-05-04") and an integer count. No personal information is associated with this counter.</p>
@@ -136,10 +136,10 @@ export const Privacy = () => (
 
     <h2>4. Third-Party Services</h2>
     <ul>
-      <li><strong>Google Analytics:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+      <li><strong>Google Analytics:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="nofollow noopener noreferrer">Privacy Policy</a></li>
 
-      <li><strong>Firebase (Google):</strong> <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-      <li><strong>Google Fonts:</strong> Served from Google CDN — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+      <li><strong>Firebase (Google):</strong> <a href="https://firebase.google.com/support/privacy" target="_blank" rel="nofollow noopener noreferrer">Privacy Policy</a></li>
+      <li><strong>Google Fonts:</strong> Served from Google CDN — <a href="https://policies.google.com/privacy" target="_blank" rel="nofollow noopener noreferrer">Privacy Policy</a></li>
     </ul>
 
     <h2>5. GDPR (European Users)</h2>
@@ -152,7 +152,7 @@ export const Privacy = () => (
       <li>Right to data portability</li>
       <li>Right to object to processing</li>
     </ul>
-    <p>Since we do not collect personal data through our calculators, there is no personal data stored on our servers to access or delete. For data held by Google Analytics, please use <a href="https://myaccount.google.com" target="_blank" rel="noopener noreferrer">Google's Privacy Controls</a>.</p>
+    <p>Since we do not collect personal data through our calculators, there is no personal data stored on our servers to access or delete. For data held by Google Analytics, please use <a href="https://myaccount.google.com" target="_blank" rel="nofollow noopener noreferrer">Google's Privacy Controls</a>.</p>
 
     <h2>6. CCPA (California Users)</h2>
     <p>If you are a California resident, you have rights under the California Consumer Privacy Act (CCPA), including the right to know what personal information is collected, the right to delete personal information, and the right to opt-out of the sale of personal information. We do not sell personal information.</p>

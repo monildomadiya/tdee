@@ -2,22 +2,22 @@ import React, { Suspense } from 'react';
 import Component from './ClientComponent';
 
 export const metadata = {
-  title: 'Free TDEE Calculator – Accurate & Instant | TDEE.TECH',
+  title: 'Free TDEE Calculator – Accurate & Instant | TDEE.TECH (2026)',
   description:
-    'Calculate your Total Daily Energy Expenditure (TDEE) instantly. Uses the Mifflin-St Jeor equation. Get your BMR, BMI, maintenance calories, and macro targets. 100% free.',
-  alternates: { canonical: 'https://tdee.tech/tdee-calculator/' },
+    'Calculate your Total Daily Energy Expenditure (TDEE) instantly. Uses the Mifflin-St Jeor equation. Get your BMR, BMI, maintenance calories, and macro targets. 100% free. Updated for 2026. Free to use, no signup required.',
+  alternates: { canonical: 'https://tdee.tech/tdee-calculator' },
   openGraph: {
-    title: 'Free TDEE Calculator – Accurate & Instant | TDEE.TECH',
+    title: 'Free TDEE Calculator – Accurate & Instant | TDEE.TECH (2026)',
     description:
-      'Calculate your Total Daily Energy Expenditure (TDEE) instantly. Uses the Mifflin-St Jeor equation. Get your BMR, BMI, maintenance calories, and macro targets. 100% free.',
+      'Calculate your Total Daily Energy Expenditure (TDEE) instantly. Uses the Mifflin-St Jeor equation. Get your BMR, BMI, maintenance calories, and macro targets. 100% free. Updated for 2026. Free to use, no signup required.',
     url: 'https://tdee.tech/tdee-calculator/',
     type: 'website',
     images: [{ url: 'https://tdee.tech/og-image.png/', width: 1200, height: 630, alt: 'TDEE Calculator – Free & Accurate | TDEE.TECH' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TDEE Calculator — Free & Accurate Total Daily Energy Expenditure',
-    description: 'Calculate your TDEE instantly with the Mifflin-St Jeor equation. Get BMR, BMI, and macro targets. 100% free.',
+    title: 'TDEE Calculator — Free & Accurate Total Daily Energy Expenditure (2026)',
+    description: 'Calculate your TDEE instantly with the Mifflin-St Jeor equation. Get BMR, BMI, and macro targets. 100% free. Updated for 2026. Free to use, no signup required.',
     images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
   },
 };
@@ -83,7 +83,7 @@ const howToSchema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
   name: 'How to Calculate Your TDEE',
-  description: 'A step-by-step guide to using the TDEE.TECH calculator to find your Total Daily Energy Expenditure.',
+  description: 'A step-by-step guide to using the TDEE.TECH calculator to find your Total Daily Energy Expenditure. Updated for 2026. Free to use, no signup required.',
   step: [
     {
       '@type': 'HowToStep',

@@ -6,14 +6,14 @@ import Link from 'next/link';
 import Script from 'next/script';
 
 export const metadata = {
-  title: "Guess the Calories Game & Quiz – Test Your Nutrition Knowledge",
-  description: "Play the ultimate Guess the Calories Game! Test your food calorie knowledge, learn about nutrition, and improve your diet with this interactive food calorie quiz.",
+  title: "Guess the Calories Game & Quiz – Test Your Nutrition Knowledge (2026)",
+  description: "Play the ultimate Guess the Calories Game! Test your food calorie knowledge, learn about nutrition, and improve your diet with this interactive food calorie quiz. Updated for 2026. Free to use, no signup required.",
   
-  alternates: { canonical: 'https://tdee.tech/guess-calories-game/' },
+  alternates: { canonical: 'https://tdee.tech/guess-calories-game' },
   openGraph: {
     images: [{ url: 'https://tdee.tech/og-image.png', width: 1200, height: 630 }],
-    title: "Guess the Calories Game & Quiz – Test Your Nutrition Knowledge",
-    description: "Play the ultimate Guess the Calories Game! Test your food calorie knowledge and improve your diet with this interactive food calorie quiz.",
+    title: "Guess the Calories Game & Quiz – Test Your Nutrition Knowledge (2026)",
+    description: "Play the ultimate Guess the Calories Game! Test your food calorie knowledge and improve your diet with this interactive food calorie quiz. Updated for 2026. Free to use, no signup required.",
     url: 'https://tdee.tech/guess-calories-game/',
     type: "website",
   },

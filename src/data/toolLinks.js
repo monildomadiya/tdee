@@ -32,13 +32,14 @@ export const TOOL_CATEGORIES = {
     tools: [
       { path: '/calorie-calculator',       name: 'Calorie Calculator',           short: 'Calories',    desc: 'Precise daily calorie needs.' },
       { path: '/calorie-deficit',          name: 'Calorie Deficit Calculator',   short: 'Cal Deficit', desc: 'Plan your weight loss calorie target.' },
+      { path: '/reverse-dieting-calculator', name: 'Reverse Dieting Calculator', short: 'Reverse Diet', desc: 'Slowly increase calories after a diet.', isNew: true },
       { path: '/macro-calculator',         name: 'Macro Calculator',             short: 'Macros',      desc: 'Optimal protein, carbs & fat split.' },
       { path: '/protein-calculator',       name: 'Protein Calculator',           short: 'Protein',     desc: 'Daily protein needs for your goal.' },
       { path: '/carbohydrate-calculator',  name: 'Carbohydrate Calculator',      short: 'Carbs',       desc: 'Daily carbohydrate intake target.' },
       { path: '/fat-intake-calculator',    name: 'Fat Intake Calculator',        short: 'Fat Intake',  desc: 'Daily dietary fat needs.' },
       { path: '/keto-macro-calculator',    name: 'Keto Macro Calculator',        short: 'Keto',        desc: 'Macros for ketogenic diets.' },
       { path: '/water-intake-calculator',  name: 'Water Intake Calculator',      short: 'Hydration',   desc: 'Daily water intake needs.' },
-      { path: '/guess-calories-game',      name: 'Guess the Calories Game',      short: 'Game',        desc: 'Test your nutrition knowledge.', isNew: true },
+      { path: '/guess-calories-game',      name: 'Guess the Calories Game',      short: 'Game',        desc: 'Test your nutrition knowledge.' },
     ],
   },
   weight: {

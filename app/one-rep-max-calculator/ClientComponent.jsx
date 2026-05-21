@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import Sidebar from '../../src/components/Sidebar';
 import Link from 'next/link';
+import EmbedButton from '../../src/components/EmbedButton';
 
 const OneRepMax = () => {
   const [weight, setWeight] = useState('');
@@ -40,14 +41,13 @@ const OneRepMax = () => {
         <div className="tool-main-content">
         <div className="main-content">
           <div className="calculator-card">
-            <div className="mac-header">
-              <div className="mac-dots">
-                <span className="mac-dot red"></span>
-                <span className="mac-dot yellow"></span>
-                <span className="mac-dot green"></span>
-              </div>
-              <div className="mac-title">1RM STRENGTH CALCULATOR</div>
+            <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="mac-dots" style={{ display: 'none' }}></div>
+              <div className="mac-title" style={{ marginLeft: '12px' }}>1RM STRENGTH CALCULATOR</div>
             </div>
+            <EmbedButton slug="one-rep-max-calculator" />
+          </div>
             <div className="calculator-card-body">
               <div className="calculator-grid">
                 <div className="calc-form-container">

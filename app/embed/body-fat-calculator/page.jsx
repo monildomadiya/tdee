@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Component from '../../body-fat-calculator/ClientComponent';
 
 export const metadata = {
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function EmbedPage() {
-  return <Component />;
+  return <Suspense fallback={null}><Component /></Suspense>;
 }

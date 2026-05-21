@@ -78,12 +78,11 @@ export default function ReverseDietingCalculator() {
           {/* ── Calculator Card ── */}
           <div className="calculator-card">
             <div className="mac-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <div className="mac-dots" style={{ display: 'none' }}></div>
-              <div className="mac-title" style={{ marginLeft: '12px' }}>Reverse Dieting</div>
-            </div>
-            <EmbedButton slug="reverse-dieting-calculator" />
-          </div>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div className="mac-dots" style={{ display: 'none' }}></div>
+                <div className="mac-title" style={{ marginLeft: '12px' }}>Reverse Dieting</div>
+              </div>
+              <EmbedButton slug="reverse-dieting-calculator" />
             </div>
             
             <div className="calculator-card-body">
